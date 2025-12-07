@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/user_stu/stu_myhome.css">
+  <script src="/js/home_stu.js"></script>
+  
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="home__wrapper">
+    <div class="section__right__header">
+    <div class="right__header__img"><img src="/img/default.png" alt="기본이미지"></div>
+    <div class="right__header__info">
+      <p th:text="${session.user_id}  + ' 님'"><span id="info1" th:text="${user_id}"></span></p>
+    </div>
+    </div>
+  </div>
+  <div class="section__right__body">
+
+    <div class="section__right__alarm">
+      <a href="" class="right__alarm__list list1">전체 알람 <span></span><i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list2">받은 제안 <span></span><i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list3">지원 내역 <span>[[${list.size()}]]</span><i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list4">추천 공고 <span>[[${updatePost.size()}]]</span><i class="fa-regular fa-lightbulb"></i></a>
+    </div>
+
+    <div class="section__right__notice">
+
+      <div class="section__notice__above">
+        <div class="notice__above__apply">
+          <div class="section__right__container">
+
+            <h3>지원 내역</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="container__th__one">번호</th>
+                        <th class="container__th__two">채용공고</th>
+                        <th class="container__th__three">기업명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="list : ${list} ">
+                        <td th:text="${list.prodd_id}">1</td>
+                        <td th:text="${list.title_name}">웹 개발자 채용</td>
+                        <td th:text="${list.title}">ABC 주식회사</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="notice__above__hire">
+          <div class="section__right__container">
+
+            <h3>받은 제안</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>채용공고</th>
+                        <th>기업명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>웹 개발자 채용</td>
+                        <td>ABC 주식회사</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>데이터 분석가 채용</td>
+                        <td>XYZ 기업</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>웹 개발자 채용</td>
+                      <td>ABC 주식회사</td>
+                  </tr>
+                  <tr>
+                      <td>4</td>
+                      <td>데이터 분석가 채용</td>
+                      <td>XYZ 기업</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>웹 개발자 채용</td>
+                    <td>ABC 주식회사</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>데이터 분석가 채용</td>
+                    <td>XYZ 기업</td>
+                </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="section__notice__below">
+        <div class="notice__below__container">
+
+          <h3>채용공고</h3>
+          <table>
+              <thead>
+                  <tr>
+                      <th>번호</th>
+                      <th>채용공고</th>
+                      <th>기업명</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr th:each="updatePost : ${updatePost}">
+                      <td th:text="${updatePost.prodd_id}">1</td>
+                      <td><a th:href="@{/job/resume_jobpost2(prodd_id=${updatePost.prodd_id})}"><span th:text="${updatePost.title_name}"></span></a></td>
+                      <td th:text="${updatePost.title}">ABC 주식회사</td>
+                  </tr>
+                  
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</body>
+</html>

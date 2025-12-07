@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.project_wizian2.manager.service.ManagerMapper">
+
+	<select id="getList" resultType="JobVO">
+		select * from manager_test where yn is  null
+	</select>
+
+	<select id="umList" resultType="ResumeVO">
+		select * from test_resume
+	</select>
+
+	<select id="umList2" resultType="ResumeVO">
+		select * from test_resume where stu_yn is null
+	</select>
+
+	<select id="umList3" resultType="ResumeVO">
+		select* from test_resume where stu_yn = "y"
+	</select>
+
+	<select id="umList4" resultType="ResumeVO">
+		select* from test_resume where stu_yn = "yy"
+	</select>
+
+	<select id="umList5" resultType="ResumeVO">
+		select* from test_resume where stu_yn = "yyy"
+	</select>
+
+	<update id="updatePostStatus">
+		update manager_test set yn = #{yn} where title = #{title}
+	</update>
+
+	<select id="updatePost" resultType="JobVO">
+		select * from manager_test where yn = "y" and stu_id is not null
+	</select>
+
+	<select id="resumeDetail" resultType="ResumeVO">
+		select * from TEST_RESUME where resume_num = #{resume_num}
+	</select>
+
+	<delete id="deletePost">
+		delete from manager_test where title=#{title}
+	</delete>
+
+	<select id="uploadPost" resultType="JobVO">
+		select * from manager_test
+	</select>
+
+	<update id="updateResume" parameterType="map">
+		update test_resume set stu_yn = #{stu_yn} where stu_name = #{stu_name}
+	</update>
+
+	<!-- 학생 지원자 내역 확인 -->
+	<select id="applyList" resultType="JobVO">
+		select * from manager_test where stu_id = #{stu_id}
+	</select>
+
+
+
+	 <!--지원자 아이디 검색
+	<select id="searchId" resultType="String">
+		SELECT STU_ID FROM MANAGER_TEST WHERE USER_ID = #{searchId};
+	</select>-->
+	<select id="searchIdList" resultType="String">
+		SELECT STU_ID FROM MANAGER_TEST WHERE USER_ID = #{searchId};
+</select>
+
+	<!-- 지원자 리스트 -->
+	<select id="applyStu" resultType="ResumeVO">
+		SELECT * FROM TEST_RESUME WHERE STU_ID = #{search_id} and STU_YN IS NULL;
+	</select>
+	<!-- 지원자 서류 합격자 -->
+	<select id="applyStu2" resultType="ResumeVO">
+		SELECT * FROM TEST_RESUME WHERE STU_ID = #{search_id} and stu_yn = "y";
+	</select>
+	<!-- 지원자 서류 합격자 -->
+	<select id="applyStu3" resultType="ResumeVO">
+		SELECT * FROM TEST_RESUME WHERE STU_ID = #{search_id} and stu_yn = "yy";
+	</select>
+	<!-- 지원자 서류 합격자 -->
+	<select id="applyStu4" resultType="ResumeVO">
+		SELECT * FROM TEST_RESUME WHERE STU_ID = #{search_id} and stu_yn = "yyy";
+	</select>
+
+
+
+
+</mapper>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/inqury.css">
+<script src="/js/frame/inqury.js" defer></script>
+
+  <div class="wrap__content">
+    <form action="" method="get" class="in_wrap" >
+	  <input type="hidden" name="page" value="1">
+	  <input type="hidden" name="amount" th:value="${pageVO.amount}">
+      <div class="in_header">
+        <div class="inh__title"><span>문의사항 조회</span></div>
+        <div class="inh__select">
+          <select name="searchType" id="searchType">
+            <option value="100" th:selected="${pageVO.criteria.searchType == none}">문의 유형을 선택해주세요.</option>
+            <option value="1" th:selected="${pageVO.criteria.searchType == 1}">회원 정보</option>
+            <option value="2" th:selected="${pageVO.criteria.searchType == 2}">상품 구매</option>
+            <option value="3" th:selected="${pageVO.criteria.searchType == 3}">사이트 이용</option>
+            <option value="4" th:selected="${pageVO.criteria.searchType == 4}">기타</option>
+          </select>
+          <button type="submit">검색</button>
+        </div>
+      </div>
+
+      <div class="in__body">
+
+
+        <div class="in_body_wrap">
+        <th:block th:each="qnaList:${qnaList}">
+          <button type="button" class="in__sub__menu">문의 - <span th:text="${qnaList.qna_title}"></span></button>
+          <div class="in__menu__content"><div th:text="${qnaList.qna_content}">답변</div></div>
+        </th:block>
+        </div>
+
+        <div class="in_body__page">
+        	<th:block th:replace="~{./baseLayout/page_inqury :: pageNation(${pageVOinqury})}"></th:block>
+        </div>
+
+      </div>
+      
+
+
+    </form>
+  </div>
+</div>
+
+</th:block>
+</html>

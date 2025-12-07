@@ -1,0 +1,226 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.geomin.project.gameContentService.GameContentMapper">
+  
+  	  <!-- 게임컨텐츠 기본 사항 등록 -->
+	  <insert id="regist">
+	  	INSERT INTO GAME_CONTENT (
+	  		GAME_TITLE,
+	  		GAME_TARGET_LEVEL,
+	  		GAME_PRICE,
+	  		GAME_DISCOUNT_PRICE,
+	  		GAME_CONTENT,
+	  		GAME_COUNT,
+	  		GAME_SUB_REGDATE,
+	  		GAME_SUB_ENDDATE,
+	  		DEL_CHECK
+	  	) VALUES (
+	  		#{game_title},
+
+	  		#{game_target_level},
+	  		#{game_price},
+	  		#{game_discount_price},
+	  		#{game_content},
+	  		#{game_count},
+	  		#{game_sub_regDate},
+	  		#{game_sub_endDate},
+	  		#{del_check}
+	  	)
+	  </insert>
+
+  	  <!-- 게임컨텐츠 파일 등록 -->
+  	  <insert id="registFile">
+  	  	<selectKey resultType="int" keyProperty="game_no" order="BEFORE">
+			SELECT MAX(GAME_NO) FROM GAME_CONTENT WHERE GAME_TITLE = #{game_title}
+		</selectKey>
+		
+		INSERT INTO UPLOAD (
+			FILENAME,
+			FILEPATH,
+			UUID,
+			GAME_NO,
+			GAME_TITLE
+		)VALUES(
+			#{fileName},
+			#{filepath},
+			#{uuid},
+			#{game_no},
+			#{game_title}
+		)
+		
+  	  </insert>
+  	  
+  	  <!-- 게임컨텐츠 조회 -->
+<!--  	   <select id="getList" resultType="GameContentVO">-->
+<!--  	  	SELECT * FROM GAME_CONTENT-->
+<!--  	  </select>-->
+  	   <!-- Result Maps -->
+    <resultMap id="gameResultMap" type="GameContentVO">
+        <id property="game_no" column="GAME_NO"/>
+        <result property="game_title" column="GAME_TITLE"/>
+        <result property="game_target_level" column="GAME_TARGET_LEVEL"/>
+        <result property="game_discount_price" column="GAME_DISCOUNT_PRICE"/>
+        <result property="game_count" column="GAME_COUNT"/>
+        <result property="game_regdate" column="GAME_REGDATE"/>
+        <result property="del_check" column="DEL_CHECK"/>
+    </resultMap>
+
+    <resultMap id="uploadResultMap" type="UploadVO">
+        <id property="uuid" column="UUID"/>
+        <result property="filename" column="FILENAME"/>
+        <result property="filepath" column="FILEPATH"/>
+        <result property="game_no" column="GAME_NO"/>
+    </resultMap>
+
+    <!-- Select Query -->
+    <select id="getList" resultMap="gameResultMap">
+        SELECT 
+        	G.*, 
+            U.FILENAME, 
+            U.FILEPATH, 
+            U.UUID,
+            G.DEL_CHECK
+        FROM 
+            GAME_CONTENT AS G
+        LEFT JOIN 
+            UPLOAD U
+        ON 
+            G.GAME_NO = U.GAME_NO
+        WHERE 
+    		U.FILENAME IS NOT NULL
+     	AND
+			G.DEL_CHECK = "Y"
+		<if test="criteria.levelSelect == 1">
+			AND 
+				GAME_TARGET_LEVEL = 1
+		</if>
+		<if test="criteria.levelSelect == 2">
+			AND 
+				GAME_TARGET_LEVEL = 2
+		</if>
+		<if test="criteria.levelSelect == 3">
+			AND 
+				GAME_TARGET_LEVEL = 3
+		</if>
+		<if test="criteria.levelSelect == 4">
+			AND 
+				GAME_TARGET_LEVEL = 4
+		</if>
+		ORDER BY
+			G.GAME_NO DESC
+		
+		limit #{criteria.pageStart}, #{criteria.amount}
+    </select>
+    
+    <!-- Select Query -->
+    <select id="getTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			GAME_CONTENT 
+		WHERE 
+			DEL_CHECK = "Y"
+    </select>
+    
+    <select id="delHistory" resultMap="gameResultMap">
+        SELECT 
+        	G.GAME_NO,
+            G.GAME_TITLE, 
+            G.GAME_TARGET_LEVEL, 
+            G.GAME_DISCOUNT_PRICE, 
+            G.GAME_COUNT, 
+            G.GAME_REGDATE, 
+            U.FILENAME, 
+            U.FILEPATH, 
+            U.UUID,
+            G.DEL_CHECK
+        FROM 
+            GAME_CONTENT AS G
+        LEFT JOIN 
+            UPLOAD U
+        ON 
+            G.GAME_NO = U.GAME_NO
+        WHERE 
+    		U.FILENAME IS NOT NULL
+     	AND
+			G.DEL_CHECK = "N"
+		ORDER BY
+			G.GAME_NO DESC
+		limit #{criteria.pageStart}, #{criteria.amount}
+    </select>
+    
+    <!-- Select Query -->
+    <select id="getNoTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			GAME_CONTENT 
+		WHERE 
+			DEL_CHECK = "N"
+    </select>
+    
+    
+    <!-- 게임컨텐츠 조회 - 삭제 -->
+    <update id="gameContentDelete">
+    	UPDATE 
+    		GAME_CONTENT 
+    	SET 
+    		DEL_CHECK = "N"
+    	WHERE
+    		GAME_NO = #{game_no}
+    </update>
+    
+  
+  	<!-- 게임 컨텐츠 수정 조회 -->
+  	<select id="gameList" resultType="GameContentVO">
+  	
+  	SELECT * FROM GAME_CONTENT WHERE GAME_NO = #{game_no}
+  	
+  	</select>
+    
+    <!-- 게임 수정 폼 -->
+    <update id="gameUpdate">
+    	UPDATE GAME_CONTENT
+    	SET
+    		GAME_TITLE = #{game_title},
+    		GAME_TARGET_LEVEL = #{game_target_level},
+    		GAME_PRICE = #{game_price},
+    		GAME_DISCOUNT_PRICE = #{game_discount_price},
+    		GAME_CONTENT = #{game_content},
+    		GAME_COUNT = #{game_count},
+    		GAME_SUB_REGDATE = #{game_sub_startDate},
+    		GAME_SUB_ENDDATE = #{game_sub_endDate},
+    		DEL_CHECK = #{del_check}
+    	WHERE
+    		GAME_NO = #{game_no}
+    </update>
+    
+    <update id="updateFile">
+  	  	<selectKey resultType="int" keyProperty="game_no" order="BEFORE">
+			SELECT MAX(GAME_NO) FROM GAME_CONTENT WHERE GAME_NO = #{game_no}
+		</selectKey>
+		
+		UPDATE UPLOAD 
+		SET
+			FILENAME = #{fileName},
+			FILEPATH = #{filepath},
+			UUID = #{uuid},
+			GAME_TITLE = #{game_title}
+		WHERE
+			GAME_NO = #{game_no}
+		
+  	  </update>
+  	  
+  	  
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  
+  </mapper>

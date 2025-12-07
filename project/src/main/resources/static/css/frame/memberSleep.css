@@ -1,0 +1,43 @@
+.sleep_wrap{width: 100%; height: 100%; display: flex; flex-direction: column;}
+
+.sleep__head{width: 100%; height: 8%; display: flex; align-items: center; border-bottom: 1px solid rgb(207, 204, 204);}
+.sleep__head__title{width: 8%; height: 100%; display: flex; align-items: center;}
+.sleep__head__title span{font-size: 17px; font-weight: bold;}
+.sleep__head__select{width: 35%; height: 100%; display: flex; align-items: center;}
+.sleep__head__select select{width: 250px; height: 35px; border: none; border-bottom: 1px solid rgb(207, 204, 204); &:focus{outline: none;}}
+.sleep__head__select button{height: 35px;}
+
+
+
+
+.sleep__body{width: 100%; height: 80%; display: flex; flex-direction: column;} 
+.sleep__body__thead{width: 100%; height: 7%; display: flex; align-items: center; background-color: rgb(53, 109, 231);}
+.sleep__body__tbody{width: 100%; height: 93%; display: flex; flex-direction: column;}
+
+
+.sbt__one{width: 6%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__two{width: 9%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__three{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__four{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__five{width: 13%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__six{width: 14%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__seven{width: 28%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__eight{width: 13%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(27, 93, 236);}
+.sbt__nine{width: 13%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px;}
+
+
+.sleep__body__container{width: 99.9%; height: 50px;  display: flex; align-items: center; border-bottom: 1px solid rgb(207, 204, 204); border-left: 1px solid rgb(207, 204, 204); border-right: 1px solid rgb(207, 204, 204);}
+
+.sbt__body__one{width: 6%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__two{width: 9%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__three{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__four{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__five{width: 13%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__six{width: 14%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__seven{width: 28%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__eight{width: 13%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(207, 204, 204);}
+.sbt__body__nine{width: 13%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px;}
+
+
+
+.sleep__page{width: 100%; height: 8%; display: flex; align-items: center; }

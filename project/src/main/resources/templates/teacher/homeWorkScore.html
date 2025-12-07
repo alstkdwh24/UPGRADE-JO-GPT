@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/homeWorkScore.css">
+
+<script src="/js/frame/homeWorkScore.js" defer></script>
+
+
+  <div class="wrap__content">
+    <form action="" method="get" class="regist__wrap">
+
+      <div class="score__header"><span>숙제 조회/평가</span></div>
+
+      <div class="score__wrap">
+
+        <div class="score__wrap__above">
+          
+          <div class="score__title1">
+            <span>숙제명</span>
+            <div class="score__search1">
+              <input type="text" id="scoreInput1" placeholder="전체선택 또는 숙제명을 입력하세요.">
+              <button>조회</button>
+            </select>
+            </div>
+          </div>
+
+          <div class="score__table">
+
+            <div class="score__thead">
+              <div class="score__thead__one"><input type="checkbox"></div>
+              <div class="score__thead__two">숙제제목</div>
+              <div class="score__thead__three">숙제내용</div>
+              <div class="score__thead__four">레벨</div>
+              <div class="score__thead__five">제출기한</div>
+              <div class="score__thead__six">전송일자</div>
+            </div>
+
+            <div class="score__tbody">
+
+              <div class="score__tbody__content" th:each="homework : ${homework}">
+                <div class="score__tbody__one"><input type="checkbox" class="homework-checkbox"></div>
+                <div class="score__tbody__two">[[${homework.homework_name}]]</div>
+                <div class="score__tbody__three">[[${homework.homework_content}]]</div>
+                <div class="score__tbody__four">[[${homework.homework_level + '레벨'}]]</div>
+                <div class="score__tbody__five">[[${homework.sg_name}]]</div>
+                <div class="score__tbody__six">[[${homework.leftDays() + '일 전'}]]</div>
+                <input type="hidden" th:value="${homework.homework_no}" class="homeworkNo">
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="transfer__wrap__below">
+
+          <div class="score__title2">
+            <span>제출내역</span>
+            <button type="button" id="save">저장</button>
+          </div>
+
+          <div class="score__table2">
+            <div class="score__thead2">
+              <div class="score__thead2__one"><input type="checkbox"></div>
+              <div class="score__thead2__two">학습자명</div>
+              <div class="score__thead2__three">숙제제출일자</div>
+              <div class="score__thead2__four">학습 제출내용</div>
+              <div class="score__thead2__five">추가 질의내용</div>
+              <div class="score__thead2__six">평가</div>
+            </div>
+
+            <div class="score__tbody2">
+
+              <div class="score__tbody2__content">
+                <div class="score__tbody2__one"><input type="checkbox"></div>
+                <div class="score__tbody2__two">숙제를 체크해주세요</div>
+                <div class="score__tbody2__three"></div>
+                <div class="score__tbody2__four"></div>
+                <div class="score__tbody2__five"></div>
+                <div class="score__tbody2__six">
+                  <select name="" id="">
+                    <option value="none">평가</option>
+                    <option value="3">우수</option>
+                    <option value="2">보통</option>
+                    <option value="1">미흡</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+          
+
+          
+
+
+    </form>
+  </div>
+</div>
+
+</th:block>
+</html>

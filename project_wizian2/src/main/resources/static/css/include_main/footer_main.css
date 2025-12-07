@@ -1,0 +1,12 @@
+footer{width: 100%; padding: 50px 0px;}
+
+/* footer */
+.footer__wrapper{width: 100%; display: flex; align-items: center; justify-content: center;}
+.footer__wrapper__container{width: 1280px; display: flex; align-items: center;}
+.footer__container__left{display: flex;}
+.footer__container__left img{width: 250px;}
+
+.footer__container__right{display: flex; flex-direction: column; justify-content: center; margin-left: 100px;}
+.footer__right__above a{font-size: 17px; color: black; font-weight: 600; padding-right: 20px;}
+.footer__right__below{margin-top: 20px; display: flex; flex-direction: column;}
+.footer__right__below span{font-size: 15px;}

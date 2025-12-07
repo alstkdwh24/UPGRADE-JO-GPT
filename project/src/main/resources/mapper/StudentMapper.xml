@@ -1,0 +1,155 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+	<mapper namespace="com.geomin.project.student.service.StudentMapper">
+		
+		
+		<!-- 그룹 스터디 신청 -->
+		<insert id="groupApply">
+			INSERT INTO STUDY_GROUP_JOIN (SG_NO, USER_NO, SG_LEVEL,	SGJ_DATE)
+								   VALUES(#{sg_no}, #{user_no}, #{sg_level}, CURDATE() )
+		</insert>
+		
+		<!-- 그룹 신청 리스트 -->
+		<select id="groupList" resultType="StudyGroupVO">
+			select * from STUDY_GROUP_JOIN where USER_NO = #{user_no} and SG_NO = #{sg_no};
+		</select>
+		
+		<!-- 그룹 신청 중복 여부 -->
+		<select id="groupCheck" resultType="Integer">
+			SELECT COUNT(*) FROM STUDY_GROUP_JOIN WHERE user_no = #{user_no} AND sg_no = #{sg_no}
+		</select>
+		
+		<!-- 그룹 신청 거절 여부 -->
+		<select id="rejectCheck" resultType="StudyGroupVO">
+			SELECT * FROM STUDY_GROUP_JOIN WHERE user_no = #{user_no} AND sg_no = #{sg_no}
+		</select>
+		
+		<!-- 그룹 재가입 신청 -->
+		<update id="reapplyGroup">
+			UPDATE STUDY_GROUP_JOIN SET SGJ_AUTH = 0
+			                        WHERE USER_NO = #{user_no}
+			                        AND SG_NO = #{sg_no}
+		</update>
+		
+		<!-- 그룹 신청 승인 여부 -->
+		<select id="groupApplyList" resultType="StudyGroupVO">
+			SELECT * FROM STUDY_GROUP_JOIN SGJ
+			LEFT JOIN STUDY_GROUP SG 
+			ON SGJ.SG_NO = SG.SG_NO
+			where SGJ.USER_NO = #{user_no};
+		</select>
+	
+		<!-- 숙제 조회 -->
+		<select id="getHomeworkList" resultType="HomeWorkVO">
+			SELECT HW_HIS.*, HW.*, U.USER_NAME 
+			FROM HOMEWORK_HISTORY HW_HIS 
+			LEFT JOIN HOMEWORK HW
+			ON HW.HOMEWORK_NO = HW_HIS.HOMEWORK_NO
+			LEFT JOIN USER U
+			ON HW.USER_NO = U.USER_NO
+			WHERE HW_HIS.USER_NO = #{user_no}
+		</select>
+		
+			<!-- 숙제 조회 -->
+		<select id="getHomeworkDetail" resultType="HomeWorkVO">
+			SELECT HW_HIS.*, HW.HOMEWORK_NAME,
+							 HW.HOMEWORK_CONTENT,
+							 HW.HOMEWORK_DUEDATE,
+							 USER_NAME,
+							 HOMEWORK_LEVEL,
+							 U.USER_NAME 
+			FROM HOMEWORK_HISTORY HW_HIS 
+			LEFT JOIN HOMEWORK HW
+			ON HW.HOMEWORK_NO = HW_HIS.HOMEWORK_NO
+			LEFT JOIN USER U
+			ON HW.USER_NO = U.USER_NO
+			WHERE HW_HIS.USER_NO = #{user_no} 
+				  AND HW_HIS.HOMEWORK_NO = #{homework_no}
+		</select>
+		
+		
+		<!-- 숙제 제출 -->
+		<update id="homeworkSubmission">
+			UPDATE HOMEWORK_HISTORY SET STU_CONTENT = #{stu_content},
+			                            STU_Q = #{stu_q}
+			                        WHERE USER_NO = #{user_no}
+			                        AND HOMEWORK_NO = #{homework_no}
+		</update>
+		
+		
+		<!-- 스터디그룹 페이지네이션 -->
+		<resultMap id="studyGroupMap" type="StudyGroupVO">
+	        <id property="sg_no" column="SG_NO"/>
+	        <result property="game_no" column="GAME_NO"/>
+	        <result property="sg_name" column="SG_NAME"/>
+	        <result property="sg_capa" column="SG_CAPA"/>
+	        <result property="sg_grouplimit" column="SG_GROUPLIMIT"/>
+	        <result property="sg_regdate" column="SG_REGDATE"/>
+	        <result property="sg_enddate" column="SG_ENDDATE"/>
+	        <result property="sg_level" column="SG_LEVEL"/>
+	        <result property="game_title" column="GAME_TITLE"/>
+    	</resultMap>
+		<select id="getTotal" resultType="int">
+			SELECT COUNT(*) FROM STUDY_GROUP
+		</select>
+		
+		<select id="getList" resultMap="studyGroupMap">
+			SELECT SG.*, GC.*
+			FROM STUDY_GROUP SG
+			LEFT JOIN GAME_CONTENT GC
+			ON SG.GAME_NO = GC.GAME_NO
+			limit #{pageStart}, #{amount}
+		</select>
+		
+		<select id="aiList" resultMap="studyGroupMap">
+		  SELECT SG.*, U.USER_LEVEL 
+		  FROM STUDY_GROUP SG LEFT JOIN 
+		  		(SELECT * FROM USER WHERE USER_NO = #{user_no}) U 
+		  ON SG.USER_NO = U.USER_NO 
+		  WHERE SG.SG_LEVEL = #{user_level};
+		</select>
+		
+		<!-- 숙제 포인트 등록  -->
+		<insert id="addPoint">
+			UPDATE HOMEWORK_HISTORY SET HOMEWORK_POINT = 1
+			WHERE USER_NO = #{user_no}
+			AND HOMEWORK_NO = #{homework_no}
+		</insert>
+		
+		<!-- leftDate 계산 -->
+		<insert id="leftDate">
+			UPDATE HOMEWORK_HISTORY SET HOMEWORK_LEFTDATE = #{homework_leftdate}
+			WHERE USER_NO = #{user_no}
+			AND   HOMEWORK_NO = #{homework_no}
+		</insert>
+		
+		<!-- SG_Progress에 넣기 (진도율 시작점) -->
+		<insert id="studyProgress">
+			INSERT INTO SG_PROGRESS (USER_NO) VALUE (#{user_no});
+		</insert>
+		
+		<select id="sumPoint" resultType="Integer">
+			SELECT SUM(HOMEWORK_POINT) FROM HOMEWORK_HISTORY WHERE USER_NO = #{user_no} AND SG_NO = #{sg_no};
+		</select>
+		
+		<insert id="insertClassProgress">
+			INSERT INTO SG_PROGRESS (SG_NO, USER_NO, HOMEWORK_TOTAL_POINT)
+					 		VALUES (#{sg_no}, #{user_no}, #{homework_point})
+		</insert>
+		
+		<select id="getClassProgress" resultType="Integer">
+			SELECT SG_CLASS FROM STUDY_GROUP WHERE SG_NO = #{sg_no}
+		</select>
+		
+		<select id="totalHomeworkPoint" resultType="Integer">
+			SELECT HOMEWORK_TOTAL_POINT FROM SG_PROGRESS 
+			WHERE USER_NO = #{user_no} AND SG_NO = #{sg_no}
+		</select>
+		
+		<select id="allStudentPointList" resultType="ProgressVO">
+			SELECT * FROM SG_PROGRESS WHERE SG_NO = #{sg_no}
+		</select>
+		
+	</mapper>

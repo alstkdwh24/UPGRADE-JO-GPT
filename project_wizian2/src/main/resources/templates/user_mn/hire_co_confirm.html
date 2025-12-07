@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_co/notice_co.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/home_co.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  	<div class="notice__header"><span>최근 합격자 명단</span></div>
+  
+
+	  <table class="apply_table">
+	    <colgroup>
+	      <col width="80">
+	      <col width="700">
+	      <col width="100">
+	    </colgroup>
+	    <thead>
+	    <tr>
+	        <th>번호</th>
+	        <th>이력서 제목</th>
+	        <th>이름</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+		    <tr th:each="vo : ${vo}">
+		        <td th:text="${vo.resume_num}">1</td>
+		        <td th:text="${vo.title}"><a href="/student/comp_popup">이력서 제목</a></td>
+		        <td th:text="${vo.stu_name}">지원자 이름</td>
+		    </tr>
+	    </tbody>
+	  </table>
+	  
+</body>
+</html>

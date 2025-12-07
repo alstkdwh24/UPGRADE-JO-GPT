@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<script src="/js/frame/qnaRegist.js" defer></script>
+   <div class="wrap__content">
+     <form action="/admin/qnaModifyForm" method="post" class="regist__wrap">
+	   <input type="hidden" name="qna_no" th:value="${vo.qna_no}">
+	   <input type="hidden" name="alarm" value="Y">
+       <!-- 컨텐츠 등록 -->
+       <div class="regist__left">
+
+         <div class="regist__left__above">
+           <span>게시판 - 문의사항 수정</span>
+           <div class="left__above__button">
+             <button>등록</button>
+             <button>취소</button>
+           </div>
+         </div>
+         <div class="regist__left__below">
+
+           <!-- 구분 선택 -->
+           <div class="regist__below__item">
+             <span>공지분류</span>
+             <select name="qna_type" id="item__select">
+               <option th:if="${vo.qna_type == 1}" value="1" th:selected>회원정보</option>
+			   <option th:if="${vo.qna_type == 2}" value="2" th:selected>상품구매</option>
+			   <option th:if="${vo.qna_type == 3}" value="3" th:selected>사이트이용</option>
+			   <option th:if="${vo.qna_type == 4}" value="4" th:selected>기타</option>
+               <option th:unless="${vo.qna_type == 1}" value="1">회원정보</option>
+               <option th:unless="${vo.qna_type == 2}" value="2">상품구매</option>
+               <option th:unless="${vo.qna_type == 3}" value="3">사이트이용</option>
+               <option th:unless="${vo.qna_type == 4}" value="4">기타</option>
+             </select>
+           </div>
+
+           <!-- 제목 입력 -->
+           <div class="regist__below__item">
+             <span>제목</span>
+             <input type="text" id="qna__title" name="qna_title" th:placeholder="${vo.qna_title}" readonly="readonly">
+           </div>
+
+           <!-- 유형 선택 -->
+           <div class="regist__item__select">
+             <span>답변 알림</span>
+             <div class="notice__check">
+               <input type="checkbox" value="1" id="comment__permit" name="qna_check"> 
+               <span>알림 허용</span>
+             </div>
+             <div class="notice__future">
+               <input type="checkbox" value="2" id="comment__reject" name="qna_check">
+               <span>알림 거부</span>
+             </div>
+           </div>
+           
+           <!-- 컨텐츠 설명 -->
+           <div class="regist__item__textArea">
+             <span>내용</span>
+             <textarea id="notice__textArea" name="qna_content" th:placeholder="${vo.qna_content}"></textarea>
+           </div>
+           
+           <!-- 구독 가능 인원 -->
+           <div class="regist__item__learning__file">
+             <span>썸네일</span>
+
+             <input type="file" id="fileInput" autocomplete="off">
+             <div class="dropBox">
+               <h5>이곳에 파일을 드롭해주세요. </h5>
+             </div>
+
+           </div>
+           
+           <input type="hidden" value="Y" name="qna_delCheck">
+
+         </div>
+
+       </div>
+
+       <!-- 컨텐츠 등록 현황 -->
+       <div class="regist__right">
+
+         <div class="regist__right__wrap">
+
+           <div class="regi__right__header">
+             <img id="img1" src="/img/KBA_MainLogo.png" alt="">
+             <img id="img2" src="/img/KBA_mascot_black.png">
+           </div>
+
+           <div class="regi__right__body">
+
+             <div class="board__title"><span id="board__title"></span></div>
+
+             <div class="board__second">
+               <div class="board__category"><span id="board__category"></span></div>
+               <div class="board__date"><span id="board__date"></span></div>
+             </div>
+
+             <div class="board__third__qna">
+               <div class="board__third__qna__content">
+                 <span id="board__textArea"></span>
+               </div>
+             </div>
+
+             <div class="board__fourth">
+               첨부파일 : <span id="board__file"></span>
+             </div>
+
+           </div>
+
+           <div class="regi__right__footer"></div>
+           
+
+         </div>
+
+       </div>
+
+
+     </form>
+   </div>
+ </div>  
+ 
+</th:block>
+</html>

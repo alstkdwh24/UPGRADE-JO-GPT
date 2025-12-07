@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/gameLook.css">
+<script src="/js/frame/gameLook.js" defer></script>
+  <div class="wrap__content">
+  
+    <form name="gameLook" action="gameLook" method="get" class="regist__wrap" enctype="multipart/form-data">
+    <input type="hidden" name="page" value="1">
+	<input type="hidden" name="amount" th:value="${pageVO.amount}">
+      <div class="gl__header">
+        <div class="gl__header__title"><span>컨텐츠 등록 현황</span></div>
+        <div class="gl__header__select">
+          <select name="levelSelect" id="levelSelect">
+            <option value="100" th:selected="${pageVO.criteria.levelSelect == none}">레벨을 선택해주세요.</option>
+            <option value="1" th:selected="${pageVO.criteria.levelSelect == 1}">초급</option>
+            <option value="2" th:selected="${pageVO.criteria.levelSelect == 2}">중급</option>
+            <option value="3" th:selected="${pageVO.criteria.levelSelect == 3}">고급</option>
+            <option value="4" th:selected="${pageVO.criteria.levelSelect == 4}">프로</option>
+          </select>
+        </div>
+        <div class="sendSelectSearch">
+		  <a href="#" class="normal_btn purplebtn" id="search__level__Btn">검색</a>
+          </div> 
+          <div class="learn__button">
+            <button type="submit" id="sendSelectedValuesButton">학습자료만들기 </button>
+            <input type="hidden" name="game_no" id="game_no">
+          </div>
+      </div>
+      <div class="gl__body">
+        <div class="gl__body__table">
+
+
+          <div class="gl__body__thead">
+            <div class="gl__thead_one">선택</div>
+            <div class="gl__thead_two">컨텐츠이미지</div>
+            <div class="gl__thead_three">컨텐츠명</div>
+            <div class="gl__thead_four">레벨</div>
+            <div class="gl__thead_five">구독개월</div>
+            <div class="gl__thead_six">등록일</div>
+            <div class="gl__thead_seven">판매가</div>
+            <div class="gl__thead_eight">버튼</div>
+          </div>
+
+
+          <div class="gl__body__tbody">
+
+			<th:block th:each="gameContent : ${gameContent}">
+	            <div class="gl__tbody__content">
+	              <div class="gl__tbody_one"><input type="checkbox" th:value="${gameContent.game_no}" name="selectedGame" class="game_checkBox"></div>
+	              <div class="gl__tbody_two"><img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${gameContent.filepath},uuid=${gameContent.uuid},filename=${gameContent.filename})}"  ></div>
+	              <div class="gl__tbody_three" th:text="${gameContent.game_title}">컨텐츠명</div>
+	              <div class="gl__tbody_four">
+                  	<span th:if="${gameContent.game_target_level == 1}">초급</span>
+                  	<span th:if="${gameContent.game_target_level == 2}">중급</span>
+                  	<span th:if="${gameContent.game_target_level == 3}">고급</span>
+                  	<span th:if="${gameContent.game_target_level == 4}">프로</span>
+                  </div>
+	              <div class="gl__tbody_five" th:text="${gameContent.game_count} + 개월">구독개월</div>
+	              <div class="gl__tbody_six" th:text="${gameContent.game_regdate}">기간</div>
+	              <div class="gl__tbody_seven" th:text="${gameContent.game_discount_price} + 원">판매가</div>
+	              <div class="gl__tbody_eight">
+	              	<a th:href="@{/admin/gameModify(game_no = ${gameContent.game_no})}" id="gl__modify">수정</a>
+	              	<button type="button" class="gl__delete" >삭제</button>
+	              </div>
+	            </div>
+            </th:block>
+
+          </div>
+
+
+        </div>
+        <th:block th:replace="~{./baseLayout/page_gameContent :: pageNation(${pageVOgameContent})}"></th:block>
+      </div>
+      
+
+
+    </form>
+  </div>
+</div>
+  
+</th:block>
+</html>

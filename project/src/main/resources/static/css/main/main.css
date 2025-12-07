@@ -1,0 +1,105 @@
+
+/* section header */
+.section__header{ width: 100%; height: 500px; background-image: url("/img/background.png"); background-repeat : no-repeat; display: flex; align-items: center; justify-content: center;}
+.section__header__content{width: 1245px; display: flex; align-items: center; justify-content: space-around;}
+
+.section__header__left{width: 40%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.section__header__left img{width: 300px;}
+.section__header__left p{font-size: 40px; font-weight: 600; }
+.section__header__left span{font-size: 25px;}
+
+.section__header__right{width: 60%; display: flex; flex-direction: column; align-items: flex-end;  justify-content: center;}
+.section__header__right img{width: 600px;}
+
+.header__right__app{display: flex; align-items: center; justify-content: flex-end;}
+.header__right__app a{overflow: hidden; margin-left: 5px;}
+.header__right__app img{width: 80px; height: 50px; border-radius: 8px;}
+
+/* 튜토리얼 슬라이드 */
+.section__tutorial{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 30px;}
+.section__tutorial__content{width: 1245px; display: flex; flex-direction: column;}
+.tutorial__left{display: flex; justify-content: space-between; align-items: center;}
+.tutorial__left > span{display: flex; align-items: center; font-weight: bold; font-size: 20px; padding: 10px 0px;}
+.tutorial__left > span > img{width: 40px;}
+
+/* 강의 슬라이드 */
+.section__lecture{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 30px;}
+.section__lecture__content{width: 1245px; display: flex; flex-direction: column;}
+.lecture__left{display: flex; justify-content: space-between; align-items: center;}
+.lecture__left > span{display: flex; align-items: center; font-weight: bold; font-size: 20px; padding: 10px 0px;}
+.lecture__left > span > img{width: 40px;}
+
+/* 학습 그룹 슬라이드 */
+.section__learning{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 30px;}
+.section__learning__content{width: 1245px; display: flex; flex-direction: column;}
+.learning__left{display: flex; justify-content: space-between; align-items: center;}
+.learning__left > span{display: flex; align-items: center; font-weight: bold; font-size: 20px; padding: 10px 0px;}
+.learning__left > span > img{width: 40px;}
+
+.swiper {width: 100%;height: 100%;}
+.swiper-slide {height: 250px; display: flex; justify-content: center;align-items: center; margin: 0px 5px; position: relative;}
+.swiper-button-next, .swiper-button-prev{color: rgb(247, 122, 20);}
+.swiper-slide img{width:100%; height:100%; position:absolute; top: 0; left: 0;}
+.swiper__title{width:100%; height:50px; display: flex; align-items: center; justify-content: center;  background-color:rgb(212, 211, 211); position: absolute; bottom: 10px; left:0; font-size: 18px; font-weight: bold;}
+
+/* 공지사항 , faq, qna */
+.section__board{margin-top: 50px; width: 100%; display: flex; align-items: center; justify-content: center;}
+.section__board__group{width: 1245px; display: flex; align-items: center; justify-content: space-between;}
+
+/* 공지사항 */
+.board__notice{ width: 31%; height: 350px; border: 1px solid black; display: flex; flex-direction: column; align-items: center;}
+.notice__item__title{height: 50px; width: 100%; background-image: url("/img/background.png"); display: flex; align-items: center; justify-content: center; }
+.notice__item__title span{font-size: 20px; font-weight: 600;}
+.notice__item__box{width: 100%; height: 300px; display: flex; flex-direction: column; align-items: center; overflow-y: scroll; }
+
+
+/* faq */
+.board__faq{width: 31%; height: 350px; border: 1px solid black;  display: flex; flex-direction: column; align-items: center;}
+.faq__item__title{height: 50px; width: 100%; background-image: url("/img/background.png"); display: flex; align-items: center; justify-content: center; }
+.faq__item__title span{font-size: 20px; font-weight: 600;}
+.faq__item__box{width: 100%; height: 300px; display: flex; flex-direction: column; align-items: center; overflow-y: scroll; }
+
+/* qna */
+.board__qna{width: 31%; height: 350px; border: 1px solid black;  display: flex; flex-direction: column; align-items: center;}
+.qna__item__title{height: 50px; width: 100%; background-image: url("/img/background.png"); display: flex; align-items: center; justify-content: center; }
+.qna__item__title span{font-size: 20px; font-weight: 600;}
+.qna__item__box{width: 100%; height: 300px; display: flex; flex-direction: column; align-items: center; overflow-y: scroll; }
+
+/* 내부 아이템 */
+.box__item{width: 100%; height: 50px; display: flex; align-items: center; justify-content:center; border-bottom: 1px solid rgb(201, 199, 199);}
+.box__item a{margin-left: 20px; font-size: 14px; font-weight: bold;}
+.box__item a:hover{border-bottom: 1px solid rgb(179, 179, 179);}
+
+/* section news / tv */
+.section__etc{margin-top: 50px; width: 100%; display: flex; align-items: center; justify-content: center;}
+.section__etc__content{width: 1245px; height: 300px; display: flex; justify-content: space-between; align-items: center;}
+
+
+/* tv */
+.etc__tv{width: 47%; height: 100%; display: flex; flex-direction: column;}
+
+.etc__tv__title{padding: 10px 10px; width: 95%; border-bottom: 1px solid rgb(209, 209, 208); display: flex; justify-content: space-between; align-items: center;}
+.etc__tv__title span{font-size: 20px; font-weight: bold;}
+.etc__tv__title i{font-size: 20px; font-weight: bold;}
+
+.etc__tv__content{display: flex;}
+.etc__tv__item{margin: 10px 10px; border: 1px solid rgb(202, 202, 202);}
+
+/* news */
+.etc__news{width: 47%; height: 100%; display: flex; flex-direction: column;}
+
+.etc__news__title{padding: 10px 10px; width: 95%; border-bottom: 1px solid rgb(209, 209, 208); display: flex; justify-content: space-between; align-items: center;}
+.etc__news__title span{font-size: 20px; font-weight: bold;}
+.etc__news__title i{font-size: 20px; font-weight: bold;}
+
+.etc__news__content{display: flex;}
+.etc__news__item{position: relative; width: 270px; height: 185px; margin: 10px 10px; border: 1px solid rgb(202, 202, 202);}
+.etc__news__item img{width: 270px; height: 185px; filter: brightness(50%); }
+
+.etc__news__item > p{position: absolute; bottom: 0px; left: 10px; font-size: 18px; font-weight: 600; color: white;}
+.etc__news__item > p > span { font-size: 14px;}
+
+
+
+
+

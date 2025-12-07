@@ -1,0 +1,34 @@
+html, body{margin: 0;padding: 0;font-family: "Gothic A1", sans-serif;}
+ul, ol, li{list-style: none;}
+button, a{cursor: pointer;}
+button, a, li{color: black;}
+a:link, a:hover, a:focus, a:visited{text-decoration: none;}
+span, a, p, button{font-family: "Gowun Dodum", sans-serif; font-weight: 400; font-style: normal;}
+
+header{width: 100%;}
+
+.header__wrapper{width: 100%; display: flex; justify-content: center; align-items: center;}
+.header__wrapper__container{width: 95%; display: flex; justify-content: space-between; margin-top: 10px; border: 1px solid rgb(202, 200, 200);}
+.header__wrapper img{width: 120px; margin: 10px 10px;}
+.header__wrapper__my{display: flex; align-items: center; justify-content: center; margin: 10px 10px;}
+.header__wrapper__my i{padding-right: 10px;}
+.header__wrapper__my a{font-weight: 600; font-size: 13px;}
+
+
+/* section */
+.section__wrapper{width: 100%; display: flex; align-items: center; justify-content: center;}
+.section__wrapper__container{width: 95%; display: flex; border: 1px solid rgb(202, 200, 200);}
+
+.section__container__left{display: flex; flex-direction: column; width: 10%; border-right: 1px solid rgb(207, 206, 206);}
+.section__left__menu{font-weight: bold; font-size: 13px; cursor: pointer; background-color: rgb(231, 231, 235); width: 100%; height: 40px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgb(202, 200, 200); border-right: 1px solid rgb(202, 200, 200);} 
+.section__left__menu:hover{background-color: rgb(218, 218, 223);}
+
+.logout{background-color: rgb(255, 128, 128);}
+.logout:hover {background-color: rgb(255, 100, 100);}
+.logout:hover span{font-weight:bold;}
+
+
+
+.section__container__right{width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+
+iframe{width: 100%; height: 800px;}

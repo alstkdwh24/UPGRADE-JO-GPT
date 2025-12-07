@@ -1,0 +1,213 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.geomin.project.document.service.DocumentMapper">
+  
+    <!-- 학습 자료 등록 -->
+  	<insert id="regist">
+  		
+  		INSERT INTO DOCUMENT (
+  			DOCU_TYPE,
+  			DOCU_CATEGORY,
+  			DOCU_SERVICE,
+  			DOCU_TITLE,
+  			DOCU_CONTENT,
+  			DEL_CHECK
+  		)VALUES (
+  			#{docu_type},
+  			#{docu_category},
+  			#{docu_service},
+  			#{docu_title},
+  			#{docu_content},
+  			#{docu_path},
+
+  			#{del_check}
+  		)
+  		
+  	</insert>
+  	
+  	  <!-- 학습자료 파일 등록 -->
+  	  <insert id="registFile">
+  	  	<selectKey resultType="int" keyProperty="docu_no" order="BEFORE">
+			SELECT MAX(DOCU_NO) FROM DOCUMENT WHERE DOCU_TITLE = #{docu_title}
+		</selectKey>
+		
+		INSERT INTO DOCU_UPLOAD (
+		  GAME_NO
+			FILENAME,
+			FILEPATH,
+			UUID,
+			DOCU_NO,
+			DOCU_TITLE
+		)VALUES(
+		     #{game_no}
+			#{fileName},
+			#{filepath},
+			#{uuid},
+			#{docu_no},
+			#{docu_title}
+		)
+		
+  	  </insert>
+  	  
+  	  <!-- 학습자료 조회 -->
+ 	  <resultMap id="gameResultMap" type="DocumentVO">
+       <id property="docu_no" column="DOCU_NO"/>
+       <result property="docu_title" column="DOCU_TITLE"/>
+       <result property="docu_type" column="DOCU_TYPE"/>
+       <result property="docu_category" column="DOCU_CATEGORY"/>
+       <result property="docu_service" column="DOCU_SERVICE"/>
+       <result property="docu_path" column="DOCU_PATH"/>
+    </resultMap>
+
+    <resultMap id="uploadResultMap" type="DocumentUploadVO">
+        <id property="uuid" column="UUID"/>
+        <result property="filename" column="FILENAME"/>
+        <result property="filepath" column="FILEPATH"/>
+        <result property="docu_no" column="DOCU_NO"/>
+    </resultMap>
+
+
+    <!-- Select Query -->
+    <select id="getList" resultMap="gameResultMap">
+        SELECT 
+        	D.DOCU_NO,
+        	D.DOCU_TITLE, 
+        	D.DOCU_TYPE, 
+        	D.DOCU_CATEGORY, 
+        	D.DOCU_SERVICE, 
+        	DL.FILENAME, 
+        	DL.FILEPATH, 
+        	DL.UUID,
+        	D.DEL_CHECK
+		FROM 
+			DOCUMENT D
+		LEFT 
+			JOIN DOCU_UPLOAD DL
+		ON 
+			D.DOCU_NO = DL.DOCU_NO
+		WHERE 
+			DL.FILENAME IS NOT NULL
+		AND	
+			D.DEL_CHECK = "Y"	
+		<if test="criteria.searchType == 0">
+			AND 
+				D.DOCU_TYPE = 0
+		</if>
+		<if test="criteria.searchType == 1">
+			AND 
+				D.DOCU_TYPE = 1
+		</if>
+		<if test="criteria.searchCategory == 0">
+			AND 
+				D.DOCU_CATEGORY = 0
+		</if>
+		<if test="criteria.searchCategory == 1">
+			AND 
+				D.DOCU_CATEGORY = 1
+		</if>
+		<if test="criteria.searchCategory == 2">
+			AND 
+				D.DOCU_CATEGORY = 2
+		</if>
+		ORDER BY
+			D.DOCU_NO DESC
+		limit #{criteria.pageStart}, #{criteria.amount}
+    </select>
+   
+    <!-- del Select Query -->
+    <select id="delList" resultMap="gameResultMap">
+        SELECT 
+        	D.DOCU_NO,
+        	D.DOCU_TITLE, 
+        	D.DOCU_TYPE, 
+        	D.DOCU_CATEGORY, 
+        	D.DOCU_SERVICE, 
+        	DL.FILENAME, 
+        	DL.FILEPATH, 
+        	DL.UUID,
+        	D.DEL_CHECK
+		FROM 
+			DOCUMENT D
+		LEFT 
+			JOIN DOCU_UPLOAD DL
+		ON 
+			D.DOCU_NO = DL.DOCU_NO
+		WHERE 
+			DL.FILENAME IS NOT NULL
+		AND
+			D.DEL_CHECK = "N"
+		ORDER BY
+			D.DOCU_NO DESC
+		limit #{criteria.pageStart}, #{criteria.amount}
+    </select>
+
+	<!-- 학습자료 조회 - 삭제 -->
+    <update id="learnContentDelete">
+    	UPDATE 
+    		DOCUMENT
+    	SET 
+    		DEL_CHECK = "N"
+    	WHERE
+    		DOCU_NO = #{docu_no}
+    </update>
+  
+
+	<!-- Select Query -->
+    <select id="getTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			DOCUMENT 
+		WHERE 
+			DEL_CHECK = "Y"
+    </select>
+  
+  	<!-- Select Query -->
+    <select id="getNoTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			DOCUMENT 
+		WHERE 
+			DEL_CHECK = "N"
+    </select>
+    
+      <!-- 게임 컨텐츠 수정 조회 -->
+  	<select id="docuList" resultType="DocumentVO">
+  		SELECT * FROM DOCUMENT WHERE DOCU_NO = #{docu_no}
+  	</select>
+  	
+  	<!-- 게임 수정 폼 -->
+    <update id="docuUpdate">
+    	UPDATE DOCUMENT
+    	SET
+    		DOCU_TYPE = #{docu_type},
+    		DOCU_CATEGORY = #{docu_category},
+    		DOCU_SERVICE = #{docu_service},
+    		DOCU_TITLE = #{docu_title},
+    		DOCU_CONTENT = #{docu_content},
+    		GAME_NO = #{game_no},
+    		DEL_CHECK = #{del_check}
+    	WHERE
+    		DOCU_NO = #{docu_no}
+    </update>
+    
+    <update id="updateFile">
+  	  	<selectKey resultType="int" keyProperty="docu_no" order="BEFORE">
+			SELECT MAX(DOCU_NO) FROM DOCUMENT WHERE DOCU_NO = #{docu_no}
+		</selectKey>
+		
+		UPDATE DOCU_UPLOAD 
+		SET
+			FILENAME = #{fileName},
+			FILEPATH = #{filepath},
+			UUID = #{uuid},
+			DOCU_TITLE = #{docu_title}
+		WHERE
+			DOCU_NO = #{docu_no}
+		
+  	  </update>
+  
+  </mapper>

@@ -1,0 +1,308 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 110px;
+
+}
+
+.star_img {
+  width: 15px
+}
+
+/* 공통부분 대 제목 부분 */
+.middle_big_title {
+  text-align: center;
+  width: 700px;
+ 
+}
+
+/* 바디시작 */
+
+
+.body_basic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #ffffff;
+}
+
+.body_basic .body_border {
+  width: 700px;
+
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 65px 100px 100px 100px;
+  background-color: white;
+  box-shadow: inset -3px -3px 3px  	#f0f1f1;
+
+
+
+}
+
+.body_basic .body_border .body_class {
+
+  width: 700px;
+
+  border-radius: 10px;
+}
+
+/* 바디끝 */
+
+/* 헤더시작 */
+.header_title {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding:  0 0 20px 0;
+}
+
+
+
+.header_main_title {
+  width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 10px;
+
+
+  border: 1px solid #ADB3B3;
+  padding:0 10px 0  20px ;
+ 
+}
+.header_hthree{
+  padding: 15px ;
+}
+.header_img{
+width: 200px;
+margin-bottom: 10px;
+}
+
+/* 헤더끝 */
+/* 헤더와 미들 중간부분 */
+.body_basic .body_border .big_border {
+  width: 60px;
+  
+}
+
+/* 헤더와 미들 중간부분 끝 */
+/* 미들 시작 */
+.body_basic .body_border .big_border .middle_content {
+  width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 10px;
+   padding:0 10px 0  20px ;
+  border: 1px solid #ADB3B3;
+  
+}
+
+.body_basic .body_border .big_border .middle_writer {
+  width: 700px;
+  padding: 15px;
+}
+
+.body_basic .body_border .big_border .middle_box {
+  width: 700px;
+}
+
+.body_basic .body_border .big_border .middle_two_box_checkbox {
+  overflow: hidden;
+  width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 10px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 미들 끝 */
+/* 미들2시작 */
+.body_basic .body_border .big_border .middle_two_content {
+  width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+   padding:0 10px 0  10px ;
+  
+  border: 1px solid #ADB3B3;
+}
+
+.body_basic .body_border .big_border .middle_two_content_content{
+width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+   padding:0 10px 0  20px ;
+  
+  border: 1px solid #ADB3B3;
+}
+
+.body_basic .body_border .big_border .middle_two_writer {
+  width: 320px;
+  float: left;
+padding: 15px;
+}
+
+.body_basic .body_border .big_border .middle_two_box {
+  width: 700px;
+}
+
+.body_basic .body_border .big_border .middle_two_checkbox {
+  float: left;
+  margin-top: 3px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.body_basic .body_border .big_border .middle_two_people {
+  float: left;
+  margin: 15px;
+
+
+}
+
+.body_basic .body_border .big_border .middle_two_select {
+  margin-left: 150px;
+}
+
+.body_basic .body_border .big_border .middle_two_maintext {
+  float: left;
+  margin: 0 50px;
+
+}
+
+.body_basic .body_border .big_border .middle_two_box_good {
+  width: 700px;
+}
+.body_basic .body_border .big_border .middle_two_box_good .middle_two_box_good_nice{
+  width: 350px;
+  float: left;
+  margin-bottom: 20px;
+  
+
+}
+.body_basic .body_border .big_border .middle_two_box_good .middle_two_box_good_nice .middle_two_content_box{
+  width: 250px;
+  border-radius: 5px;
+  height: 30px;
+  margin-right: 10px;
+  float: left;
+  padding:0 10px 0  10px ;
+  margin-bottom: 10px;
+  border: 1px solid #ADB3B3;
+}
+.body_basic .body_border .big_border .middle_two_box_good .middle_two_box_good_nice  .middle_two_content_box_hello{
+  float: left;
+}
+.body_basic .body_border .big_border .middle_two_box_good .middle_two_box_good_nice .middle_two_content_box_name{
+  padding-top: 5px;
+  margin-left: -20px;
+  
+  
+}
+.middle_two_content_box_feel{
+  float: left;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+.middle_two_content_box_name_time{
+  float: left;
+  padding-top: 5px;
+ 
+  
+}
+/* 미들3시작 */
+.body_basic .body_border .big_border .middle_three_content {
+  width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 10px;
+  
+  border: 1px solid #ADB3B3;
+  padding:0 10px  0 20px;
+}
+
+.body_basic .body_border .big_border .middle_three_content_select {
+  width: 700px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 10px;
+  padding:0 10px  0 20px;
+
+}
+
+
+.body_basic .body_border .big_border .middle_three_writer {
+  width: 700px;
+  padding: 15px ;
+}
+
+.body_basic .body_border .big_border .middle_three_box {
+  width: 700px;
+}
+
+/* footer시작 */
+.footer_button_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 700px;
+
+}
+
+.yellow {
+  border: none;
+  margin-top: 30px;
+  background-color: #FDE300;
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+  margin-left: 15px;
+  box-shadow: 3px 3px 3px rgb(179, 178, 178);
+}
+
+.blue {
+  margin-top: 30px;
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+  border: none;
+  background-color: #61EAE8;
+  margin-right: 15px;
+  box-shadow: 3px 3px 3px rgb(179, 178, 178);
+}
+.footer_box{
+width:700px;
+}
+.footer_checkbox{
+  margin-right: 10px;
+}

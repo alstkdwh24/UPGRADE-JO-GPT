@@ -1,0 +1,102 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+
+/* 프로필 화면 */
+.wrap__above{width: 100%; height: 50%; display: flex; align-items: center; border-bottom: 1px solid rgb(221, 221, 221);}
+
+.wrap__above__profile{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.profile__wrapper{width: 100%; height: 95%; display: flex; flex-direction: column; background :linear-gradient(36.41deg, #4168d3 7.04%, #b8c4e6 100%);  border-radius: 25px; }
+
+.profile__header{width: 100%; height: 40%; display: flex; align-items: center; justify-content: space-evenly; border-bottom: 1px solid rgb(163, 168, 228); }
+.profile__header img{width: 30%; height: 60%; border-radius: 100px; border: 1px solid rgb(199, 199, 199);}
+.profile__header__below{display: flex; flex-direction: column; align-items: center; color: white; }
+#profile__role{border-radius: 15px; margin-top: 10px; display: flex; align-items: center; justify-content: center; width: 100px; height: 30px; background-color: #6b86d1; color: white;}
+.profile__body{width: 100%; height: 60%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.profile__body__item{width: 80%; height: 17%; display: flex; flex-direction: column; padding: 5px 0px; }
+.profile__body__item span{font-size: 16px; font-weight: bold; color: white;}
+#item{font-size: 12px; font-weight: normal;}
+
+
+
+/* 통계 화면 */
+.wrap__left__history{width: 40%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.history__wrapper{ width: 95%; height: 95%; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 25px; border: 1px solid rgb(214, 214, 214);}
+.history__wrapper span{font-weight: bold; font-size: 18px; margin-bottom: 10px;}
+
+.wrap__left__calendar{ width: 40%; height: 100%; display: flex; align-items: center; justify-content: center; overflow:hidden;}
+.calendar__wrapper{width: 95%; height: 90%; border-radius: 25px;}
+.dateHead div {background: #5659e2;color: #fff;text-align: center;border-radius: 5px; }
+.grid {display: grid;grid-template-columns: repeat(7, 1fr);grid-gap: 5px;}
+.grid div {padding: .4rem;font-size: .9rem;cursor: pointer;}
+.grid dateBoard
+.dateBoard div {color: #222;font-weight: bold; height: 5px; padding: .6rem .8rem; border-radius: 5px;border: 1px solid #eee; width:14%; }
+.noColor {background: #eee;}
+.header {display: flex;justify-content: space-between; ;  height:50%;}
+.dateTitle {font-size: 18px; font-weight: bold; margin-top: 1px;}
+
+
+
+/* 좌우 버튼 */
+.btn {display: block;width: 10px; height: 10px; border: 3px solid #000;border-width: 3px 3px 0 0;cursor: pointer;}
+.prevDay {transform: rotate(-135deg); margin-right:25px; margin-top:9px;}
+.nextDay {transform: rotate(45deg); margin-left:25px; margin-top:9px;}
+
+
+.rap {max-width: 100%;padding: 0 1.4rem; margin-bottom: 2.5rem; overflow:hidden;}
+.dateHead {margin: .4rem 0; margin-top:0;}
+
+
+
+
+/* 메인 페이지 하단 */
+.wrap__below{width: 100%; height: 50%; display: flex; align-items: center; justify-content: space-between;}
+
+.wrap__below__notice{width: 33%; height: 95%; overflow:hidden}
+.below__notice__content{width: 95%; height: 100%; background-color: rgb(247, 247, 247); }
+
+h3{font-size: 25px;color: rgb(255, 255, 255);text-transform: uppercase;font-weight: bold;text-align: center;padding: 10px 0px;background :linear-gradient(36.41deg, #95a9e2 7.04%, #3663df 100%);border-top-left-radius: 25px; border-top-right-radius: 25px; margin:0;}
+table{width:100%;table-layout: fixed;}
+.tbl-header{background-color: rgba(75, 110, 228, 0.3);height: 12%}
+.tbl-content{height:70%;overflow-x:auto;margin-top: 0px;border: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgb(192, 191, 191); border-left: 1px solid rgb(192, 191, 191); border-bottom: 1px solid rgb(192, 191, 191);}
+th{padding: 10px 15px;text-align: left;font-weight: 500;font-size: 12px;color: black;text-transform: uppercase;}
+td{padding: 15px;text-align: left;vertical-align:middle;font-weight: 300;font-size: 12px;color: black;border-bottom: solid 1px rgba(104, 104, 104, 0.1);}
+.th-1{width: 13%; height: 15px; text-align: center;}
+.th-2{width: 45%; height: 15px; text-align: center;}
+.th-3{width: 20%; height: 15px; text-align: center;}
+.th-4{width: 20%; height: 15px; text-align: center;}
+.notice__Bb__title{width: 100%; height: 55px; font-size: 25px; border-top-left-radius: 20px; border-top-right-radius: 20px;  color: white; font-weight: 300;  display: flex; align-items: center; justify-content: center; background :linear-gradient(36.41deg, #3663df 7.04%, #7993db 100%);}
+
+.wrap__below__game{width: 67%; height: 95%;}
+.below__game__content{width: 97%; height: 100%; display: flex; flex-direction: column;}
+.below__game__header{width: 100%; height: 15%; display: flex; align-items: center; justify-content: space-between; border-right: 1px solid rgb(192, 191, 191); border-top-left-radius: 25px; border-top-right-radius: 25px; background :linear-gradient(36.41deg, #3663df 7.04%, #95a9e2 100%);}
+.game__header__title{padding-left: 30px;  }
+.game__header__title span{color: white; font-weight: 300;  font-size: 25px;}
+.game__header__more{padding-right: 30px; color: rgb(226, 224, 224); font-size: 15px; }
+.game__header__more:hover{color: rgb(212, 209, 209);}
+
+
+.below__game__body{width: 99.7%; height: 80%; border: 1px solid rgb(236, 236, 236); border-bottom-left-radius: 25px; border-bottom: 1px solid rgb(192, 191, 191); border-bottom-right-radius: 25px; border-left: 1px solid rgb(192, 191, 191); border-right: 1px solid rgb(192, 191, 191);}
+.swiper {
+  width: 100%;
+  height: 90%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  margin: 0px 10px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.swiper-slide img{width:100%; height:250px; position: absolute; left: 0; top: 0;}
+.swiper-slide-title{width:100%; height:50px; position: absolute; bottom: 0px; background-color: #696868;  display: flex; align-items: center; justify-content: center;}
+.swiper-slide-title span{font-size: 13px; font-weight: 300; color: white;}
+
+.swiper-button-next{position: absolute; right: 0; }
+.swiper-button-prev{position: absolute; left: 0;}

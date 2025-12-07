@@ -1,0 +1,77 @@
+.regist__wrap{width: 100%; height: 100%; display: flex; align-items: center;}
+
+
+/* 컨텐츠 등록 */
+.homework__regist__left{width: 60%; height: 100%; display: flex; flex-direction: column; border-right: 1px solid rgb(196, 195, 195);}
+.homework__regist__left__above{width: 100%; height: 13%; display: flex; align-items: center; justify-content: space-between; }
+.homework__regist__left__above span{font-size: 19px; font-weight: bold;}
+.homework__left__above__button{display: flex; align-items: center; margin-right: 40px;}
+.homework__left__above__button button{margin: 0px 5px; width: 80px;}
+
+/* 영상 구분 선택 */
+.homework__regist__item__select{width: 100%; height: 5%; display: flex; align-items: center;}
+.homework__regist__item__select span{font-size: 13px; font-weight: bold; width: 15%;}
+.homework__item__subMenu{display: flex; align-items: center;width: 10%;}
+.homework__item__subMenu input{margin-right: 5px; width: 15%;}
+.homework__item__subMenu span{font-size: 12px; font-weight: bold; width: 90%;}
+
+.homework__regist__left__below{width: 100%; height:87%; display: flex; flex-direction: column;}
+
+.homework__regist__below__item{width: 100%; height: 10%; display: flex; align-items: center; } 
+.homework__regist__below__item span{font-size: 13px; font-weight: bold; width: 15%;}
+.homework__regist__below__item input{width: 70%; height: 60%;  border: none; border-bottom: 1px solid rgb(201, 201, 201); padding-left: 10px;  &:focus{outline: none;}}
+
+.regist__item__date{width: 100%; height: 7%; display: flex; align-items: center;}
+.regist__item__date span{font-size: 13px; font-weight: bold; width: 15%;}
+.regist__item__date input{ border: none; width: 25%; height: 60%; border-bottom: 1px solid rgb(201, 201, 201); margin: 0px 5px; padding-left: 10px; &:focus{outline: none;} }
+#homework__Day{width: 5%; height: 60%; margin-left: 20px; border-bottom: 1px solid rgb(201, 201, 201); display: flex; align-items: center; justify-content: center;}
+
+.homework__board{width: 100%; height: 48%; border-top: 1px solid rgb(224, 220, 220);}
+.homework__board__check{width: 100%; height: 10%; display: flex; align-items: center;}
+.homework__board__list{width: 100%; height: 90%; display: flex; flex-direction: column;}
+
+.homework__thead{width: 100%; height: 15%; display: flex; align-items: center; background-color: rgb(100, 119, 226);}
+.homework__body{width: 100%; height: 85%; display: block; overflow-y: scroll; border-bottom: 3px solid rgb(100, 119, 226); border-left: 3px solid rgb(100, 119, 226);}
+
+.homework__thead__one{width: 7%; height: 100%;  display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(86, 86, 231);}
+.homework__thead__two{width: 23%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(86, 86, 231);}
+.homework__thead__three{width: 40%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(86, 86, 231);}
+.homework__thead__four{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(86, 86, 231);}
+.homework__thead__five{width: 11.5%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(86, 86, 231);}
+.homework__thead__six{width: 11.5%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.homework__thead__one span{color: white; font-size: 13px;}
+.homework__thead__two span{color: white; font-size: 13px;}
+.homework__thead__three span{color: white; font-size: 13px;}
+.homework__thead__four span{color: white; font-size: 13px;}
+.homework__thead__five span{color: white; font-size: 13px;}
+.homework__thead__six span{color: white; font-size: 13px;}
+
+.homework__tbody{width: 100%; height: 15%; display: flex; align-items: center;  }
+.homework__tbody__one{width: 7%; height: 100%;  display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(210, 210, 214);}
+.homework__tbody__two{width: 23%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(210, 210, 214);}
+.homework__tbody__three{width: 40%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(210, 210, 214);}
+.homework__tbody__four{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(210, 210, 214);}
+.homework__tbody__five{width: 11.5%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(210, 210, 214);}
+.homework__tbody__six{width: 11.5%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.homework__tbody__one span{color: black; font-size: 13px;}
+.homework__tbody__two span{color: black; font-size: 13px;}
+.homework__tbody__three span{color: black; font-size: 13px;}
+.homework__tbody__four span{color: black; font-size: 13px;}
+.homework__tbody__five span{color: black; font-size: 13px;}
+.homework__tbody__six span{color: black; font-size: 13px;}
+
+
+.homework__regist__right{width: 40%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.homework__regist__right__wrapper{width: 95%; height: 95%; display: flex; align-items: center; justify-content: center;}
+.homework__regist__content__post{width: 80%; height: 80%; position: relative;}
+
+.homework__regist__content__post img{width: 100%; height: 100%; position: absolute; left: 0; top: 0;}
+#homework__post__type{ width: 22%; height: 8%; font-size: 12px; font-weight: bold; position: absolute; left: 5px; bottom: 10px; background-color: rgb(236, 234, 234); display: flex; align-items: center; justify-content: center; border-radius: 5px;}
+#homework__post__title{width: 100%; height: 15%; font-size: 25px; font-weight: bold; position: absolute; top: 0; left: 0; background-color: rgb(224, 220, 220); opacity: 0.8; display: flex; align-items: center; justify-content: center;}
+#homework__post__info{width: 100%; height: 65%; font-size: 18px; font-weight: bold; position: absolute; top: 120px; left: 0px; padding: 10px 10px; background-color: rgb(224, 220, 220); opacity: 0.7;}
+#homework__post__level{ width: 22%; height: 8%; font-size: 12px; position: absolute; left: 115px; bottom: 10px; font-size: 14px; color: rgb(20, 20, 20); font-weight: bold; background-color: rgb(224, 220, 220); display: flex; align-items: center; justify-content: center; border-radius: 5px; }
+#homework__post__count{width: 50%; height: 8%; font-size: 12px; position: absolute; right: 5px; bottom: 10px; font-size: 14px; color: rgb(241, 14, 14); font-weight: bold; background-color: rgb(224, 220, 220); display: flex; align-items: center; justify-content: center; border-radius: 5px; }
+
+
+
+			

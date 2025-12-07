@@ -1,0 +1,16 @@
+.group-progress{
+	text-align: center;
+}
+
+.progress-list{
+	margin-top:50px;
+	display: flex;
+	flex-direction:column;
+}
+
+.user-progress {
+	margin-top: 20px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	padding: 10px;
+}

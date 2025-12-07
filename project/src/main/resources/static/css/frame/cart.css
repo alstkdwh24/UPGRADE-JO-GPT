@@ -1,0 +1,100 @@
+
+ .receipt-container {
+     width: 80%;
+     max-width: 600px;
+     background: #fff;
+     border-radius: 10px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+     padding: 20px;
+  	 margin: 0 auto;
+ }
+ .receipt-header {
+     font-size: 1.5rem;
+     color: #444;
+     font-weight: 600;
+     text-align: center;
+     margin-bottom: 30px;
+ }
+ .cart-item {
+    position: relative; 
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    align-items: center;
+    margin-bottom: 65px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeaea;
+}
+.item-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between; 
+}
+.item-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.item-details {
+    text-align: right;
+    flex-grow: 1; 
+  position: relative; 
+}
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.game_title, .game_level, .price {
+    font-weight: 400;
+    color: #555;
+}
+.total_bill {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#total_price {
+    font-weight: 600;
+    color: #D81B60;
+}
+.btn-checkout {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    display: block;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    margin-top: 10px;
+    width:100%;
+}
+.btn-checkout:hover {
+    background-color: #43A047;
+}
+.delete_btn {
+    position: absolute;
+    top: -30px; 
+     right: -10px; 
+     padding: 4px 8px;
+     background-color: #ff6b6b;
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: 12px;
+ }
+ .delete_btn:hover {
+     background-color: #ff4d4d;
+}
+
+
+

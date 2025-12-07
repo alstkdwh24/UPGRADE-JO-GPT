@@ -1,0 +1,91 @@
+/* 회원 정보 수정 페이지 */
+.modify__wrap{width: 100%; height: 100%; display: flex;}
+.modify__left{width: 70%; height: 100%; }
+.modify__left__header{width: 100%; height: 10%; display: flex; align-items: center; }
+.modify__left__header span{font-size: 20px; font-weight: bold; padding-bottom: 10px; border-bottom: 5px solid rgb(39, 101, 235);}
+
+.modify__left__body{width: 100%; height: 90%; display: flex;}
+.modify__body__left{width: 25%; height: 100%; }
+.modify__profile__change{border-radius: 25px; width: 100%; height: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgb(206, 206, 206); }
+.profile__change__header{width: 96%; height: 68%; border: 1px solid rgb(206, 206, 206); border-radius: 25px; }
+.profile__change__header img{width: 90%; height: 90%; padding: 10px; border-radius: 25px;}
+.profile__change__body{width: 96%; height: 28%; display: flex; align-items: center; justify-content: center; }
+.profile__body__form{width: 90%; height: 80%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+#modify__fileInput{width:100%; height: 40%;}
+.profile__form__button{width: 100%; display: flex;}
+.profile__form__button input{width: 30%; height: 25px; color: white;  border-radius: 4px; margin: 0px 10px 0px 0px; background-color: rgb(64, 109, 231);}
+
+.modify__body__right{width: 75%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.modify__bodyRight__content{border: 1px solid rgb(221, 220, 220); border-radius: 25px; padding-left: 20px; width: 95%; height: 97%; display: flex; flex-direction: column;}
+
+.modify__bodyRight__item{width: 100%; height: 70px; display: flex; align-items: center;}
+.modify__bodyRight__item span{width: 80px; font-size: 15px; margin-right: 30px; font-weight: bold;}
+.modify__bodyRight__item input{
+	
+  width: 500px; 
+  height: 80%; 
+  border: none; 
+  font-size: 15px;
+  border-bottom: 1px solid rgb(226, 225, 225); 
+  &:focus{
+    outline: none;
+    border-bottom: 2px solid rgb(70, 110, 243);
+    color: rgb(72, 128, 231);
+  }
+}
+
+.modify__bodyRight__Join{width: 100%; height: 250px; display: flex; flex-direction: column; margin-bottom: 30px; margin-top: 22px;}
+.modify__bodyRight__Join span{font-size: 15px; font-weight: 600;}
+.item__addr__one{ margin-top: 15px; display: flex; align-items: center;}
+.item__addr__one input{
+  width: 190px; 
+  margin-right: 10px; 
+  height: 30px;
+  padding-left: 10px; 
+  border: none; 
+  border-bottom: 1px solid rgb(206, 205, 205); 
+  border-radius: 5px;
+  &:focus{
+    outline: none;
+    border-bottom: 2px solid rgb(70, 110, 243);
+    color: rgb(72, 128, 231);
+  }
+}
+
+#looking__btn{width: 100px; text-align: center; padding: 0;}
+.item__addr__detail{margin-top: 15px; display: flex; flex-direction: column;}
+.item__addr__detail input{
+  font-size: 15px;
+  margin: 10px 0px; 
+  width: 73%;
+  height: 40px; 
+  padding-left: 10px; 
+  border: none; 
+  border-bottom: 1px solid rgb(206, 205, 205);  
+  border-radius: 5px;
+  &:focus{
+    outline: none;
+    border-bottom: 2px solid rgb(70, 110, 243);
+    color: rgb(72, 128, 231);
+  }
+}
+
+.modify__bodyRight__submit{width: 100%; height: 70px; display: flex; align-items: center; margin-top: 20px;} 
+.modify__bodyRight__submit input{width: 20%; height: 70%; font-size: 18px; background-color: rgb(112, 155, 235); color: white; border: none; cursor: pointer;}
+.modify__bodyRight__submit input:hover{background-color: rgb(134, 168, 231);}
+
+.modify__bodyRight__submit button{width: 20%; height: 70%; margin-left: 20px; font-size: 18px; background-color: rgb(112, 155, 235); color: white; border: none;}
+.modify__bodyRight__submit button:hover{background-color: rgb(134, 168, 231);}
+.frame__right__body{overflow:hidden;}
+.modify__right{
+  padding-bottom: 30px; 
+  width: 30%; 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-end;  
+  border-top-right-radius: 35px;  
+  background :linear-gradient(36.41deg, #4d71d3 7.04%, #90a7e7 100%);}
+.modify__right img{width: 80%; margin: 30px 0px;}
+#modify__right__img{filter: brightness(100);}

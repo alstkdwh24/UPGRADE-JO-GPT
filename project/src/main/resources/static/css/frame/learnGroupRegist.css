@@ -1,0 +1,94 @@
+.regist__wrap{width: 100%; height: 100%; display: flex; align-items: center; }
+
+
+.learnGroup__left{width: 65%; height: 100%; display: flex; flex-direction: column; }
+.lG-left-header{width: 100%; height: 10%; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(211, 211, 211);}
+.lG-left-header span{font-weight: bold;}
+.lG-left-btn button{width: 90px; height: 30px;}
+
+.lG-left-body{width: 100%; height: 90%; display: flex; flex-direction: column; }
+
+.lg_above{width: 100%; height: 20%; }
+.lg__below{width: 100%; height: 75%; display: flex; align-items: center; justify-content: center;}
+
+.lg__thead{width: 100%; height: 25%; background-color: rgb(39, 95, 218); display: flex; align-items: center;}
+.lg__thead__one{width: 5%; height: 100%; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(72, 121, 226);}
+.lg__thead__two{width: 25%; height: 100%; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(72, 121, 226);}
+.lg__thead__three{width: 25%; height: 100%; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(72, 121, 226);}
+.lg__thead__four{width: 20%; height: 100%; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(72, 121, 226);}
+.lg__thead__five{width: 11%; height: 100%; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(72, 121, 226);}
+.lg__thead__six{width: 14%; height: 100%; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center;}
+
+.lg__tbody{width: 100%; height: 75%; display: flex; align-items: center; border: 1px solid rgb(208, 209, 211);}
+.lg__tbody__one{width: 5%; height: 100%; font-size: 13px;  display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(208, 209, 211);}
+.lg__tbody__one button{width: 80%;}
+.lg__tbody__two{width: 25%; height: 100%; font-size: 13px;  display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(208, 209, 211);}
+.lg__tbody__two img{width: 60%; height: 90%;}
+.lg__tbody__three{width: 25%; height: 100%; font-size: 13px; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(208, 209, 211);}
+.lg__tbody__four{width: 20%; height: 100%; font-size: 13px;  display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(208, 209, 211);}
+.lg__tbody__five{width: 11%; height: 100%; font-size: 13px;  display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(208, 209, 211);}
+.lg__tbody__six{width: 14%; height: 100%; font-size: 13px;  display: flex; align-items: center; justify-content: center;}
+
+
+.lg__below__wrap{width: 100%; height: 98%; margin-top: 10px; display: flex; flex-direction: column;}
+.lg__below__item{width: 100%; height: 10%; display: flex; align-items: center;}
+.lg__below__item span{width: 120px; height: 100%; display: flex; align-items: center; font-size: 14px; font-weight: bold;}
+.lg__below__item input{width: 300px; height: 35px; font-size: 14px; border: none; border-bottom: 1px solid rgb(197, 195, 195); &:focus{outline: none;}}
+.lg__below__item input:focus{color: rgb(30, 75, 226); border-bottom: 1px solid rgb(30, 75, 226);}
+
+.lg__below__date{width: 100%; height: 10%; display: flex; align-items: center;}
+.lg__below__date span{width: 120px; height: 100%; display: flex; align-items: center; font-size: 14px; font-weight: bold;}
+.lg__below__date input { width: 200px; height: 35px; font-size: 14px; margin-right: 10px; border: none; border-bottom: 1px solid rgb(197, 195, 195); &:focus{outline: none;}}
+.lg__below__date input:focus{color: rgb(30, 75, 226); border-bottom: 1px solid rgb(30, 75, 226);}
+#lg__month{width: 80px; height: 35px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgb(208, 209, 211); margin-left: 20px; font-size: 13px; color: red;}
+
+.lg__below__text{width: 100%; height: 30%; display: flex; align-items: center;}
+.lg__below__text span{width: 120px; height: 100%; display: flex; align-items: center; font-size: 14px; font-weight: bold;}
+.lg__below__text textarea{width: 550px; resize: none; padding: 5px 5px; &:focus{outline: none;}}
+
+.learnGroup__right{width: 34%; height: 100%; margin-left: 5px; border-left: 1px solid rgb(207, 207, 207); display: flex; align-items: center; justify-content: center; }
+.lg__right__pre{width: 80%; height: 80%; background-color: rgb(206, 204, 204);}
+#pre__title{width: 100%; height: 15%; background-color: rgb(46, 80, 231); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;}
+#pre__body{width: 100%; height: 70%; background-color: rgb(214, 214, 214); display: flex; flex-direction: column;} 
+#pre__body__head{width: 100%; height: 15%; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(156, 155, 155);}
+#pre__body__head div{width: 20%; height: 50%; margin: 0px 10px; background-color: rgb(58, 104, 231); border-radius: 10px; color: white; font-size: 14px; display: flex; align-items: center; justify-content: center;}
+#pre__body__body{width: 100%; height: 85%; display: flex; align-items: center; justify-content: center;}
+#pre__body__body img{width: 80%; height: 80%;}
+
+/* 모달 스타일 */
+.modal {
+  display: none; /* 초기에는 보이지 않도록 설정 */
+  position: fixed; /* 위치를 고정 */
+  z-index: 1; /* 다른 요소들보다 위에 위치 */
+  left: 0;
+  top: 0; /* 화면의 상단에 위치 */
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* 너무 긴 내용을 가진 경우 스크롤 가능하도록 */
+  background-color: rgba(0,0,0,0.4); /* 배경에 어둡게 */
+}
+
+/* 모달 내용 스타일 */
+.modal-content {
+  background-color: #fefefe;
+  margin: 3% auto; /* 위쪽 여백을 더 크게 조정하여 모달을 더 위로 올립니다. */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 90%;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

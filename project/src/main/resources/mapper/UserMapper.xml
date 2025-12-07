@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.geomin.project.user.service.UserMapper">
+    
+  <!-- 회원가입 -->
+   	<insert id="regist">
+  		INSERT INTO USER ( USER_ID,
+  						   USER_PW,
+  						   USER_NAME,
+  						   USER_LEVEL,
+  						   USER_ROLE,
+  						   USER_EMAIL,
+  						   USER_PHONE,
+  						   USER_BIRTH,
+  						   USER_ADDRESS,
+  						   USER_GENDER,
+  						   USER_SNS_CHECK,
+  						   USER_EMAIL_CHECK
+  		) 
+  				    VALUES ( #{user_id},
+  				    		 #{user_pw},
+  				    		 #{user_name},
+  				    		 #{user_level},
+  				    		 #{user_role},
+  				    		 #{user_email},
+  				    		 #{user_phone},
+  				    		 #{user_birth},
+  				    		 #{user_address},
+  				    		 #{user_gender},
+  				    		 #{user_sns_check},
+  				    		 #{user_email_check}
+  							
+  		)
+  	</insert> 
+  	
+	<select id="login" resultType="com.geomin.project.command.UserVO">
+  		select * from USER WHERE user_id = #{user_id}
+  	</select>
+  	
+  	<select id="buttonIdCheck" resultType="int">
+  		select count(user_id) from USER where user_id = #{user_id}
+  	</select>
+  	
+  	<update id="modify">
+  		update USER set 
+  		user_email = #{user_email},
+  		user_phone = #{user_phone},
+  		user_address = #{user_address}
+  		where user_id = #{user_id}
+  	</update>
+  	
+  	
+  	<select id="getList" resultType="UserVO">
+  		SELECT * 
+  		FROM 
+  			USER 
+  		WHERE 
+  			USER_ROLE IS NOT NULL
+  		AND
+  			USER_SLEEP IS NULL
+  		<if test="criteria.memberRole == 1">
+			AND 
+				USER_ROLE = "ROLE_TEA"
+		</if>
+		<if test="criteria.memberRole == 2">
+			AND 
+				USER_ROLE = "ROLE_STU"
+		</if>
+		<if test="criteria.memberRole == 3">
+			AND 
+				USER_ROLE = "ROLE_GEN"
+		</if>
+		<if test="criteria.memberRole == 100">
+			
+		</if>
+  		limit #{criteria.pageStart}, #{criteria.amount}
+  	</select>
+  	
+  	<select id="getTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			USER
+		WHERE 
+			USER_ROLE IS NOT NULL
+    </select>
+    
+    
+    <select id="findUser" resultType="UserVO">
+    	SELECT * 
+    	FROM 
+    		USER
+    	WHERE
+    		USER_NO = #{user_no}
+    </select>
+    
+    <select id="getQnaList" resultType="QnaVO">
+    	SELECT * 
+    	FROM 
+    		QNA
+    	WHERE
+    		QNA_DEL_CHECK ="Y"
+    	AND
+    		USER_NO = #{user_no}
+    	<if test="criteria.searchType == 1">
+			AND 
+				QNA_TYPE = 1
+		</if>
+		<if test="criteria.searchType == 2">
+			AND 
+				QNA_TYPE = 2
+		</if>
+		<if test="criteria.searchType == 3">
+			AND 
+				QNA_TYPE = 3
+		</if>
+		<if test="criteria.searchType == 4">
+			AND 
+				QNA_TYPE = 4
+		</if>
+    	limit #{criteria.pageStart}, #{criteria.amount}
+    </select>
+    
+    <select id="getQnaTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			QNA
+		WHERE
+		    USER_NO = #{user_no}
+    </select>
+    
+    <insert id="qnaRegist">
+    	INSERT INTO QNA(	
+    		QNA_TYPE,
+    		QNA_TITLE,
+    		QNA_CHECK,
+    		QNA_DEL_CHECK,
+    		USER_NO
+    	)VALUES(
+    		#{qna_type},
+    		#{qna_title},
+    		#{qna_check},
+    		#{qna_delCheck},
+    		#{user_no}
+    	)  		
+    </insert>
+    
+    <update id="qnaDelete">
+    	UPDATE QNA
+    	SET 
+    		QNA_DEL_CHECK = "N"
+    	WHERE qna_no = #{qna_no}
+    </update>
+    
+    <update id="userSleep">
+    	UPDATE USER SET USER_SLEEP = "N" WHERE USER_NO = #{user_no}
+    </update>
+    
+    <!-- 휴먼 계정 조회 -->
+    <select id="getSleepList" resultType="UserVO">
+  		SELECT * 
+  		FROM 
+  			USER 
+  		WHERE 
+  			USER_SLEEP = "N"
+  		<if test="criteria.searchType == 1">
+			AND 
+				USER_ROLE = "ROLE_TEA"
+		</if>
+		<if test="criteria.searchType == 2">
+			AND 
+				USER_ROLE = "ROLE_STU"
+		</if>
+		<if test="criteria.searchType == 3">
+			AND 
+				USER_ROLE = "ROLE_GEN"
+		</if>
+		<if test="criteria.searchType == 100">
+			
+		</if>
+  		limit #{criteria.pageStart}, #{criteria.amount}
+  	</select>
+  	
+  	<select id="getSleepTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			USER
+		WHERE 
+			USER_SLEEP = "N"
+    </select>
+    
+    <select id="getPurchaseList" resultType="GameContentVO">
+    	SELECT 
+			DATE(GP.PURCHASE_DATE) AS PURCHASE_DATE, COUNT(*) AS CNT, SUM(GAME_DISCOUNT_PRICE) AS PRICE_SUM
+		FROM 
+			GAME_CONTENT G 
+		LEFT JOIN 
+			GAME_PURCHASE GP
+		ON 
+			GP.GAME_NO = G.GAME_NO
+		WHERE 
+			PURCHASE_DATE IS NOT NULL
+		<if test="criteria.startDate != '' and criteria.startDate != null">
+			<![CDATA[
+				and str_to_date( PURCHASE_DATE, '%Y-%m-%d' ) >= str_to_date(#{criteria.startDate}, '%Y-%m-%d')
+			]]>
+		</if>
+		<if test="criteria.endDate != '' and criteria.endDate != null">
+			<![CDATA[
+				and str_to_date( PURCHASE_DATE, '%Y-%m-%d' ) <= str_to_date(#{criteria.endDate}, '%Y-%m-%d')
+			]]>
+		</if>
+		GROUP BY 
+			DATE(GP.PURCHASE_DATE)
+    </select>
+    
+    <select id="getPriceTotal" resultType="int">
+        SELECT 
+        	COUNT(*) AS TOTAL
+		FROM 
+			GAME_CONTENT
+    </select>
+    
+    <select id="getPurchaseDetail" resultType="PurchaseVO">
+    	SELECT GP.PURCHASE_DATE, U.USER_NAME, G.GAME_TITLE, G.GAME_DISCOUNT_PRICE
+		FROM 
+			GAME_PURCHASE GP
+		LEFT JOIN
+			USER U
+		ON GP.USER_NO = U.USER_NO
+		LEFT JOIN
+			GAME_CONTENT G
+		ON GP.GAME_NO = G.GAME_NO
+		WHERE DATE(GP.PURCHASE_DATE) = #{purchase_date};
+    </select>
+  	
+  </mapper>

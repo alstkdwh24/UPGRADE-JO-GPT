@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- J QUERY -->
+<script src="/js/jquery-3.7.1.min.js" defer></script>
+
+<script>
+	console.log("에이")
+</script>
+
+<th:block th:replace="~{./baseLayout/base_m :: setContent( ~{ :: section} ) }">
+
+
+
+<script>
+	console.log("비")
+</script>
+
+<section>
+
+    <div class="join__section__wrapper">
+
+      <div class="join__title"><span>회원가입</span></div>
+
+      <form action="joinForm" method="post" class="join__content">
+
+        <!-- 아이디 -->
+        <div class="join__item">
+          <span>아이디</span>
+          <div class="join__item__sub">
+            <input type="text" value="" name="user_id" id="user_id">
+            <button type="button" name="id_check" id="id_check">id 중복 체크하기</button>
+          </div>
+          <span id="id_check_result"></span>
+        </div>
+
+        
+        
+
+        <!-- 비밀번호 -->
+        <div class="join__item">
+          <span>비밀번호</span>
+          <input type="password" value="" name="user_pw">
+        </div>
+
+        <!-- 이름 -->
+        <div class="join__item">
+          <span>이름</span>
+          <input type="text" value="" name="user_name">
+        </div>
+
+        <!-- 바둑레벨 -->
+        <div class="join__item__level">
+          <span>현재 바둑 레벨</span>
+		  <div class="join__level__select" id="user_level">
+		    <input type="radio" value="1" name="user_level"><span>초급</span>  
+		    <input type="radio" value="2" name="user_level"><span>중급</span>
+		    <input type="radio" value="3" name="user_level"><span>고급</span>
+		    <input type="radio" value="4" name="user_level"><span>프로</span>
+		  </div>
+        </div>
+
+        <!-- 회원구분 -->
+        <div class="join__item__role">
+          <span>회원 구분</span>
+          <select name="user_role" id="user_role">
+            <option value="none">회원 유형을 선택해주세요.</option>
+            <option value="ROLE_GEN">사용자-일반</option>
+            <option value="ROLE_STU">사용자-학생</option>
+            
+            <!-- 원래 교육자는 3인데, 승인이 안 돼있으니, 5로 둠, 나중에 관리자가 승인 시 3으로 변경 -->
+            <option value="ROLE_TEA">사용자-교육자</option>
+            <option value="ROLE_ADMIN">사용자-관리자</option>
+          </select>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="join__item">
+          <span>이메일</span>
+          <input type="email" value="" name="user_email">
+        </div>
+
+        <!-- 연락처 -->
+        <div class="join__item">
+          <span>연락처</span>
+          <input type="phone" value="" name="user_phone">
+        </div>
+
+        <!-- 생년월일 -->
+        <div class="join__item">
+          <span>생년월일</span>
+          <input type="text" value="" name="user_birth">
+        </div>
+
+        <!-- 주소 -->
+        <div class="join__item__addr">
+          <span>주소</span>
+          <div class="item__addr__one">
+            <input type="text" id="sample4_postcode" placeholder="우편번호" name="user_address">
+            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+          </div>
+          <div class="item__addr__detail">
+            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" name="user_address">
+            <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+            <span id="guide" style="color:#999;display:none"></span>
+            <input type="text" id="sample4_detailAddress" placeholder="상세주소" name="user_address">
+          </div>
+        </div>
+
+        <!-- 성별 -->
+        <div class="join__item__gender">
+          <span>성별</span>
+
+          <div class="join__gender__select">
+
+            <div class="gender">
+              <span>남성</span>
+              <input type="radio" value="m" name="user_gender">
+            </div>
+
+            <div class="gender">
+              <span>여성</span>
+              <input type="radio" value="w" name="user_gender">
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- 수신동의 -->
+        <div class="join__item__check">
+          <span>수신동의</span>
+          <div class="check__approve">
+            <span>이벤트, 커리큘럼, 신규컨텐츠 등 광고메세지 수신</span>
+            <div class="sns__approve" ><input type="radio" value="1" name="user_sns_check"><span>sns 수신</span></div>
+            <div class="email__approve"><input type="radio" value="2"  name="user_email_check"><span>이메일 수신</span></div>
+          </div>
+
+        </div>
+        
+        <div class="join__item__button">
+          <button>회원가입</button>
+        </div>
+
+      </form>
+      
+      
+
+    </div>
+
+  </section>
+  
+  
+</th:block>
+</html>

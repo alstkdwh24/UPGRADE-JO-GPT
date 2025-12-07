@@ -1,0 +1,120 @@
+.apply-message {
+  background-color: #A0A0A0;
+  color: white;
+  padding: 10px;
+  border: 1px solid #B0B0B0;
+  border-radius: 5px;
+  text-align: center;
+  width: 600px;
+  position: fixed;
+  left:55%; 
+  bottom: 10%; 
+  transform: translateX(-50%); 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none; 
+}
+.process-message {
+  background-color: #F4FF62;
+  color: #021665;
+  padding: 10px;
+  border: 1px solid #FAFFB8;
+  border-radius: 5px;
+  text-align: center;
+  width: 600px;
+  position: fixed;
+  left: 55%; 
+  bottom: 10%; 
+  transform: translateX(-50%); 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.approved-message {
+  background-color: #1FCD34;
+  color: white;
+  padding: 10px;
+  border: 1px solid #98F2A3;
+  border-radius: 5px;
+  text-align: center;
+  width: 600px;
+  position: fixed;
+  left: 55%; 
+  bottom: 10%; 
+  transform: translateX(-50%); 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none; 
+}
+
+.reject-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  text-align: center;
+  width: 600px;
+  position: fixed;
+  left: 55%; 
+  bottom: 10.2%; 
+  transform: translateX(-50%); 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none; 
+}
+.reapply-message {
+  background-color: #2541E1;
+  color: #DCDCDC;
+  padding: 15px;
+  border: 1px solid #ADCBE8;
+  border-radius: 5px;
+  text-align: center;
+  width: 600px;
+  position: fixed;
+  left: 55%; 
+  bottom: 10.2%; 
+  transform: translateX(-50%); 
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.re-apply {
+  background-color: #A0A0A0;
+  color: white;
+  padding: 3px;
+  border: 1px solid #B0B0B0;
+  width: auto; 
+  height: auto; 
+  cursor: pointer; 
+  pointer-events: auto;
+  border-radius: 5px;
+  margin-left: 30px;
+}
+.no-apply {
+  background-color: #A0A0A0;
+  color: white;
+  padding: 3px;
+  border: 1px solid #B0B0B0;
+  width: auto; 
+  height: auto; 
+  cursor: pointer; 
+  pointer-events: auto;
+  border-radius: 5px;
+  margin-left: 35px;
+}
+
+.approved-mege{
+  background-color: #45D85D;
+  color: white;
+  padding: 10px;
+  border: 1px solid #84F997;
+  border-radius: 5px;
+  text-align: center;
+  font-weight:bold;
+  width: 150px;
+  margin-left: 200px;
+}

@@ -1,0 +1,67 @@
+.regist__wrap{width: 100%; height: 100%; display: flex; flex-direction: column; }
+
+.ds__header{width: 100%; height: 10%; display: flex; align-items: center; border-bottom: 1px solid rgb(207, 206, 206);}
+
+.ds__header__title{width: 10%; height: 100%; display: flex; align-items: center;}
+.ds__header__title span{font-size: 17px ;font-weight: bold;}
+.ds__header__select{width: 90%; height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 35px;}
+.ds__header__select select{width: 150px; height: 30px; border: none; border-bottom: 1px solid rgb(207, 206, 206);  &:focus{outline: none; color: rgb(60, 108, 241);}}
+
+.ds__body{width: 100%; height: 90%; display: flex; flex-direction: column; }
+
+.ds__body__above{width: 98%; height: 7%; display: flex; align-items: center; border:1px solid gray; background-color: rgb(60, 108, 241); margin-top: 10px;} 
+.ds__thead{width: 100%; height: 100%; display: flex; align-items: center;}
+.ds__thead__one{width: 5%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 13px; font-weight: bold; border-right: 1px solid rgb(32, 85, 231);}
+.ds__thead__two{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 13px; font-weight: bold; border-right: 1px solid rgb(32, 85, 231);}
+.ds__thead__three{width: 30%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 13px; font-weight: bold; border-right: 1px solid rgb(32, 85, 231);}
+.ds__thead__four{width: 30%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 13px; font-weight: bold; border-right: 1px solid rgb(32, 85, 231);}
+.ds__thead__five{width: 15%; height: 100%;display: flex; align-items: center; justify-content: center; color: white; font-weight: 13px; font-weight: bold; }
+
+
+.ds__body__below{width: 98%; height: 88%; overflow: auto; overflow-x: hidden;}
+.ds__tbody__one{width: 5%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(207, 206, 206); }
+.ds__tbody__two{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center;  border-right: 1px solid rgb(207, 206, 206);}
+.ds__tbody__three{width: 30%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(207, 206, 206);}
+.ds__tbody__four{width: 30%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(207, 206, 206);}
+.ds__tbody__five{width: 15%; height: 100%;display: flex; align-items: center; justify-content: center;  }
+
+
+.ds__collapsible {
+  background-color: #ffffff;
+  cursor: pointer;
+  padding: 18px 0px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border: 1px solid rgb(209, 209, 209);
+  display: flex; 
+  align-items: center;
+}
+
+.ds__active, .ds__collapsible:hover {
+  background-color: #cacaca;
+}
+
+.ds__collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.ds__active:after {
+  content: "\2212";
+}
+
+.ds__content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.ds__content__wrap{width: 100%; height: 100%;}

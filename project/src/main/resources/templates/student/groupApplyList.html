@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="/js/student/groupRegistList.js" defer></script>
+<link rel="stylesheet" href="/css/frame/groupRegistLook.css">
+<link rel="stylesheet" href="/css/student/groupRegistList.css">
+
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+  <div class="wrap__content">
+      <div class="grl__header">
+
+        <div class="grl__header__title"><span>그룹 가입 상세 조회</span></div>
+
+        <div class="grl__header__btn">
+          <button type="submit" id="groupApply" th:if="${auth == '0'}">가입신청</button>
+          <button type="submit" id="groupApply" th:if="${auth == null}">가입신청</button>
+          <button type="submit" id="groupApply" th:if="${auth == '2'}">가입신청</button>
+          <div id="approvedMes" class="approved-mege" th:if="${auth == '1'}">가입 완료</div>
+        </div>
+        <div id="applyMessage" class="apply-message">그룹 스터디에 신청되었습니다.</div>
+		<div id="processMessage" class="process-message">승인 절차가 진행 중입니다.</div>
+		<div id="reapplyMessage" class="reapply-message">재가입을 다시 신청하셨습니다!!</div>
+		<div id="rejectMessage" class="reject-message">그룹 승인이 거절되셨습니다. 다시 지원하시겠습니까? 
+			<button type="submit" class="re-apply" onclick=re_apply()>예</button>
+			<button type="submit" class="no-apply" onclick=no_apply()>아니요</button>
+		</div>
+		<input type="hidden" id="hiddenSg_No" th:value="${group.sg_no}" name="sg_no">
+		<input type="hidden" id="hiddenUser_No" th:value="${session.vo.user_no}" name="user_no">
+		<input type="hidden" id="hiddenSg_Level" th:value="${group.sg_level}" name="user_no">
+		
+		
+      </div>
+      <div class="grl__body">
+        <div class="grl__body__header">
+          
+          <div class="grl__bh__thead">
+            <div class="grl__bht__zero">컨텐츠 이미지</div>
+            <div class="grl__bht__one">게임 컨텐츠 명</div>
+            <div class="grl__bht__two">게임 달성 레벨</div>
+            <div class="grl__bht__three">게임 학습 기간</div>
+            <div class="grl__bht__four">그룹 제한 인원</div>
+            <div class="grl__bht__five">그룹가입 승인 인원</div>
+          </div>
+
+        
+          <div class="grl__bh__tbody">
+            <div class="grl__bbt__zero"><img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${info.groupdetail.filepath},uuid=${info.groupdetail.uuid},filename=${info.groupdetail.filename})}"  ></div>
+            <div class="grl__bbt__one">[[${info.groupdetail.game_title}]]</div>
+            <div class="grl__bbt__two">[[${info.groupdetail.game_target_level}]]</div>
+            <div class="grl__bbt__three">[[${info.groupdetail.sg_regdate.substring(0, 10)} + ' ~ ' + ${info.groupdetail.game_sub_endDate}]]</div>
+            <div class="grl__bbt__four">[[${info.groupdetail.sg_grouplimit} + '명']]</div>
+            <div class="grl__bbt__five">[[${info.groupdetail.sg_capa} + '명']]</div>
+          </div>
+
+        </div>
+
+      </div>
+  </div>
+</div>
+  
+</th:block>
+</html>

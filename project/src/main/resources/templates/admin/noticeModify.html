@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+	<div class="wrap">
+	<script src="/js/frame/noticeRegist.js" defer></script>
+      <div class="wrap__content">
+        <form action="/admin/noticeModifyForm" method="post" class="regist__wrap">
+		  <input type="hidden" th:value="${vo.notice_no}" name=notice_no>
+
+          <!-- 컨텐츠 등록 -->
+          <div class="regist__left">
+
+            <div class="regist__left__above">
+              <span>공고 등록 수정</span>
+              <div class="left__above__button">
+                <button type="submit">등록</button>
+                <button type="reset">취소</button>
+              </div>
+            </div>
+            <div class="regist__left__below">
+
+              <!-- 구분 선택 -->
+              <div class="regist__below__item">
+                <span>공지분류</span>
+                <select name="notice_type" id="item__select">
+                  <option th:if="${vo.notice_type == 1}" value="1" th:selected>공통</option>
+    			  <option th:if="${vo.notice_type == 2}" value="2" th:selected>상품안내</option>
+    			  <option th:if="${vo.notice_type == 3}" value="3" th:selected>이용안내</option>
+    			  <option th:if="${vo.notice_type == 4}" value="4" th:selected>기타</option>
+                  <option th:unless="${vo.notice_type == 1}" value="1">공통</option>
+                  <option th:unless="${vo.notice_type == 2}" value="2">상품안내</option>
+                  <option th:unless="${vo.notice_type == 3}" value="3">이용안내</option>
+                  <option th:unless="${vo.notice_type == 4}" value="4">기타</option>
+                </select>
+              </div>
+
+              <!-- 유형 선택 -->
+              <div class="regist__item__select">
+                <span>중요글 상단 노출</span>
+                <div class="item__subMenu">
+                  <input type="checkbox" th:value="${vo.notice_check}" id="important" name="notice_check" onclick="updateValue()"> 
+                </div>
+              </div>
+
+              <!-- 제목 입력 -->
+              <div class="regist__below__item">
+                <span>제목</span>
+                <input type="text" id="notice__title" name="notice_title" th:value="${vo.notice_title}"  th:placeholder="${vo.notice_title}">
+              </div>
+
+              <!-- 유형 선택 -->
+              <div class="regist__item__select">
+                <span>게시일자</span>
+                <div class="notice__check">
+                  <input type="checkbox" id="notice__regist__check" name="notice_dueDate" th:value="${notice_dueDate}"> 
+                  <span>등록 즉시 게시</span>
+                </div>
+                <div class="notice__future">
+                  <input type="checkbox" id="notice__future__regist" name="notice__future__regist">
+                  <span>게시 예정일</span>
+                  <input type="date" id="notice__date" name="notice_dueDate" th:value="${notice_dueDate}"> 
+                </div>
+              </div>
+              
+              <!-- 컨텐츠 설명 -->
+              <div class="regist__item__textArea">
+                <span>내용</span>
+                <textarea id="notice__textArea" name="notice_content" th:value="${vo.notice_content}"  th:placeholder="${vo.notice_content}"></textarea>
+              </div>
+              
+              <!-- 구독 가능 인원 -->
+              <div class="regist__item__learning__file">
+                <span>썸네일</span>
+
+                <input type="file" id="fileInput" autocomplete="off" placeholder="숫자만 입력해주세요.">
+                <div class="dropBox">
+                  <h5>이곳에 파일을 드롭해주세요. </h5>
+                </div>
+
+              </div>
+              
+              <input type="hidden" value="Y" name="notice_delCheck">
+
+            </div>
+
+          </div>
+
+          <!-- 컨텐츠 등록 현황 -->
+          <div class="regist__right">
+
+            <div class="regist__right__wrap">
+
+              <div class="regi__right__header">
+                <img id="img1" src="/img/KBA_MainLogo.png" alt="">
+                <img id="img2" src="/img/KBA_mascot_black.png">
+              </div>
+
+              <div class="regi__right__body">
+
+                <div class="board__title"><span id="board__title"></span></div>
+
+                <div class="board__second">
+                  <div class="board__category"><span id="board__category"></span></div>
+                  <div class="board__date"><span id="board__date"></span></div>
+                </div>
+
+                <div class="board__third">
+                  <div class="board__third__content">
+                    <span id="board__textArea"></span>
+                  </div>
+                </div>
+
+                <div class="board__fourth">
+                  첨부파일 : <span id="board__file"></span>
+                </div>
+
+              </div>
+
+              <div class="regi__right__footer"></div>
+              
+
+            </div>
+
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+
+</th:block>
+</html>

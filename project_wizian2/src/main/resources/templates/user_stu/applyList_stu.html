@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_stu/notice_stu.css">
+  <script src="/js/home_stu.js"></script>
+  
+  <title>Document</title>
+</head>
+<body>
+  <div class="notice__header"><span>지원 내역</span></div>
+  <input type="hidden" name="stu_id" th:value="${session.user_id}" />
+  <table class="apply_table">
+    <colgroup>
+      <col width="80">
+      <col width="700">
+      <col width="100">
+      <col width="100">
+      <col width="100">
+      <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>기업명</th>
+        <th>분야</th>
+        <th>경력</th>
+        <th>연락처</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vo : ${vo}">
+        <td th:text="${vo.prodd_id}">1</td>
+        <td th:text="${vo.title_name}"><a href="/student/comp_popup">[삼성엔지니어링] 2024년 상반기 삼성엔지니어링 3급 신입사원 채용 · 대학생 인턴 모집</a></td>
+        <td th:text="${vo.title}">기업명</td>
+        <td th:text="${vo.middle_content_category}">분야</td>
+        <td th:text="${vo.middle_middle_writer}">분야</td>
+        <td th:text="${vo.phone}">연락처</td>
+    </tr>
+    </tbody>
+  </table>
+</body>
+</html>

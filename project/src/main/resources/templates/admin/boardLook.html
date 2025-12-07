@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/boardLook.css">
+<script type="text/javascript" src="/js/frame/boardLook.js" defer></script>
+  <div class="wrap__content">
+    <form action="" method="get" class="regist__wrap" id="bookLookFrom">
+
+      <!-- NOTICE -->
+      <div class="bl__left">
+
+        <div class="bl__left__header"><span>공지사항</span></div>
+
+        <div class="bl__left__body">
+          
+          <div class="blb__thead">
+            <div class="blb__thead__one"><span>번호</span></div>
+            <div class="blb__thead__two"><span>내용</span></div>
+            <div class="blb__thead__three"><span>수정/삭제</span></div>
+          </div>
+          <div class="blb__tbody">
+            <div class="blb__tbody__content">
+
+              <div class="blb__tContent__wrap" th:each="noticeList:${noticeList}">
+                <div class="blb__tbody__one" th:text="${noticeList.notice_no}">1</div>
+                <div class="blb__tbody__two" th:text="${noticeList.notice_title}">공지사항제목</div>
+                <div class="blb__tbody__three">
+                  <a th:href="@{/admin/noticeModify(notice_no=${noticeList.notice_no})}" id="blb__notice__modify">수정</a>
+                  <a th:href="@{/admin/noticeDeleteForm(notice_no=${noticeList.notice_no})}" id="blb__notice__delete">삭제</a>
+                </div>
+              </div>
+              
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="bl__center">
+
+        <div class="bl__center__header"><span>FAQ</span></div>
+
+        <div class="bl__center__body">
+
+          <div class="blb__thead">
+            <div class="blb__thead__one"><span>번호</span></div>
+            <div class="blb__thead__two"><span>내용</span></div>
+            <div class="blb__thead__three"><span>수정/삭제</span></div>
+          </div>
+          <div class="blb__tbody">
+            <div class="blb__tbody__content">
+
+              <div class="blb__tContent__wrap" th:each="faqList:${faqList}">
+                <div class="blb__tbody__one" th:text="${faqList.faq_no}">1</div>
+                <div class="blb__tbody__two" th:text="${faqList.faq_question}">faq질문</div>
+                <div class="blb__tbody__three">
+                  <a th:href="@{/admin/faqModify(faq_no=${faqList.faq_no})}" id="blb__notice__modify">수정</a>
+                  <a th:href="@{/admin/faqDeleteForm(faq_no=${faqList.faq_no})}" id="blb__notice__delete">삭제</a>
+                </div>
+              </div>
+              
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Q&A -->
+      <div class="bl__right">
+
+        <div class="bl__right__header"><span>Q&A</span></div>
+
+        <div class="bl__right__body">
+
+          <div class="blb__thead">
+            <div class="blb__thead__one"><span>번호</span></div>
+            <div class="blb__thead__two"><span>내용</span></div>
+            <div class="blb__thead__three"><span>수정/삭제</span></div>
+          </div>
+          <div class="blb__tbody">
+            <div class="blb__tbody__content">
+
+              <div class="blb__tContent__wrap" th:each="qnaList:${qnaList}">
+                <div class="blb__tbody__one" th:text="${qnaList.qna_no}">1</div>
+                <div class="blb__tbody__two" th:text="${qnaList.qna_title}">qna</div>
+                <div class="blb__tbody__three">
+                  <a th:href="@{/admin/qnaModify(qna_no=${qnaList.qna_no})}" id="blb__notice__modify">답변</a>
+                  <a th:href="@{/admin/qnaDeleteForm(qna_no=${qnaList.qna_no})}" id="blb__notice__delete">삭제</a>
+                </div>
+              </div>
+              
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+</th:block>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/css/user_stu/resume_supportCenter.css">
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="/js/home_stu.js"></script>
+  <style> 
+  .submitForm{width:100%; display: flex; align-items: center; justify-content: center;}
+  .submitForm > button { width: 150px; height: 40px; font-weight: bold;}
+  </style>
+</head>
+<body>
+
+  <div class="whole">
+    <header class="header1">
+
+      <div class="header_resumeheader">
+        <ul>
+          <li class="header_resume_title">이력서</li>
+          <label class="upload_main_pic" for="main_pic">
+            <span class="upload_pic">
+              <img src="/img/plus_btn.png" alt="">
+            </span>
+            <input type="file" id="main_pic" class="upload_pic" style="display: none;">
+          </label>
+          <li class="header_resume_name">[[${vo[0].stu_name}]]</li>
+
+
+        </ul>
+      </div>
+
+    </header>
+
+    <section id="middle">
+
+		
+        <div class="realbixbox">
+        
+                  <div class="bigbox"> <!--제일 큰 박스-->
+
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  이력서 제목
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox">
+                  <ul>
+                    <li>제목</li>
+					<div>[[${vo[0].title}]]</div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  인적사항
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox">
+                  <ul>
+                    <li>이름</li>
+                    <div name="stu_name">[[${vo[0].stu_name}]]</div>
+                  </ul>
+
+                  <ul style="border: none;">
+                    <li>주소</li>
+                    <div name="stu_address">[[${vo[0].stu_address}]]</div>
+                  </ul>
+                  
+                  <ul style="border: none;">
+                    <li>상세주소</li>
+                    <div name="stu_address_detail">[[${vo[0].stu_address_detail}]]</div>
+                  </ul>
+
+                  <ul>
+                    <li>휴대전화</li>
+                    <div name="stu_phone">[[${vo[0].stu_phone}]]</div>
+                  </ul>
+                  <ul>
+                    <li>Email</li>
+                    <div name="stu_email">[[${vo[0].stu_email}]]</div>
+                  </ul>
+                  <ul>
+                    <li>나이</li>
+                    <div name="stu_age">[[${vo[0].stu_age}]]</div>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  자격증
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox" id="copyCertificate">
+                  <ul class="certificateUl">
+                    <li>자격증명</li>
+                    <div name="stu_certi_name">[[${vo[0].stu_certi_name}]]</div>
+                  </ul>
+                </div>
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  졸업여부
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox">
+                  <ul>
+                    <li>졸업여부</li>
+                    <div name="stu_gradyn">[[${vo[0].stu_gradyn}]]</div>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  경력사항
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox" id="copyWork">
+                  <ul>
+                    <li>기간</li>
+                    <p>
+                    <div name="stu_jobstartdate" style="display: inline-block">[[${vo[0].stu_jobstartdate}]] ~ </div>
+                    <div name="stu_jobenddate" style="display: inline-block">[[${vo[0].stu_jobenddate}]]</div>
+                    </p>
+                  </ul>
+                  <ul>
+                    <li>회사명</li>
+                    <div name="stu_jobcompname">[[${vo[0].stu_jobcompname}]]</div>
+                  </ul>
+                  <ul>
+                    <li>직급</li>
+						<div>[[${vo[0].stu_joblevel}]]</div>
+                  </ul>
+                  <ul>
+                    <li>수행업무</li>
+                    <div name="stu_jobwork">[[${vo[0].stu_jobwork}]]</div>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  수상내역
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox" id="addAwards">
+                  <ul>
+                    <li>대회명</li>
+                    <div name="stu_awardname">[[${vo[0].stu_awardname}]]</div>
+                  </ul>
+                  <ul>
+                    <li>수상</li>
+                    <div>[[${vo[0].stu_awardaward}]]</div>
+                  </ul>
+                  <ul>
+                    <li>대회기관명</li>
+                    <div name="stu_awardcompname">[[${vo[0].stu_awardcompname}]]</div>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  고용형태
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox">
+                  <ul>
+                    <li>고용형태</li>
+                    <div name="stu_emp_type">[[${vo[0].stu_emp_type}]]</div>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  희망직종
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox">
+                  <ul>
+                    <li>희망직종</li>
+                    <div name="stu_interest">[[${vo[0].stu_interest}]]</div>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="bigbox"> <!--제일 큰 박스-->
+            <div class="middlebox">
+              
+              <div class="leftmiddlebox">
+                <!-- 인적사항 / 왼쪽부분 -->
+                <div class="leftleftmiddlebox">
+                  희망임금
+                </div>
+              </div>
+
+              <div class="rightmiddlebox">
+
+                <!-- 성명, 주소 / 오른쪽 부분 -->
+                <div class="rightrightmiddlebox">
+                  <ul>
+                    <li>희망임금</li>
+                    	<span name="stu_wage" style="display: inline-block; float:left;">[[${vo[0].stu_wage}]]</span>
+                    <li>만원</li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+	</section>
+	
+	<form th:action="@{/user_mn/approve_apply/{stu_id}(stu_id=${vo[0].stu_id})}" method="get" class="submitForm">
+			<input type="hidden" name="stu_id" th:value="${vo[0].stu_id}">
+			<button>입사 제안하기</button>
+    </form>
+  
+  </div>
+        
+
+</body>
+</html>

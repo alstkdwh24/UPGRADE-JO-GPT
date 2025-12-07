@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.geomin.project.UserServiceTwo.UserServiceTwoMapper">
+  <select id="MyList" resultType="com.geomin.project.command.GameContentVO">
+ <!-- SELECT * from GAME_CONTENT
+  order by game_No desc limit #{JTwoPageFirst}, #{JTwoAmount}-->
+   
+
+  
+<!--  
+  SELECT g.purchase_date, a.user_no as user_no, a.game_price, a.game_title, a.game_sub_startDate, a.game_sub_endDate,s.sg_name 
+FROM GAME_CONTENT AS a
+LEFT JOIN GAME_PURCHASE AS g ON a.user_no = g.user_no
+LEFT JOIN STUDY_GROUP AS s ON a.user_no = s.user_no
+WHERE (g.purchase_date >= STR_TO_DATE(#{startDate}, '%Y-%m-%d') OR #{startDate} IS NULL OR #{startDate} = '')
+AND (g.purchase_date <![CDATA[<=]]> STR_TO_DATE(#{endDate}, '%Y-%m-%d') OR #{endDate} IS NULL OR #{endDate} = '')
+
+UNION All
+SELECT g.purchase_date, a.user_no , a.game_price, a.game_title, a.game_sub_startDate, a.game_sub_endDate ,s.sg_name 
+FROM GAME_CONTENT AS a
+RIGHT JOIN GAME_PURCHASE AS g ON a.user_no = g.user_no
+LEFT JOIN STUDY_GROUP AS s ON a.user_no = s.user_no
+WHERE (g.purchase_date >= STR_TO_DATE(#{startDate}, '%Y-%m-%d') OR #{startDate} IS NULL OR #{startDate} = '')
+AND (g.purchase_date<![CDATA[<=]]> STR_TO_DATE(#{endDate}, '%Y-%m-%d') OR #{endDate} IS NULL OR #{endDate} = '')
+
+UNION All
+
+SELECT g.purchase_date, a.user_no , a.game_price, a.game_title, a.game_sub_startDate, a.game_sub_endDate ,s.sg_name 
+FROM GAME_CONTENT AS a
+LEFT JOIN STUDY_GROUP AS s ON a.user_no = s.user_no
+RIGHT JOIN GAME_PURCHASE AS g ON a.user_no = g.user_no
+WHERE (g.purchase_date >= STR_TO_DATE(#{startDate}, '%Y-%m-%d') OR #{startDate} IS NULL OR #{startDate} = '')
+AND (g.purchase_date <![CDATA[<= ]]>STR_TO_DATE(#{endDate}, '%Y-%m-%d') OR #{endDate} IS NULL OR #{endDate} = '')
+group by user_no, purchase_date
+ORDER BY user_no DESC
+LIMIT #{JTwoPageFirst}, #{JTwoAmount} 
+-->
+SELECT 
+a.game_title,
+a.game_price,
+a.game_sub_regDate,
+a.game_sub_endDate,
+    b.user_no AS user_no, 
+    b.purchase_date, 
+    b.game_no, 
+    b.purchase_type
+FROM 
+    GAME_PURCHASE AS b
+JOIN 
+    GAME_CONTENT AS a ON a.user_no = b.user_no
+GROUP BY 
+a.game_title,
+a.game_price,
+a.game_sub_regDate,
+a.game_sub_endDate,
+    a.user_no, 
+    b.purchase_date, 
+    b.game_no, 
+    b.purchase_type
+ORDER BY 
+    user_no DESC, 
+    b.purchase_date
+LIMIT 
+    #{JTwoPageFirst}, #{JTwoAmount};
+  
+  </select>
+    <select id="JTwoTotal" resultType="int">
+SELECT count(*) as JTwoTotal FROM GAME_PURCHASE AS b JOIN GAME_CONTENT AS a ON a.user_no = b.user_no where a.user_no=#{user_no} ;
+  </select>
+  
+  </mapper>

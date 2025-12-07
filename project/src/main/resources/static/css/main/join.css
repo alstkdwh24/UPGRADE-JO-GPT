@@ -1,0 +1,150 @@
+  
+html, body{margin: 0;padding: 0;font-family: "Gothic A1", sans-serif;}
+ul, ol, li{list-style: none;}
+button, a{cursor: pointer;}
+button, a, li{color: black;}
+a:link, a:hover, a:focus, a:visited{text-decoration: none;}
+span, a, p, button, h1,h2,h3,h4,h5{font-family: "Gowun Dodum", sans-serif; font-weight: 400; font-style: normal;}
+
+/* header 추합시 삭제 해야함*/
+.wrapper{width: 100%; display: flex; align-items: center; justify-content: center;}
+.wrapper__header{width: 1245px; }
+
+/* header 회원가입 / 로그인 */
+.wrapper__header__above{width: 100%; display: flex; justify-content: flex-end; padding: 10px 0px;}
+.wrapper__header__above a, .wrapper__header__above div {font-family: "Gowun Dodum", sans-serif; font-weight: 600; padding: 0px 20px 0px 0px; cursor: pointer;}
+
+/* header 로고 / 메뉴 */
+.wrapper__header__below{width: 100%; height: 100px; display: flex; align-items: center;}
+
+/* left 로고 부분 */
+.wrapper__header__left{width: 30%; display: flex; align-items: center; justify-content: center;}
+.wrapper__header__left img{width: 60%;}
+
+.wrapper__header__right{width: 70%; height: 100%; display: flex; justify-content: flex-end;}
+.header__right__item{width: 115px; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; position: relative;}
+.header__right__item:hover img{display: flex;}
+
+.header__right__item img{width: 40px; position: absolute; top: 6px; left: 0; display: none;}
+.item_sub img{width: 50px;}
+.item_sub2 img{width: 35px;}
+
+/* footer */
+.footer__wrapper{width: 100%; height: 270px; background-color: rgb(53, 52, 52); display: flex; align-items: center; justify-content: center;} 
+.footer__content{width: 1245px; height: 100%; display: flex; flex-direction: column;}
+
+.footer__content__header{width: 100%; display: flex; margin-top: 40px;}
+.footer__header__item{width: 120px; display: flex; align-items: center; justify-content: center;}
+.footer__header__item a{color: rgb(212, 212, 212); font-size: 15px; }
+
+.footer__content__body{width: 100%; margin-top: 40px;}
+.footer__body__item{margin-left: 20px;}
+.footer__body__item span{font-size: 13px; color: rgb(212, 212, 212);}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal__wrapper{width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); position: absolute; left: 0; bottom: 0; z-index: 10; display: flex; align-items: center; justify-content: center;}
+
+.modal__wrapper__content{position: relative; width: 600px; height: 700px; background-color: white; border-radius: 15px; display: flex; flex-direction: column;} 
+
+.modal__title{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 20px;}
+.modal__title img{width: 270px;}
+
+.login__title{width: 100%; height: 30px; display: flex; align-items: center; justify-content: center; background-color: rgb(240, 195, 71); margin-top: 20px;}
+.login__title span{font-size: 18px; font-weight: bold;}
+
+.loginForm{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 30px;}
+
+.login__item{width: 260px; height: 70px; display: flex; flex-direction: column;}
+.login__item span{font-size: 12px; font-weight: bold;}
+.login__item input{width: 260px; height: 50px; border: none; border-bottom: 1px solid rgb(219, 217, 217); padding-left: 2px; margin-bottom: 10px; 
+                    &:focus{outline: none; border-bottom: 2px solid gray;}
+                  }
+
+
+.loginForm button{margin-top: 10px; width: 260px; height: 43px; border-radius: 8px; border: 1px solid rgb(196, 194, 194); font-size: 13px; font-weight: 600;}
+.loginForm button:hover{background-color: rgb(224, 222, 222);}
+
+.login__ba{width: 100%; display: flex; align-items: center; justify-content: center; height: 40px; margin-top: 10px;}
+.login__ba button{width: 260px; height: 43px; border-radius: 8px; border: 1px solid rgb(196, 194, 194); font-size: 13px; font-weight: 600;}
+.login__ba button:hover{background-color: rgb(224, 222, 222);}
+
+.login__menu{margin-top: 5px; width: 100%; display: flex; align-items: center; justify-content: center;}
+.login__menu__item{margin: 5px 5px; display: flex; align-items: center; justify-content: center;}
+.login__menu__item span, .login__menu__item a{font-size: 11px; font-weight: 600;}
+#save__id{display: flex; align-items: center; justify-content: center;}
+
+
+.social__login{width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 30px;}
+
+.goggle__login img{width: 177px; height: 38px; display: flex; align-items: center; justify-content: center; }
+.kakao__login img{width: 177px; height: 38px; border: 1px solid rgb(95, 94, 94); border-radius: 5px;}
+.naver__login img{margin-top: 5px; width: 175.5px; height: 38px; border: 1px solid rgb(95, 94, 94); border-radius: 5px;}
+.apple__login img{width: 177px; height: 38px; border: 1px solid rgb(95, 94, 94); border-radius: 5px;}
+
+.end__button{position: absolute; right: 20px; top: 15px; cursor: pointer;}
+.end__button i{font-size: 18px;font-weight: 600;}
+
+
+/**********************************************************************************************************************************************************************************/
+
+.join__section__wrapper{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+
+.join__title{width: 100%; height: 200px; background-image: url("/img/background.png"); display: flex; align-items: center; justify-content: center;}
+.join__title span{font-size: 35px; font-weight: bold;}
+
+.join__content{width: 1245px; display: flex; flex-direction: column; align-items: center;}
+
+.join__item{width: 500px; height: 70px; display: flex; flex-direction: column; margin-top: 20px; border-bottom: 1px solid rgb(197, 196, 196);}
+.join__item span{font-size: 12px; font-weight: 600;}
+.join__item input{width: 80%; height: 35px; border: none;  &:focus{outline: none; border-bottom: 2px solid black;}}
+.join__item__sub{display: flex; align-items: center;}
+.join__item__sub button{border: none; border-radius: 5px;  width: 120px; height: 32px; font-size: 12px; background-color: rgb(53, 124, 230); color: white; margin-left: 10px; &:focus{outline: none;}}
+#id_check_result{color: red;}
+
+.join__item__addr{width: 500px; height: 250px; display: flex; flex-direction: column; margin-bottom: 15px;}
+.join__item__addr span{font-size: 12px; font-weight: 600;}
+.item__addr__one{ margin-top: 15px; display: flex; align-items: center;}
+.item__addr__one input{margin-right: 10px; height: 30px; padding-left: 10px;}
+.item__addr__detail{margin-top: 15px; display: flex; flex-direction: column;}
+.item__addr__detail input{margin: 10px 0px; height: 30px; padding-left: 10px;}
+
+.join__item__level{padding-top: 15px; display: flex; flex-direction: column; width: 500px; border-bottom: 1px solid rgb(197, 196, 196); padding-bottom: 15px;}
+.join__item__level span{font-size: 12px; font-weight: 600;}
+.join__level__select{display: flex; align-items: center; margin-top: 15px;}
+.join__level__select span{font-size: 14px; font-weight: 600; margin-right: 15px;}
+
+.join__item__gender{padding-top: 15px; width: 500px; display: flex; flex-direction: column; border-top: 1px solid rgb(197, 196, 196);  padding-bottom: 15px; border-bottom: 1px solid rgb(197, 196, 196); }
+.join__item__gender span{font-size: 12px; font-weight: 600;}
+.join__gender__select{display: flex; align-items: center; margin-top: 10px;}
+.gender{display: flex; align-items: center; justify-content: center;}
+.gender span{font-size: 15px; font-weight: bold;}
+.gender input{margin-right: 15px;}
+
+.join__item__role{width: 500px; display: flex; flex-direction: column; margin-top: 20px;}
+.join__item__role span{font-size: 12px; font-weight: 600;}
+#user__role{width: 350px; height: 30px; margin-top: 15px;}
+
+.join__item__check{display: flex; flex-direction: column; width: 500px; margin-top: 20px; padding-bottom: 15px; border-bottom: 1px solid rgb(197, 196, 196);}
+.join__item__check span{font-size: 12px; font-weight: 600;}
+.check__approve{display: flex; margin-top: 15px; }
+.check__approve span{font-size: 15px; font-weight: normal;}
+
+.sns__approve{margin-left: 20px;}
+.sns__approve span{font-weight: bold;}
+.email__approve{margin-left: 10px;}
+.email__approve span{font-weight: bold;}
+
+.join__item__button{width: 500px; display: flex; align-items: center; justify-content: center; margin: 30px 0px;}
+.join__item__button button{width: 500px; height: 45px; font-size: 16px; font-weight: 600; border: 1px solid rgb(197, 196, 196);}
+.join__item__button button:hover{background-color: rgb(224, 223, 223);}

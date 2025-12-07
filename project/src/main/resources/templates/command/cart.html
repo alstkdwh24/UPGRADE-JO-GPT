@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="/static/js/order/deleteCart.js" defer></script>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/frame/cart.css">
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+<script src="/static/js/frame/lookup.js" defer></script>
+<script src="/static/js/frame/payment.js" defer></script>
+
+
+
+<div class="wrap">
+	<!-- user_no -->
+
+	<input type="hidden" th:value="${session.vo.user_id}" name="user_no" id="user_no">
+	
+	
+	
+	<div class=receipt-container>
+	
+		<div class="receipt-header">
+			<div class="session_id" th:data-user-no="${session.vo.user_no}">
+			[[${session.vo.user_id}]]님의 장바구니
+			</div>
+		</div>
+		<div class="cart-item" th:each="cartList : ${cartList}">
+			<div class="item-image">
+				<img src="/img/01_game_main.png" alt="content_pic">
+			</div>
+			<div class="item-details">
+				<div class="game_title">제목: [[${cartList.game_title}]]</div>
+				<div class="game_level">레벨: [[${cartList.game_target_level}]]</div>
+				<div class="game_content">[[${cartList.game_content}]]</div>
+				<div class="price">가격: [[${cartList.game_price}]]</div>
+				<div class="game_no" th:data-game-no=${cartList.game_no}></div>
+			</div>
+			<button class="delete_btn">X</button>
+		</div>
+		
+
+		<!-- 총 금액 -->
+		<div class="total_bill">
+            <span>총 금액:</span> 
+            <div id="total_price" class="total_price" th:text="${total_price} + 원"></div>
+        </div>
+		
+		<!-- 결재하기 -->
+		<div class="total_payment">
+			<button class="btn-checkout" id="checkoutButton">결재하러 가기</button>
+		</div>
+	</div>
+	
+	<script>
+	  const user_no = $('.session_id').data('user-no');
+	  const game_no = $(".game_no").data('game-no');
+	  const total = $('#total_price').text();
+	  console.log(total);
+	  
+	  $("#checkoutButton").click(function() {
+		    window.location.href="/command/payment"
+	  });
+	  
+	  $(".delete_btn").click(function(e) {
+			$.get("/del/cart", {user_no: user_no, game_no: game_no})
+			 .done(function(data){
+				 console.log("successfully deleted")
+				 e.target.parentElement.style.display="none";
+				 window.location.href="/command/cart"
+			 })
+			 .fail(function(error){
+				 console.log("fail to delete");
+			 })
+	  })
+	  
+	  var totalContent = $(".game_title").val() ;
+	  console.log(totalContent + "11");  
+	</script>
+
+	
+</div>
+</th:block>
+</html>

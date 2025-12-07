@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script>$(function(){$("#header").load("/html/include_main/header_main.html");$("#footer").load("/html/include_main/footer_main.html");});</script>
+  <link rel="stylesheet" href="/css/main.css">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div th:include="/include_main/header_main"></div>
+
+  <section>
+
+    <div class="section__first"></div>
+
+    <div class="section__second">
+
+      <div class="section__second__title"><span>학생 | 기업 | 교직원</span></div>
+
+      <div class="section__second__menu">
+        <a href="/user/join">
+          <div class="section__menu__student"></div>
+          <span>학생</span>
+        </a>
+        <a href="/user/join">
+          <div class="section__menu__company"></div>
+          <span>기업</span>
+        </a>
+        <a href="/user/join">
+          <div class="section__menu__manager"></div>
+          <span>교직원</span>
+        </a>
+      </div>
+
+      <div class="section__second__info"><span>* 사용자의 조건에 맞게 버튼을 클릭하여 접속하여주시기 바랍니다.</span></div>
+
+    </div>
+
+    <div class="section__third">
+
+      <div class="section__third__menu">
+
+        <a href=""><div class="section__menu__event"><span id="menu__name">교육/행사</span><span>다양한 교육/행사를 확인해보세요!</span></div></a>
+        <a href=""><div class="section__menu__hire"><span id="menu__name">채용정보</span><span>나의 맞춤공고를 확인해보세요.</span></div></a>
+        <a href=""><div class="section__menu__notice"><span id="menu__name">공지사항</span><span>최신 공지사항을 확인해보세요.</span></div></a>
+
+      </div>
+
+    </div>
+    
+    <div class="section__fourth">
+      
+      <div class="section__fourth__container">
+        <a href="" class="section__fourth__into">채용공고 더보기</a>
+
+        <h2>채용공고</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>채용공고</th>
+                    <th>기업명</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>웹 개발자 채용</td>
+                    <td>ABC 주식회사</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>데이터 분석가 채용</td>
+                    <td>XYZ 기업</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>웹 개발자 채용</td>
+                  <td>ABC 주식회사</td>
+              </tr>
+              <tr>
+                  <td>4</td>
+                  <td>데이터 분석가 채용</td>
+                  <td>XYZ 기업</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>웹 개발자 채용</td>
+                <td>ABC 주식회사</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>데이터 분석가 채용</td>
+                <td>XYZ 기업</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div th:include="/include_main/footer_main"></div>
+
+</body>
+</html>

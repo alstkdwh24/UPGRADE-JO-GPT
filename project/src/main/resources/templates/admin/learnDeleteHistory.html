@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/learnLook.css">
+<script src="/js/frame/learnLook.js" defer></script>
+
+  <div class="wrap__content">
+    <form action="" method="post" class="regist__wrap" enctype="multipart/form-data">
+    
+    <input type="hidden" name="page" value="1">
+  	<input type="hidden" name="amount" th:value="${pageVO.amount}">
+      
+      <div class="ll__header">
+        <div class="ll__header__title"><span>학습 자료 삭제 이력</span></div>
+        
+      </div>
+
+
+      <div class="ll__body">
+        <div class="ll__body__table">
+
+
+          <div class="ll__body__thead">
+            <div class="ll__thead_one">선택</div>
+            <div class="ll__thead_two">학습자료 이미지</div>
+            <div class="ll__thead_three">학습자료명</div>
+            <div class="ll__thead_four">자료구분</div>
+            <div class="ll__thead_five">자료유형</div>
+            <div class="ll__thead_six">서비스구분</div>
+            <div class="ll__thead_seven">등록일</div>
+            <div class="ll__thead_eight">버튼</div>
+          </div>
+
+
+          <div class="ll__body__tbody">
+
+			<th:block th:each="Document : ${Document}">
+	            <div class="ll__tbody__content">
+	              <div class="ll__tbody_one"><input type="checkbox" th:value="${Document.docu_no}" class="learn_checkBox"></div>
+	              <div class="ll__tbody_two"><img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${Document.filepath},uuid=${Document.uuid},filename=${Document.filename})}"  ></div>
+	              <div class="ll__tbody_three" th:text="${Document.docu_title}">학습자료명</div>
+	              <div class="ll__tbody_four">
+	              	<span th:if="${Document.docu_type == 0}">튜토리얼</span>
+	              	<span th:if="${Document.docu_type == 1}">교육영상</span>
+	              </div>
+	              <div class="ll__tbody_five">
+                  <span th:if="${Document.docu_category == 0}">동영상</span>
+                  <span th:if="${Document.docu_category == 1}">교재</span>
+                  <span th:if="${Document.docu_category == 2}">웹사이트</span>
+                  </div>
+	              <div class="ll__tbody_six">
+                  <span th:if="${Document.docu_service == 0}">무료</span>
+                  <span th:if="${Document.docu_service == 1}">유료</span>
+				        </div>
+	              <div class="ll__tbody_seven" th:text="${Document.docu_path}">등록일</div>
+	              <div class="ll__tbody_eight"><button id="ll__modify">수정</button><button class="ll__delete">삭제</button></div>
+	            </div>
+          	</th:block>
+
+          </div>
+        </div>
+        <th:block th:replace="~{./baseLayout/page_learnDel :: pageNation(${pageVOlearnDel})}"></th:block>
+      </div>
+      
+    </form>
+     
+  </div>
+ 	
+</div>
+  
+</th:block>
+</html>

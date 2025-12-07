@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<!-- 민상 -->
+<html xmlns:th="http://www.thymeleaf.org">
+		<link rel="stylesheet" href="/css/user/lookup.css"> 
+<th:block
+	th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+	<div class="wrap">
+		<input type="hidden" name="JTwoPage" value="1">
+					<input type="hidden" name="JTwoAmount" th:value="${JTwoPageVO.JTwoAmount}">
+
+		<div class="power">
+			<div class="tr_food">
+			<div class="total_home_1">달성한 퀘스트 횟수</div>
+				<div class="total_home" id="home">학습컨텐츠명 or 퀘스트명</div>
+				<div class="total_home">학습수준 or 퀘스트 난이도</div>
+				<div class="total_home_2" id="tota_home">구독시작일 or 퀘스트 시작일</div>
+				<div class="total_home_2" id="tota_home">만기일 or 퀘스트 완료일 </div>
+			</div>
+			<div class="tr_food_job">
+			<div class="total_home_job">count</div>
+				<div class="total_home_job">homework_name</div>
+				<div class="total_home_job" >homework_level</div>
+				<div class="total_home_job">homework_regdate</div>
+				<div class="total_home_job">s</div>
+				
+			</div>
+
+
+
+
+		</div>
+		
+				<div th:replace='/re_base_pagevo/User_product_PageList.html :: User_product_PageList'>s</div>	
+			
+	</div>
+	</body>
+
+</th:block>
+
+</body>
+</html>

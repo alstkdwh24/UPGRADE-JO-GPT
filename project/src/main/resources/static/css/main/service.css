@@ -1,0 +1,58 @@
+.service__title{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 20px;}
+.service__title span{font-size: 25px; font-weight: 600;}
+
+.service__menu{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 20px;}
+.service__menu div{margin: 0px 20px; width: 150px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+.service__menu > div > a{padding: 10px 0px; border-bottom: 3px solid rgb(243, 138, 19); font-weight: bold;}
+.service__menu div:hover a{transform: translateY(-5px); transition: transform 0.5s linear;}
+
+
+/* 소개 1 */
+.service__menu__first{width: 100%; display: flex; align-items: center; justify-content: center;  margin-top: 30px; border-top: 1px solid rgb(206, 206, 206); padding-top: 30px;}
+.first__content{width: 1245px;}
+.first__title{width: 100%; display: flex; align-items: center; justify-content: center;}
+.first__title span{font-weight: 600; font-size: 20px; padding-bottom: 5px; border-bottom: 3px solid rgb(243, 138, 19);}
+.first__above{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 50px;}
+.first__below{display: flex; flex-direction: column; margin-top: 30px;}
+.first__below span{padding: 3px 0px;}
+
+/* 소개 2 */
+.service__menu__second{width: 100%; display: flex; align-items: center; justify-content: center;  margin-top: 30px; border-top: 1px solid rgb(206, 206, 206); padding-top: 30px;}
+.second__content{width: 1245px;}
+.second__title{width: 100%; display: flex; align-items: center; justify-content: center;}
+.second__title span{font-weight: 600; font-size: 20px; padding-bottom: 5px; border-bottom: 3px solid rgb(243, 138, 19);}
+.second__title > span > a {font-weight: bold;}
+.second__above{display: flex; width: 100%; align-items: center; justify-content: center;}
+.second__above #img1{width: 400px; height: 300px;}
+.second__above #img2{width: 500px;}
+.second__download{display: flex; align-items: center; justify-content: center; width: 100%;}
+.second__download__item{display: flex; flex-direction: column;  width: 400px; align-items: center; justify-content: center;}
+.second__download__item img{width: 100px;}
+.second__download__item span{font-weight: bold;}
+
+/* 소개 3 */
+.service__menu__third{width: 100%; display: flex; align-items: center; justify-content: center;  margin-top: 30px; border-top: 1px solid rgb(206, 206, 206); padding-top: 30px;}
+.third__content{width: 1245px;}
+.third__title{width: 100%; display: flex;   align-items: center; justify-content: center;}
+.third__title span{font-weight: 600; font-size: 20px; padding-bottom: 5px; border-bottom: 3px solid rgb(243, 138, 19);}
+.third__content{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 30px;}
+.third__content span{font-size: 30px; font-weight: bold;}
+.third__explanation{margin-top: 30px; display: flex;align-items: center; justify-content: center; width: 100%;}
+.third__explanation__detail{display: flex; flex-direction: column; align-items: center; justify-content: center; width: 500px; height: 400px; background-color: rgb(219, 215, 215); border-radius: 15px;}
+.third__explanation__detail span{font-size: 20px; line-height: 100px; }
+
+/* 소개 4 */
+.service__menu__fourth{width: 100%; display: flex; align-items: center; justify-content: center;  margin-top: 30px; border-top: 1px solid rgb(206, 206, 206); padding-top: 30px;}
+.fourth__content{width: 1245px;}
+.fourth__title{width: 100%; display: flex; align-items: center; justify-content: center;}
+.fourth__title span{font-weight: 600; font-size: 20px; padding-bottom: 5px; border-bottom: 3px solid rgb(243, 138, 19);}
+.fourth__link{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 30px;} 
+.fourth__link a{font-weight: 600;}
+.fourth__link img{width: 700px;}
+.fourth__map{margin-top: 30px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.fourth__map span{font-weight: 600; font-size: 18px;}
+#map{margin-top: 20px; border: 2px solid rgb(243, 138, 19); margin-bottom: 30px;}
+
+.fourth__come{display: flex; align-items: center; justify-content: center; margin-bottom: 50px;}
+.fourth__come__detail{display: flex; flex-direction: column; width: 700px;}
+.fourth__come span{font-weight: 600; font-size: 15px; line-height: 30px;}

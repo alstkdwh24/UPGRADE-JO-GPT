@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+  <div class="wrap__content">
+
+    <div class="lookup__header">
+      <!-- 조회 타이틀 -->
+      <div class="lookup__header__title"><span>내 구독상품 조회</span></div>
+
+      <!-- 우측 정렬 -->
+      <div class="myProduct__header__detail">
+
+        <!-- 버튼 정렬 -->
+        <div class="lookup__detail__left">
+          <div class="myProduct__title"><img src="/img/calandar.png" alt="">구매 기간</div>
+          <div class="myProduct__date">
+            <input type="month" data-placeholder="날짜 선택"> ~
+            <input type="month"  data-placeholder="날짜 선택">
+          </div>
+          <button id="myProduct__date__btn">조회</button>
+        </div>
+
+        <!-- select 정렬 -->
+        <div class="lookup__detail__right">
+          <img src="/img/sort.png" alt="">
+          <select name="" id="">
+            <option value=""> 정렬</option>
+            <option value="">가나다순</option>
+            <option value="">제목순</option>
+            <option value="">등록일순</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="lookup__body">
+
+      <div class="lookup__table">
+
+        <div class="table__thead">
+          <div class="thead__check">번호</div>
+          <div class="thead__image">컨텐츠</div>
+          <div class="thead__title">컨텐츠제목</div>
+          <div class="thead__subscribe">가격/구독</div>
+          <div class="thead__introduce">구매일자</div>
+          <div class="thead__pay">학습그룹 등록내역</div>
+        </div>
+        <div class="table__tbody">
+          <!-- 반복하는 곳 -->
+          <div class="tbody__item">
+            <!-- 선택 -->
+            <div class="tbody__check">
+              <span>1</span>
+            </div>
+
+            <!-- 컨텐츠 사진 -->
+            <div class="tbody__image">
+              <img src="/img/01_game_main.png" alt="">
+            </div>
+
+            <!-- 컨텐츠 제목 -->
+            <div class="tbody__title">컨텐츠제목</div>
+
+            <!-- 컨텐츠 가격 -->
+            <div class="tbody__subscribe">
+              <div class="tbody__subscribe__above">
+                <div class="subscribe__above__price"><div class="price__title">기본가 : </div> <span>15000원</span></div>
+                <div class="subscribe__above__count"><div class="price__title">가격(1인) : </div> <span>월 3000원 </span></div>
+              </div>
+              <div class="tbody__subscribe__below">
+                <div class="item__date">기간 </div>
+                <span>2024년 10월 12일 ~ 2024년 12월 15일</span>
+              </div>
+            </div>
+
+            <!-- 컨텐츠 구매일자 -->
+            <div class="tbody__introduce">2023.10.14</div>
+
+            <!-- 컨텐츠 학습 그룹 등록 내역 -->
+            <div class="tbody__pay">
+              <span>강남학원 초급반</span>
+            </div>
+          </div>
+
+          <!-- 반복하는 곳 -->
+          <div class="tbody__item">
+            <!-- 선택 -->
+            <div class="tbody__check">
+              <span>2</span>
+            </div>
+
+            <!-- 컨텐츠 사진 -->
+            <div class="tbody__image">
+              <img src="/img/01_game_main.png" alt="">
+            </div>
+
+            <!-- 컨텐츠 제목 -->
+            <div class="tbody__title">컨텐츠제목</div>
+
+            <!-- 컨텐츠 가격 -->
+            <div class="tbody__subscribe">
+              <div class="tbody__subscribe__above">
+                <div class="subscribe__above__price"><div class="price__title">기본가 : </div> <span>15000원</span></div>
+                <div class="subscribe__above__count"><div class="price__title">가격(1인) : </div> <span>월 3000원 </span></div>
+              </div>
+              <div class="tbody__subscribe__below">
+                <div class="item__date">기간 </div>
+                <span>2024년 10월 12일 ~ 2024년 12월 15일</span>
+              </div>
+            </div>
+
+            <!-- 컨텐츠 구매일자 -->
+            <div class="tbody__introduce">2023.10.14</div>
+
+            <!-- 컨텐츠 학습 그룹 등록 내역 -->
+            <div class="tbody__pay">
+              <span>강남학원 초급반</span>
+            </div>
+          </div>
+
+
+          <!-- 반복하는 곳 -->
+          <div class="tbody__item">
+            <!-- 선택 -->
+            <div class="tbody__check">
+              <span>3</span>
+            </div>
+
+            <!-- 컨텐츠 사진 -->
+            <div class="tbody__image">
+              <img src="/img/01_game_main.png" alt="">
+            </div>
+
+            <!-- 컨텐츠 제목 -->
+            <div class="tbody__title">컨텐츠제목</div>
+
+            <!-- 컨텐츠 가격 -->
+            <div class="tbody__subscribe">
+              <div class="tbody__subscribe__above">
+                <div class="subscribe__above__price"><div class="price__title">기본가 : </div> <span>15000원</span></div>
+                <div class="subscribe__above__count"><div class="price__title">가격(1인) : </div> <span>월 3000원 </span></div>
+              </div>
+              <div class="tbody__subscribe__below">
+                <div class="item__date">기간 </div>
+                <span>2024년 10월 12일 ~ 2024년 12월 15일</span>
+              </div>
+            </div>
+
+            <!-- 컨텐츠 구매일자 -->
+            <div class="tbody__introduce">2023.10.14</div>
+
+            <!-- 컨텐츠 학습 그룹 등록 내역 -->
+            <div class="tbody__pay">
+              <span>강남학원 초급반</span>
+            </div>
+
+          </div>
+
+
+          <!-- 반복하는 곳 -->
+          <div class="tbody__item">
+            <!-- 선택 -->
+            <div class="tbody__check">
+              <span>4</span>
+            </div>
+
+            <!-- 컨텐츠 사진 -->
+            <div class="tbody__image">
+              <img src="/img/01_game_main.png" alt="">
+            </div>
+
+            <!-- 컨텐츠 제목 -->
+            <div class="tbody__title">컨텐츠제목</div>
+
+            <!-- 컨텐츠 가격 -->
+            <div class="tbody__subscribe">
+              <div class="tbody__subscribe__above">
+                <div class="subscribe__above__price"><div class="price__title">기본가 : </div> <span>15000원</span></div>
+                <div class="subscribe__above__count"><div class="price__title">가격(1인) : </div> <span>월 3000원 </span></div>
+              </div>
+              <div class="tbody__subscribe__below">
+                <div class="item__date">기간 </div>
+                <span>2024년 10월 12일 ~ 2024년 12월 15일</span>
+              </div>
+            </div>
+
+            <!-- 컨텐츠 구매일자 -->
+            <div class="tbody__introduce">2023.10.14</div>
+
+            <!-- 컨텐츠 학습 그룹 등록 내역 -->
+            <div class="tbody__pay">
+              <span>강남학원 초급반</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="table__page">
+          <div class="table__page__list">
+            <button class="page__button page__active">1</button>
+            <button class="page__button">2</button>
+            <button class="page__button">3</button>
+            <button class="page__button">4</button>
+            <button class="page__button">5</button>
+            <button class="page__button">6</button>
+            <button class="page__button">7</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</th:block>
+</html>

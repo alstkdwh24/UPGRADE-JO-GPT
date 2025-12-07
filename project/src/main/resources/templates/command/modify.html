@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+  
+<div class="wrap">
+<script src="/js/frame/fileUpload.js" defer></script>
+  <div class="modify__wrap">
+    <!-- 회원정보 입력 후 controller 이동 -->
+    <form action="/member/updateForm" method="post" class="modify__left">
+
+      <div class="modify__left__header"><span>개인 정보 수정</span></div>
+
+      <div class="modify__left__body">
+        <!-- 프로필 사진 변경 -->
+        <div class="modify__body__left">
+          <div class="modify__profile__change">
+
+            <div class="profile__change__header">
+              <img id="previewImages" src="/img/default.png" alt="기본이미지">
+            </div>
+
+            <div class="profile__change__body">
+              
+              <div class="profile__body__form">
+                <input type="file" id="modify__fileInput" accept="image/*">
+                <div class="profile__form__button">
+                  <input type="submit" value="변경">
+                  <input type="reset" value="취소">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- 회원 정보 수정 -->
+        <div class="modify__body__right">
+          <div class="modify__bodyRight__content">
+            <div class="modify__bodyRight__item">
+              <span>이름</span>
+              <input type="text" name="user_name" th:value="${session.vo.user_name}" id="inputField1">
+            </div>
+
+            <div class="modify__bodyRight__item">
+              <span>아이디</span>
+              <input type="text" name="user_id" th:value="${session.vo.user_id}" id="inputField2">
+            </div>
+
+            <div class="modify__bodyRight__item">
+              <span>이메일</span>
+              <input type="email" name="user_email" th:value="${session.vo.user_email}" id="inputField3">
+            </div>
+
+            <div class="modify__bodyRight__item">
+              <span>연락처</span>
+              <input type="text" name="user_phone" th:value="${session.vo.user_phone}" id="inputField4">
+            </div>
+
+            <div class="modify__bodyRight__Join">
+              <span>주소</span>
+              <div class="item__addr__one">
+                <input type="text" id="sample4_postcode" placeholder="우편번호" value="session.우편주소">
+                <input type="button" id="looking__btn"  onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+              </div>
+              <div class="item__addr__detail">
+                <input type="text" id="sample4_roadAddress" placeholder="도로명주소" value="session.도로명주소">
+                <input type="text" id="sample4_jibunAddress" placeholder="지번주소" value="session.지번주소">
+                <span id="guide" style="color:#999;display:none"></span>
+                <input type="text" id="sample4_detailAddress" name="user_address" placeholder="상세주소" th:value="${session.vo.user_address}">
+              </div>
+            </div>
+
+            <div class="modify__bodyRight__submit">
+              <input type="submit" value="회원 정보 수정">
+              <button id="cancelBtn" type="reset">취소</button>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+    </form>
+
+    
+    <div class="modify__right">
+      <img src="/img/KBA_MainLogo.png" alt="" id="modify__right__img">
+      <img src="/img/KBA_mascot_blackandwhite.png" alt="">
+    </div>
+
+    
+  </div>
+</div>
+
+ </th:block>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/question.css">
+<script src="/js/frame/question.js" defer></script>
+  <form name="question" id="question" action="question" method="get" class="wrap__content">  
+	
+	<input type="hidden" name="page" value="1">
+  	<input type="hidden" name="amount" th:value="${pageVO.amount}">
+
+    <div class="q__wrap">
+
+      <div class="q__wrap__head">
+        <div class="q__wrap__title"><span>내 문의사항</span></div>
+        <div class="q__wrap__select">
+          <select name="searchType" id="searchType">
+
+            <option value="100" th:selected="${pageVO.criteria.searchType == none}">유형을 선택해주세요.</option>
+            <option value="1" th:selected="${pageVO.criteria.searchType == 1}">회원 정보</option>
+            <option value="2" th:selected="${pageVO.criteria.searchType == 2}">상품 구매</option>
+            <option value="3" th:selected="${pageVO.criteria.searchType == 3}">사이트 이용</option>
+            <option value="4" th:selected="${pageVO.criteria.searchType == 4}">기타</option>
+
+          </select>
+          <button type="submit" id="serachBtn">검색</button>
+        </div>
+      </div>
+
+      <div class="q__wrap__body">
+
+        <!-- 문의사항 조회 -->
+        <div class="qw__left">
+          <!--문의사항 조회-->
+          <div class="qwl__up">
+
+            <div class="qwl__thead">
+              <div class="qwl__thead__one">번호</div>
+              <div class="qwl__thead__two">문의사항</div>
+              <div class="qwl__thead__three">비고</div>
+            </div>
+            <div class="qwl__tbody">
+            <th:block th:each="Qnalist:${Qnalist}">
+              <div class="qwl__tbody__box">
+                <div class="qwl__tbody__one" th:text="${Qnalist.qna_no}">번호</div>
+                <div class="qwl__tbody__two" th:text=${Qnalist.qna_title}>문의사항</div>
+                <div class="qwl__tbody__three">
+                  <a th:href="@{/command/qnaDelete?(qna_no=${Qnalist.qna_no})}" id="a2">삭제</a>
+                </div>
+              </div>
+            </th:block>
+            </div>
+
+          </div>
+
+          <!--페이지네이션-->
+          <div class="qwl__down">
+            <th:block th:replace="~{./baseLayout/page_question :: pageNation(${pageVOquestion})}"></th:block>
+          </div>
+        </div>
+
+        <!-- 문의사항 작성 -->
+        <div class="qw__right">
+
+          <div class="qwr__head">
+            <span>문의사항 등록</span>
+          </div>
+          <div class="qwr__body">
+
+            <div class="qwr__b_wrap">
+
+
+              <div class="qwr__item">
+                <div class="qwr__item__title"><span>문의 유형</span></div>
+                <select name="qna_type" id="" required>
+                  <option value="100">문의 유형을 선택해주세요.</option>
+                  <option value="1">회원 정보</option>
+                  <option value="2">상품 구매</option>
+                  <option value="3">사이트 이용</option>
+                  <option value="4">기타</option>
+                </select>
+              </div>
+
+              <div class="qwr__item">
+                <div class="qwr__item__title"><span>질문</span></div>
+                <input type="text" name="qna_title" autocomplete="off">
+              </div>
+
+              <div class="qwr__item">
+                <div class="qwr__item__title"><span>알림 여부</span></div>
+                <div class="qwr__item__radio">
+                  <input type="radio" value="1" name="qna_check">
+                  <span>허용</span>
+                </div>
+                <div class="qwr__item__radio">
+                  <input type="radio" value="2" name="qna_check">
+                  <span>거절</span>
+                </div>
+              </div>
+
+              <div class="qwr__img">
+                <img src="/img/KBA_mascot_blackandwhite.png" alt="">
+              </div>
+              
+            </div>
+			
+          </div>
+          <div class="qwr__foot">
+          	<input type="hidden" name="qna_delCheck" value="Y">
+          	<input type="hidden" name="user_no" th:value="${userVO.user_no}">
+            <button id=registForm onclick="changeActionAndSubmit()">문의사항 등록</button>
+            <button type="reset">취소</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </form>
+</div>
+
+
+</th:block>
+</html>

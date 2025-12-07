@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user/login.css">
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+  <script>$(function(){$("#header").load("/html/include_main/header_main.html");$("#footer").load("/html/include_main/footer_main.html");});</script>
+  <script src="/js/user/login.js"></script>
+  <title>제이커리어 로그인</title>
+</head>
+<body>
+  
+  <div th:include="/include_main/header_main"></div>
+
+  <section>
+
+    <div class="section__login__header">
+
+      <div class="section__login__background">
+
+        <div class="section__login__content">
+          <span>로그인</span>
+        </div>
+
+        <div class="section__login__body">
+
+          <div class="login__body__above">
+
+            <div class="above__student"><span>학 생</span></div>
+            <div class="above__company"><span>기 업</span></div>
+            <div class="above__manager"><span>교직원</span></div>
+
+          </div>
+
+          <div class="login__body__below">
+
+            <!-- student -->
+            <form action="login" method="post" class="below__student">
+              
+              <!-- 로그인 입력 창 -->
+              <div class="below__student__left">
+                <div class="student__left__login">
+                  <input type="text" name="stu_id" placeholder="학번 또는 아이디를 입력하세요.">
+                  [[${id_msg}]]
+                  <i class="fa-regular fa-user"></i>
+                  
+                </div>
+                <div class="student__left__login">
+                  <input type="password" name="stu_pw" placeholder="비밀번호를 입력하세요.">
+                  [[${pw_msg}]]
+                  <i class="fa-solid fa-lock"></i>
+                  
+                </div>
+              </div>
+              <!-- 로그인 버튼 -->
+              <div class="below__student__right">
+                <button>로그인</button>
+              </div>
+			
+            </form>
+
+            <!-- company -->
+            <form action="login" method="post" class="below__company">
+              
+              <!-- 로그인 입력 창 -->
+              <div class="below__student__left">
+                <div class="student__left__login">
+                  <input type="text" name="com_id" placeholder="사업자번호를 입력하세요.">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="student__left__login">
+                  <input type="password" name="com_pw" placeholder="비밀번호를 입력하세요.">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+              <!-- 로그인 버튼 -->
+              <div class="below__student__right">
+                <button>로그인</button>
+              </div>
+
+            </form>
+
+            <!-- manager -->
+            <form action="login" method="post" class="below__manager">
+              
+              <!-- 로그인 입력 창 -->
+              <div class="below__student__left">
+                <div class="student__left__login">
+                  <input type="text" name="man_id" placeholder="교직원번호를 입력하세요.">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="student__left__login">
+                  <input type="password" name="man_pw" placeholder="비밀번호를 입력하세요.">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+              </div>
+              <!-- 로그인 버튼 -->
+              <div class="below__student__right">
+                <button>로그인</button>
+              </div>
+		
+			
+		
+            </form>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div th:include="/include_main/footer_main"></div>
+</body>
+</html>

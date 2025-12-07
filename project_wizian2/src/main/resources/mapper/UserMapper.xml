@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.project_wizian2.user.service.UserMapper">
+
+	<insert id="stu_regist">                       
+		insert into STUDENT (stu_id,
+							 stu_pw,
+							 stu_name,
+							 stu_phone,
+							 stu_email)
+							 
+									values ( #{stu_id},
+									 #{stu_pw},
+									 #{stu_name},
+									 #{stu_phone},
+									 #{stu_email})
+	</insert>
+	
+	<insert id="com_regist">
+		insert into COMPANY (com_id,
+						     com_pw,
+						     com_name,
+						     com_department,
+						     com_phone,
+						     com_email,
+						     com_type)
+		
+							values ( #{com_id},
+									 #{com_pw},
+									 #{com_name},
+									 #{com_department},
+									 #{com_phone},
+									 #{com_email},
+									 #{com_type})
+	</insert>
+
+	<insert id="man_regist">
+		insert into MANAGER (man_id,
+							 man_pw,
+							 man_name,
+							 man_department,
+							 man_phone,
+							 man_email)
+							 
+							values ( #{man_id},
+									 #{man_pw},
+									 #{man_name},
+									 #{man_department},
+									 #{man_phone},
+									 #{man_email} )
+	</insert>
+
+
+	<select id="stu_idcheck" resultType="StudentVO">
+		select * from STUDENT where stu_id = #{stu_id};
+	</select>
+
+	<select id="com_idcheck" resultType="CompanyVO">
+		select * from COMPANY where com_id = #{com_id};
+	</select>
+
+	<select id="man_idcheck" resultType="ManagerVO">
+		select * from MANAGER where man_id = #{man_id};
+	</select>
+
+</mapper>
+

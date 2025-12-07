@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/priceLook.css">
+<script src="/js/frame/priceLook.js" defer></script>
+  <div class="wrap__content">
+    <form action="priceLook" name="priceLook" method="get" id="priceForm" class="price__wrap">
+
+	  <input type="hidden" name="page" value="1">
+  	  <input type="hidden" name="amount" th:value="${pageVO.amount}">
+
+      <div class="price__head">
+
+          <div class="ph__title"><span>매출 조회</span></div>
+
+          <div class="ph__item">
+
+            <div class="ph_item__date">
+              <div class="ph__date__title">기간 조회</div>
+            <input type="date" name="startDate" th:value="${pageVO.criteria.startDate}">
+            <span>-</span>
+            <input type="date" name="endDate" th:value="${pageVO.criteria.endDate}">
+          </div>
+
+          <div class="ph__item__check">
+            <div class="ph__item__checkWrap">
+              <div class="ph__check__title">일 단위</div>
+              <input type="checkbox" name="checkDay">
+            </div>
+            <div class="ph__item__checkWrap">
+              <div class="ph__check__title">월 단위</div>
+              <input type="checkbox" name="checkMonth">
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="ph__price">
+
+          <div class="ph__price__total">
+            <div class="total__title">총 매출액</div>
+            <input type="text" id="total__all__price" readonly>
+          </div>
+
+          <div class="ph__price__count">
+            <div class="total__title">총 구매 수</div>
+            <input type="text" id="total__all__count" readonly>
+          </div>
+
+          <button id="searchBtn1" type="submit">검색</button>
+          <button id="searchBtn2">그래프</button>
+          
+        </div>
+
+        
+      </div>
+
+      <div class="price__body">
+
+        <div class="pb__thead">
+          <div class="pb__thead__one">번호</div>
+          <div class="pb__thead__two">일 / 월</div>
+          <div class="pb__thead__three">건수</div>
+          <div class="pb__thead__four">매출 금액</div>
+          <div class="pb__thead__five">상세 보기</div>
+        </div>
+
+
+        <div class="pb__tbody">
+          <!-- 7개 목록 -->
+          <th:block th:each="list:${list}">
+          <div class="pb__tbody__con">
+            <div class="pb__tbody__one" th:text="${listStat.count}">번호</div>
+            <div class="pb__tbody__two" th:text="${list.purchase_date}">일 / 월</div>
+            <div class="pb__tbody__three" th:text="${list.cnt}+ 건" th:data-value="${list.cnt}">건수</div>
+            <div class="pb__tbody__four" th:text="${list.price_sum}+ 원" th:data-value="${list.price_sum}"></div>
+            <div class="pb__tbody__five">
+              <button id="priceModalBtn" th:value="${list.purchase_date}">상세보기</button>
+            </div>
+          </div>
+          </th:block>
+        </div>
+
+      </div>
+
+      <div id="priceModal" class="priceModal">
+
+        <!-- Modal content -->
+        <div class="price-modal-content">
+          <span class="priceClose">&times;</span>
+          <p>구매 정보 상세조회</p>
+          <div class="pm__thead">
+            <div class="pm__thead__one">번호</div>
+            <div class="pm__thead__two">구매자</div>
+            <div class="pm__thead__three">게임 컨텐츠</div>
+            <div class="pm__thead__four">금액</div>
+            <div class="pm__thead__five">구매일</div>
+          </div>
+          <div class="pm__tbody" id="pm__tbody">
+
+            <!-- <div class="pm__tbody__container">
+              <div class="pm__tbody__one" id="pm__tbody__one">번호</div>
+              <div class="pm__tbody__two" id="pm__tbody__two">구매자</div>
+              <div class="pm__tbody__three" id="pm__tbody__three">게임 컨텐츠</div>
+              <div class="pm__tbody__four" id="pm__tbody__four">금액</div>
+              <div class="pm__tbody__five" id="pm__tbody__five">구매일</div>
+            </div> -->
+
+          </div>
+     
+        </div>
+      
+      </div>
+
+      <div class="price__page">
+      	<th:block th:replace="~{./baseLayout/page_price :: pageNation(${pageVOprice})}"></th:block>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+</th:block>
+</html>

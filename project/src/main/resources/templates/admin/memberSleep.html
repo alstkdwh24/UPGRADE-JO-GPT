@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/memberSleep.css">
+
+  <form action="memberSleep" name="memberSleep" method="get" class="sleep_wrap">
+
+	<input type="hidden" name="page" value="1">
+  	<input type="hidden" name="amount" th:value="${pageVO.amount}">
+    <div class="sleep__head">
+      <div class="sleep__head__title"><span>휴먼계정조회</span></div>
+      <div class="sleep__head__select">
+        <select name="searchType" id="searchType">
+          <option value="100" th:selected="${pageVO.criteria.searchType == none}">전체</option>
+          <option value="1" th:selected="${pageVO.criteria.searchType == 1}">선생</option>
+          <option value="2" th:selected="${pageVO.criteria.searchType == 2}">학생</option>
+          <option value="3" th:selected="${pageVO.criteria.searchType == 3}">일반사용자</option>
+        </select>
+        <button type="submit">검색</button>
+      </div>
+    </div>
+    <div class="sleep__body">
+      <div class="sleep__body__thead">
+        <div class="sbt__one">회원 번호</div>
+        <div class="sbt__two">회원 이름</div>
+        <div class="sbt__three">회원 유형</div>
+        <div class="sbt__four">레벨</div>
+        <div class="sbt__five">연락처</div>
+        <div class="sbt__six">이메일</div>
+        <div class="sbt__seven">주소</div>
+        <div class="sbt__eight">가입일자</div>
+        <div class="sbt__nine">휴먼계정전환일자</div>
+      </div>
+
+      <div class="sleep__body__tbody">
+        <!--페이지당 12개 -->
+        <th:block th:each="memberSleepList:${memberSleepList}">
+	        <div class="sleep__body__container">
+	          <div class="sbt__body__one" th:text="${memberSleepList.user_no}">회원 번호</div>
+	          <div class="sbt__body__two" th:text="${memberSleepList.user_name}">회원 이름</div>
+	          <div class="sbt__body__three">
+			  	<span th:if="${memberSleepList.user_role == '1' OR memberSleepList.user_role == 'ROLE_TEA'}">사용자 - 선생</span>
+			 	<span th:if="${memberSleepList.user_role == '2' OR memberSleepList.user_role == 'ROLE_STU'}">사용자 - 학생</span>
+			 	<span th:if="${memberSleepList.user_role == '3' OR memberSleepList.user_role == 'ROLE_GEN'}">사용자 - 일반</span>
+			  </div>
+	          <div class="sbt__body__four" th:text="${memberSleepList.user_level}">레벨</div>
+	          <div class="sbt__body__five" th:text="${memberSleepList.user_phone}">연락처</div>
+	          <div class="sbt__body__six" th:text="${memberSleepList.user_email}">이메일</div>
+	          <div class="sbt__body__seven" th:text="${memberSleepList.user_address}">주소</div>
+	          <div class="sbt__body__eight" th:text="${memberSleepList.user_regDate}">가입일자</div>
+	          <div class="sbt__body__nine" th:text="${memberSleepList.user_sleep_date}">휴먼계정전환일자</div>
+	        </div>
+        </th:block>
+      </div>
+
+    </div>
+    <div class="sleep__page">
+    	<th:block th:replace="~{./baseLayout/page_memberSleep :: pageNation(${pageVOsleep})}"></th:block>
+    </div>
+
+
+
+  </form>
+</div>
+
+</th:block>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/gameLook.css">
+<script src="/js/frame/gameLook.js" defer></script>
+  <div class="wrap__content">
+  
+    <form action="/admin/learnRegist?" method="get" class="regist__wrap" enctype="multipart/form-data">
+    <input type="hidden" name="page" value="1">
+	<input type="hidden" name="amount" th:value="${pageVO.amount}">
+      <div class="gl__header">
+        <div class="gl__header__title"><span>게임컨텐츠 삭제이력</span></div>
+   
+      </div>
+      <div class="gl__body">
+        <div class="gl__body__table">
+
+
+          <div class="gl__body__thead">
+            <div class="gl__thead_one">선택</div>
+            <div class="gl__thead_two">컨텐츠이미지</div>
+            <div class="gl__thead_three">컨텐츠명</div>
+            <div class="gl__thead_four">레벨</div>
+            <div class="gl__thead_five">구독개월</div>
+            <div class="gl__thead_six">등록일</div>
+            <div class="gl__thead_seven">판매가</div>
+            <div class="gl__thead_eight">버튼</div>
+          </div>
+
+
+          <div class="gl__body__tbody">
+
+			<th:block th:each="gameDeleteHistory : ${gameDeleteHistory}">
+	            <div class="gl__tbody__content">
+	              <div class="gl__tbody_one"><input type="checkbox" th:value="${gameDeleteHistory.game_no}" name="selectedGame" class="game_checkBox"></div>
+	              <div class="gl__tbody_two"><img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${gameDeleteHistory.filepath},uuid=${gameDeleteHistory.uuid},filename=${gameDeleteHistory.filename})}"  ></div>
+	              <div class="gl__tbody_three" th:text="${gameDeleteHistory.game_title}">컨텐츠명</div>
+	              <div class="gl__tbody_four">
+                  <span th:if="${gameDeleteHistory.game_target_level == 1}">초급</span>
+                  <span th:if="${gameDeleteHistory.game_target_level == 2}">중급</span>
+                  <span th:if="${gameDeleteHistory.game_target_level == 3}">고급</span>
+                  <span th:if="${gameDeleteHistory.game_target_level == 4}">프로</span>
+                </div>
+	              <div class="gl__tbody_five" th:text="${gameDeleteHistory.game_count} + 개월">구독개월</div>
+	              <div class="gl__tbody_six" th:text="${gameDeleteHistory.game_regdate}">기간</div>
+	              <div class="gl__tbody_seven" th:text="${gameDeleteHistory.game_discount_price} + 원">판매가</div>
+	              <div class="gl__tbody_eight">
+	              	<button type="button" class="gl__delete" >삭제</button>
+	              </div>
+	            </div>
+            </th:block>
+
+          </div>
+
+
+        </div>
+        <th:block th:replace="~{./baseLayout/page_gameDel :: pageNation(${pageVOgameDel})}"></th:block>
+      </div>
+      
+
+
+    </form>
+  </div>
+</div>
+  
+</th:block>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js" defer></script>
+  <script src="/js/frame/student.js" defer></script>
+    <div class="wrap__content">
+
+      <div th:if="${#authentication.principal.user_role == 'ROLE_STU'}"></div>
+      <div class="wrap__above">
+
+        <!-- main page 프로필 화면 클릭시 회원정보수정 페이지 이동-->
+        <div href="" class="wrap__above__profile">
+          <div class="profile__wrapper">
+
+            <div class="profile__header">
+
+              <img src="/img/default.png" alt="기본이미지">
+              
+              <div class="profile__header__below">
+                <span>홍길동님</span>
+                <span id="profile__role">학생</span>
+              </div>
+
+            </div>
+            <div class="profile__body">
+
+              <div class="profile__body__item">
+                <span id="item">아이디</span>
+                <span>[[${session.vo.user_id}]]</span>
+              </div>
+
+              <div class="profile__body__item">
+                <span id="item">소속그룹</span>
+                <span>그룹</span>
+              </div>
+
+              <div class="profile__body__item">
+                <span id="item">E-mail</span>
+                <span>[[${session.vo.user_email}]]</span>
+              </div>
+
+              <div class="profile__body__item">
+                <span id="item">연락처</span>
+                <span>[[${session.vo.user_phone}]]</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+        <!--  통계 -->
+        <div class="wrap__left__history">
+          <div class="history__wrapper">
+            <span>사용자 통계</span>
+            <canvas id="myChart" width="110px" height="60px"></canvas>
+          </div>
+        </div>
+
+
+
+        <!--  달력 -->
+        <div class="wrap__left__calendar">
+          <div class="calendar__wrapper">
+            <div class='rap'>
+              <div class="header">
+                <div class="btn prevDay"></div>
+                <h2 class='dateTitle'></h2>
+                <div class="btn nextDay"></div>
+              </div>
+              
+              <div class="grid dateHead">
+                <div>일</div>
+                <div>월</div>
+                <div>화</div>
+                <div>수</div>
+                <div>목</div>
+                <div>금</div>
+                <div>토</div>
+              </div>
+          
+              <div class="grid dateBoard"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- 메인 하단 화면 -->
+      <div class="wrap__below">
+
+        <div class="wrap__below__notice">
+          <!-- 메인 공지사항 -->
+          <div class="below__notice__content">
+
+          <div class="notice__Bb__title">공지사항</div>
+           <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <thead>
+                    <tr>
+                      <th class="th-1">번호</th>
+                      <th class="th-2">문의사항</th>
+                      <th class="th-3">질문자</th>
+                      <th class="th-4">일자</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+
+              <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tbody>
+                  	<th:block th:each="qnaList:${qnaList}">
+	                    <tr>
+	                      <td class="th-1" th:text="${qnaList.qna_no}">1</td>
+	                      <td class="th-2" th:text="${qnaList.qna_title}">공지사항내용</td>
+	                      <th class="th-3" th:text="${qnaList.qna_type == 1 ? '회원정보' : (qnaList.qna_type == 2 ? '상품구매' : (qnaList.qna_type == 3 ? '사이트이용' : '기타'))}">질문자</th>
+	                      <td class="th-4"  th:text="${qnaList.qna_regDate}">2024-03-31</td>
+	                    </tr>
+                   	</th:block>
+                    
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+        <!-- 메인 game -->
+     	<div class="wrap__below__game">
+            <div class="below__game__content">
+
+              <div class="below__game__header">
+                <div class="game__header__title"><span>최근 제작한 컨텐츠</span></div>
+                <a href="/admin/gameLook" class="game__header__more">더 보기</a>
+              </div>
+              <div class="below__game__body">
+
+                <div class="swiper">
+                  <div class="swiper-wrapper">
+                    <th:block th:each="gameContent:${gameContent}">
+                    	<div class="swiper-slide">
+                    		<img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${gameContent.filepath},uuid=${gameContent.uuid},filename=${gameContent.filename})}">
+                    		<div class="swiper-slide-title"><span th:text="${gameContent.game_title}"></span></div>
+						</div>
+					</th:block>
+                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+</div>
+
+</th:block>
+</html>

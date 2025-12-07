@@ -1,0 +1,65 @@
+.regist__wrap{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; }
+
+
+.transfer__header{width: 98%; height: 7%; display: flex; align-items: center; border-bottom: 1px solid rgb(216, 216, 216);}
+.transfer__header span{font-size: 19px; font-weight: bold;}
+
+
+.transfer__wrap{width: 98%; height: 93%; display: flex; flex-direction: column;}
+
+.transfer__wrap__above{width: 100%; height: 47.5%; border-bottom: 1px solid rgb(216, 216, 216);}
+
+.transfer__title1{width: 100%; height: 15%; display: flex; align-items: center;}
+.transfer__title1 span{font-weight: bold;}
+.transfer__search1{display: flex; align-items: center; margin-left: 20px;}
+#searchInput1{width: 300px; height: 35px; padding-left: 15px; border: none; border-bottom: 1px solid rgb(216, 216, 216); &:focus{outline: none;}}
+.transfer__search1 button{width: 90px; height: 35px; margin: 0px 10px; border: none; background-color: rgb(89, 123, 236); color: white;}
+.transfer__search1 button:hover{background-color: rgb(71, 108, 231);}
+
+
+.transfer__table{width: 100%; height: 82%; display: flex; flex-direction: column; }
+.transfer__thead{width: 100%; height: 15%; display: flex; align-items: center; background-color: rgb(89, 123, 236);}
+.transfer__tbody{width: 100%; height: 85%; display: block; overflow-y: auto; border-bottom: 3px solid rgb(211, 211, 212); border-left: 3px solid rgb(211, 211, 212);}
+.transfer__tbody__content{width: 100%; height: 20%; display: flex; align-items: center; border-bottom: 1px solid rgb(211, 211, 212);}
+
+.transfer__thead__one{width: 3%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+.transfer__thead__two{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241); }
+.transfer__thead__three{width: 50%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+.transfer__thead__four{width: 5%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+.transfer__thead__five{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+.transfer__thead__six{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+
+.transfer__tbody__one{width: 3%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+.transfer__tbody__two{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212); }
+.transfer__tbody__three{width: 50%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+.transfer__tbody__four{width: 5%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+.transfer__tbody__five{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+.transfer__tbody__six{width:  11%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+
+/************************************************************************/
+
+.transfer__wrap__below{width: 100%; height: 47.5%; }
+
+.transfer__title2{width: 100%; height: 15%; display: flex; align-items: center;}
+.transfer__title2 span{font-weight: bold;}
+.transfer__search2{display: flex; align-items: center; margin-left: 20px;}
+#searchInput2{width: 300px; height: 35px; padding-left: 15px; border: none; border-bottom: 1px solid rgb(216, 216, 216); &:focus{outline: none;}}
+.transfer__search2 button{width: 90px; height: 35px; margin: 0px 10px; border: none; background-color: rgb(89, 123, 236); color: white;}
+.transfer__search2 button:hover{background-color: rgb(71, 108, 231);}
+
+.transfer__table2{width: 100%; height: 85%; display: flex; justify-content: space-between;}
+
+.transfer__table2__body{width: 49.5%; height: 100%; display: flex; flex-direction: column;}
+.transfer__thead2{width: 100%; height: 15%; display: flex; align-items: center; background-color: rgb(89, 123, 236);}
+.transfer__tbody2{width: 100%; height: 85%; display: block; overflow-y: auto; border-bottom: 3px solid rgb(211, 211, 212); border-left: 3px solid rgb(211, 211, 212);}
+.transfer__tbody__content2{width: 100%; height: 20%; display: flex; align-items: center; border-bottom: 1px solid rgb(211, 211, 212);}
+
+.transfer__thead2__one{width: 6%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+.transfer__thead2__two{width: 49%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241); }
+.transfer__thead2__three{width: 34%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+.transfer__thead2__four{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(58, 58, 241);}
+
+.transfer__tbody2__one{width: 6%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+.transfer__tbody2__two{width: 49%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212); }
+.transfer__tbody2__three{width: 34%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}
+.transfer__tbody2__four{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(211, 211, 212);}

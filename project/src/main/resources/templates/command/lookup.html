@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<script src="/js/frame/lookup.js" defer ></script>
+<script src="/js/frame/addCart.js" defer ></script>
+<link rel="stylesheet" href="/css/frame/lookup.css">
+
+  <div class="wrap__content">
+
+    <div class="lookup__header">
+      <!-- 조회 타이틀 -->
+      <div class="lookup__header__title"><span>게임컨텐츠 조회</span></div>
+
+      <!-- 조회 검색 -->
+      <form action="/command/lookup" method="get" class="lookup__header__search">
+        <input type="text" name="search" id="lookup__search" placeholder="검색할 제목을 입력하세요.">
+        <button type="submit">검색</button>
+      </form>
+
+      <!-- 우측 정렬 -->
+      <div class="lookup__header__detail">
+
+        <!-- 버튼 정렬 -->
+        <div class="lookup__detail__left">
+          <button><img src="/img/pc.png" alt="pc_icon"> 초급</button>
+          <button><img src="/img/pc.png" alt="pc_icon"> 중급</button>
+          <button><img src="/img/pc.png" alt="pc_icon"> 고급</button>
+          <button><img src="/img/pc.png" alt="pc_icon"> 프로</button>
+          <button><img src="/img/freeMoney.png" alt="pc_icon"> 무료</button>
+          <button><img src="/img/money2.png" alt="pc_icon"> 유료</button>
+          <div class="purchase__btn">
+            <button id="purchase" class="hidden">결제</button>
+            <button id="add__basket" class="hidden">장비구니 추가</button>
+          </div>
+        </div>
+        
+        <script>
+        	
+        </script>
+
+        <!-- select 정렬 -->
+        <div class="lookup__detail__right">
+          <img src="/img/sort.png" alt="">
+          <select name="" id="">
+            <option value="">정렬</option>
+            <option value="">가나다순</option>
+            <option value="">제목순</option>
+            <option value="">등록일순</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="lookup__body">
+
+      <div class="lookup__table">
+
+        <div class="table__thead">
+          <div class="thead__check">레벨<</div>
+          <div class="thead__image">컨텐츠</div>
+          <div class="thead__title">컨텐츠제목</div>
+          <div class="thead__subscribe">가격/구독</div>
+          <div class="thead__introduce">상품소개</div>
+          <div class="thead__pay">결제</div>
+        </div>
+        
+        
+        <div class="table__tbody">
+          <!-- 반복하는 곳 -->
+          <div class="tbody__item" th:each="list : ${gameContent}">
+          
+	          <!-- 컨텐츠 game_no -->
+	          <input type="hidden"  th:value="${list.game_no}" name="game_no" id="game_no">
+				
+				<!-- 난이도 -->
+				<div class="tbody__check"></div>
+				
+	            <!-- 컨텐츠 사진 -->
+	            <div class="tbody__image">
+	              <img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${list.filepath},uuid=${list.uuid},filename=${list.filename})}">
+	            </div>
+	
+	            <!-- 컨텐츠 제목 -->
+	            <div class="tbody__title" th:text="${list.game_title}"></div>
+	
+	            <!-- 컨텐츠 가격 -->
+	            <div class="tbody__subscribe">
+	              <div class="tbody__subscribe__above">
+	                <div class="subscribe__above__price"><div class="price__title">기본가 : </div> <span class="real_price" th:text="${list.game_price} + '원'"></span></div>
+	              </div>
+	              <div class="tbody__subscribe__below">
+	                <div class="item__date" >기간</div>
+	                <span th:text="${list.game_sub_endDate}">2024년 10월 12일 ~ 2024년 12월 15일</span>
+	              </div>
+	            </div>
+	
+	            <!-- 컨텐츠 소개 -->
+	            <div class="tbody__introduce" th:text="${list.game_content}">상품소개</div>
+	            <!-- 컨텐츠 결제/장바구니 -->
+	            <div class="tbody__pay">
+				  <a th:href="@{/command/payment(listId=${list.game_no})}" class="content__purchase" style="background-color:#2D69FF; color:white;">결제</a>
+	              <button id="content__basket" class="content__basket">장바구니</button>
+	            </div>
+            
+          </div>
+           
+
+		  <div id="paidMessage" class="paid-message">이미 구매하신 내역이 있습니다.</div>
+		  <div id="inCartMessage" class="alert-message">장바구니에 이미 존재합니다</div>
+      	  <div id="cartMessage" class="cart-message">장바구니에 추가되었습니다</div>
+       
+        </div>
+        <th:block th:replace="~{./baseLayout/page_lookup :: pageNation(${pageVOlookup})}"></th:block>
+      </div>
+		 
+    </div>
+	
+      
+  </div>
+</div>
+
+</th:block>
+</html>

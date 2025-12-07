@@ -1,0 +1,110 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+
+.regist__wrap{width: 100%; height: 100%; display: flex; align-items: center;}
+
+
+/* 컨텐츠 등록 */
+.regist__left{width: 60%; height: 100%; display: flex; flex-direction: column; border-right: 1px solid rgb(196, 195, 195);}
+.regist__left__above{width: 100%; height: 13%; display: flex; align-items: center; justify-content: space-between; }
+.regist__left__above span{font-size: 19px; font-weight: bold;}
+.left__above__button{display: flex; align-items: center; margin-right: 40px;}
+.left__above__button button{margin: 0px 5px; width: 80px;}
+
+/* 영상 구분 선택 */
+.regist__item__select{width: 100%; height: 5%; display: flex; align-items: center;}
+.regist__item__select span{font-size: 13px; font-weight: bold; width: 15%;}
+.item__subMenu{display: flex; align-items: center;width: 10%;}
+.item__subMenu input{margin-right: 5px; width: 15%;}
+.item__subMenu span{font-size: 12px; font-weight: bold; width: 90%;}
+
+.notice__check{display: flex; align-items: center; width: 20%;}
+.notice__check span{font-size: 12px; font-weight: bold; width: 45%;}
+.notice__check input{margin-top: 4.5px; margin-right: 10px;}
+
+.notice__future{display: flex; align-items: center; width: 50%;}
+.notice__future span{font-size: 12px; font-weight: bold; width: 15%; margin-right: 10px;}
+#notice__future__regist{margin-top: 4.5px; margin-right: 10px;}
+#notice__date{width: 150px; height: 25px; border: none; border-bottom: 1px solid rgb(196, 195, 195); font-size: 12px; &:focus{outline: none;}}
+#comment__reject{margin-right: 10px;}
+
+.regist__left__below{width: 100%; height:87%; display: flex; flex-direction: column;}
+.regist__below__item{width: 100%; height: 10%; display: flex; align-items: center;} 
+.regist__below__item span{font-size: 13px; font-weight: bold; width: 15%;}
+.regist__below__item input{width: 70%; height: 60%;  border: none; border-bottom: 1px solid rgb(201, 201, 201); padding-left: 10px;  &:focus{outline: none;}}
+
+.regist__item__date{width: 100%; height: 7%; display: flex; align-items: center;}
+.regist__item__date span{font-size: 13px; font-weight: bold; width: 15%;}
+.regist__item__date input{ border: none; width: 25%; height: 60%; border-bottom: 1px solid rgb(201, 201, 201); margin: 0px 5px; padding-left: 10px; &:focus{outline: none;} }
+
+.regist__item__money{width: 100%; height: 7%; display: flex; align-items: center;}
+.regist__item__money span{font-size: 13px; font-weight: bold; width: 15%; }
+.regist__item__money input{width: 20%; height: 60%; border: none; border-bottom: 1px solid rgb(201, 201, 201); padding-left: 10px; font-size: 13px; font-weight: bold; &:focus{outline: none;}}
+
+.regist__item__textArea{width: 100%; height: 13%; display: flex; position: relative;}
+.regist__item__textArea span{font-size: 13px; height: 100%; font-weight: bold; width: 15%; position: absolute; top: 20px; left: 0;}
+.regist__item__textArea textarea{width: 70%; height: 80px; position: absolute; left: 130px; top: 20px; resize: none;  &:focus{outline: none;} }
+#notice__textArea{height: 120px;}
+
+.regist__item__file{width: 100%; height: 20%; display: flex; align-items: center; margin-top: 5px;}
+.regist__item__file span{font-size: 13px; font-weight: bold; width: 15%; }
+
+
+.regist__item__learning__file{width: 100%; height: 20%; display: flex; align-items: center; margin-top: 70px;}
+.regist__item__learning__file span{font-size: 13px; font-weight: bold; width: 15%; }
+
+.regist__item__faq__file{width: 100%; height: 20%; display: flex; align-items: center;}
+.regist__item__faq__file span{font-size: 13px; font-weight: bold; width: 15%; }
+#fileInput{width: 25%; margin-top: 30px;}
+
+.dropBox {width: 45%;height: 60%; margin: .6rem; overflow: auto;display: flex;justify-content: center;align-items: center;border-radius: 5px;border: 4px dashed #ddd;transition: 0.4s;}
+/* 드롭 반응 */
+.dropBox.active {background: #ddd;}
+.dropBox h1 {font-size: 1.8rem;}
+/* ----------- */
+
+
+
+.regist__right{width: 40%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.regist__right__wrap{width: 95%; height: 95%; border: 1px solid rgb(197, 195, 195); display: flex; flex-direction: column;}
+
+.regi__right__header{width: 100%; height: 10%; display: flex; align-items: center; justify-content: space-between;}
+#img1{width: 30%; height: 50%; margin-left: 10px;}
+#img2{width: 10%; height: 50%; margin-right: 10px;}
+
+.regi__right__body{width: 100%; height: 80%; display: flex; flex-direction: column; align-items: center; }
+.board__title{width: 100%; height: 10%; display: flex; align-items: center; justify-content: center;}
+#board__title{font-size: 25px; font-weight: bold;}
+
+.board__second{width: 100%; height: 5%; display: flex; align-items: center; justify-content: flex-end; border-bottom: 1px solid rgb(192, 191, 191);}
+.board__category{display: flex; align-items: center; justify-content: center; }
+.board__category span{font-size: 15px; font-weight: bold;}
+.board__date{margin-right: 15px;}
+.board__date span{color: red; font-size: 15px; font-weight: bold;}
+
+
+.board__third{width:95%; height:80%; display:flex; align-items:center; justify-content: center; }
+.board__third__content{width: 95%; height: 95%;}
+
+.board__qusetion__content{width: 95%; height: 95%; display: flex; flex-direction: column;}
+.board__answer__content{width: 95%; height: 95%; display: flex; flex-direction: column;}
+
+.board__textArea{font-size: 15px; line-height: 80px;}
+.board__QtextArea{font-size: 15px; line-height: 80px; margin: 10px 10px;}
+.board__AtextArea{font-size: 15px; line-height: 80px; margin: 10px 10px;}
+
+#qTitle{font-size: 18px; font-weight: bold; margin-bottom: 10px;}
+#aTitle{font-size: 18px; font-weight: bold; margin-bottom: 10px;}
+
+.board__answer{width: 100%; height: 20%; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgb(197, 197, 197);}
+.board__qusetion{width: 100%; height: 20%; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgb(197, 197, 197);}
+
+
+.board__third__qna{width: 95%; height: 95%;}
+.board__third__qna__content{width: 95%; height: 95%; display: flex; flex-direction: column; padding: 10px 0px;}
+
+
+
+.board__fourth{width: 100%; height: 5%; padding-left: 30px; display: flex; align-items: center; font-size: 12px; font-weight: bold;}
+
+.regi__right__footer{width: 100%; height: 10%; background-color: rgb(80, 80, 82);}

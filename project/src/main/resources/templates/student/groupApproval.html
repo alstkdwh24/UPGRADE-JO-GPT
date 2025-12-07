@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" defer></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+<script src="/js/student/homeworkTable.js" defer></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/student/homeworkTable.css">
+<script src="/js/student/groupRegistList.js" defer></script>
+
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+
+  		<div class="container">
+		  <h2>그룹 승인 여부</h2>
+		  <table class="table">
+		    <thead class="thead-color">
+		      <tr>
+		        <th>번호</th>
+		        <th>sg_no</th>
+		        <th>학습 그룹명</th>
+		        <th>내용</th>
+		        <th>레벨</th>
+		        <th>승인 여부</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr th:each="list : ${sgList}" th:data-url="@{/student/groupApplyList(sg_no=${list.sg_no})}">
+		        <td th:text="${listStat.count}"></td>
+		        <td th:text="${list.sg_no}"></td>
+		        <td th:text="${list.sg_name}" ></td>
+		        <td th:text="${list.sg_plus}" ></td>
+		        <td th:text="${list.sg_level}" ></td>
+		        <td th:if="${list.sgj_auth == '1'}" >
+		        	<h6><span class="badge badge-primary">승인 완료</span></h6>
+		        </td>
+		        <td th:if="${list.sgj_auth == '0'}" >
+		        	<h6><span class="badge badge-pill badge-warning">승인 대기 중</span></h6>	       
+		        </td>
+		        
+		        <td th:if="${list.sgj_auth == '2'}" >
+		        	<h6><span class="badge badge-pill badge-danger">승인 거절 됨</span></h6>	       
+		        </td>
+		        
+		      </tr>
+		    </tbody>
+		  </table>
+		</div>
+</div>
+  
+</th:block>
+</html>

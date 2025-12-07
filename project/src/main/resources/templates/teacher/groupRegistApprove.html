@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/groupRegistLook.css">
+<link rel="stylesheet" href="/css/frame/lookup.css">
+<script src="/js/frame/groupRegistApprove.js" defer></script>
+
+
+  <div class="wrap__content">
+    <form action="" method="get" class="regist__wrap">
+        <input type="hidden" th:value="${session.vo.user_no}" id="user_no" name="user_no">
+        
+
+      <div class="grl__header">
+
+        <div class="grl__header__title"><span>그룹 가입 승인</span></div>
+        <div class="grl__header__select">
+          <select name="" id="selectGroup">
+            <option value="none">학습 그룹 선택해주세요.</option>
+          </select>
+        </div>
+        <div class="grl__header__btn">
+          <button type="button" id="myGroup">내 학습그룹</button>
+          <button type="button" id="searchGroup">조회하기</button>
+          <button type="button" id="approve">승인</button>
+          <button type="button" id="reject">거절</button>
+        </div>
+
+      </div>
+      <div class="grl__body">
+        <div class="grl__body__header">
+          
+          <div class="grl__bh__thead">
+            <div class="grl__bht__zero">컨텐츠 이미지</div>
+            <div class="grl__bht__one">게임 컨텐츠 명</div>
+            <div class="grl__bht__two">게임 달성 레벨</div>
+            <div class="grl__bht__three">신규가입 요청 현황</div>
+            <div class="grl__bht__four">현재 승인 인원</div>
+            <div class="grl__bht__five">그룹 제한 인원</div>
+          </div>
+
+          <div class="grl__bh__tbody">
+            <div class="grl__bbt__zero"><img src="/img/05_game_main.png" alt=""></div>
+            <div class="grl__bbt__one">학습그룹을 선택해주세요</div>
+            <div class="grl__bbt__two"></div>
+            <div class="grl__bbt__three"></div>
+            <div class="grl__bbt__four"></div>
+            <div class="grl__bbt__five"></div>
+          </div>
+
+
+        </div>
+
+        <div class="grl__body__line"></div>
+
+        <div class="grl__body__body">
+
+          <div class="grl__bbb__title"><span>승인 요청 내역</span></div>
+          <div class="grl__bbb__thead">
+            <div class="grl_bttb__one">번호</div>
+            <div class="grl_bttb__two">학생 이름</div>
+            <div class="grl_bttb__three">연락처</div>
+            <div class="grl_bttb__four">승인요청일자</div>
+            <div class="grl_bttb__five">승인여부</div>
+          </div>
+          <div class="grl__bbb__tbody">
+
+            <div class="grl__bbtb__wrap">
+              <div class="grl_bttbb__one">1</div>
+              <div class="grl_bttbb__two">학습그룹을 선택해주세요</div>
+              <div class="grl_bttbb__three"></div>
+              <div class="grl_bttbb__four"></div>
+              <div class="grl_bttbb__five"></div>
+            </div>
+            
+            
+
+          <div id="cartMessage" class="cart-message">내 학습그룹 불러오기 성공</div>
+		  <div id="inCartMessage" class="alert-message">내 학습그룹 불러오기 실패</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+  
+</th:block>
+
+
+</html>

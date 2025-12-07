@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/user_co/myhome_co.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="home__wrapper">
+    <div class="section__right__header">
+    <div class="right__header__img"><img src="/img/default.png" alt="기본이미지"></div>
+    <div class="right__header__info">
+      <p>session.co_name 님 <span id="info1">session.기업명</span></p>
+      <span id="info2">session.회사타입</span>
+      <span id="info3">session.사업자등록번호</span>
+    </div>
+    </div>
+  </div>
+  <div class="section__right__body">
+
+    <div class="section__right__alarm">
+      <a href="" class="right__alarm__list list1">전체 알람 <i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list2">공고 등록 내역 <i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list3">지원자 관리 <i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list4">진행중인 공고 <i class="fa-regular fa-lightbulb"></i></a>
+    </div>
+
+    <div class="section__right__notice">
+
+      <div class="section__notice__above">
+        <div class="notice__above__apply">
+          <div class="section__right__container">
+
+            <h3>공고 등록 현황</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>채용공고명</th>
+                        <th>기업명</th>
+                        <th>상세보기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vo, status : ${list}">
+                	<td>[[${vo.prodd_id}]]</td>
+                	<td>[[${vo.header_main_title}]]</td>
+                	<td>[[${vo.company_title}]]</td>
+                	<td><a title="상세보기(클릭)"  th:href="@{resume_ListJob(prodd_id=${vo.prodd_id})}">수정 삭제</a> /
+                	<a class="blue"  th:href="@{resume_jobpost2(prodd_id=${vo.prodd_id})}">상세내용 보기</a></td>
+                
+                	
+                	</tr>
+                  
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="notice__above__hire">
+          <div class="section__right__container">
+
+            <h3>지원자 관리</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>이력서 제목</th>
+                        <th>지원자명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>웹 개발자 채용</td>
+                        <td>ABC 주식회사</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>데이터 분석가 채용</td>
+                        <td>XYZ 기업</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>웹 개발자 채용</td>
+                      <td>ABC 주식회사</td>
+                  </tr>
+                  <tr>
+                      <td>4</td>
+                      <td>데이터 분석가 채용</td>
+                      <td>XYZ 기업</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>웹 개발자 채용</td>
+                    <td>ABC 주식회사</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>데이터 분석가 채용</td>
+                    <td>XYZ 기업</td>
+                </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="section__notice__below">
+        <div class="notice__below__container">
+
+          <h3>공고 등록 이력</h3>
+          <table>
+          
+              <thead>
+                 <tr>
+                        <th>번호</th>
+                        <th>채용공고명</th>
+                        <th>기업명</th>
+                       
+                    </tr>
+              </thead>
+              <tbody>
+               <tr th:each="vo, status : ${list}">
+                      <td>[[${vo.prodd_id}]]</td>
+                      <td>[[${vo.header_main_title}]]</td>
+                      <td>[[${vo.company_title}]]</td>
+                    
+                  </tr>
+              
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</body>
+</html>

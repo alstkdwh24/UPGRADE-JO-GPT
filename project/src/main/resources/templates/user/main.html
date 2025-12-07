@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js" defer></script>
+      <script src="/js/frame/teacher.js" defer></script>
+
+   <div class="wrap__content">
+
+     <div class="wrap__above">
+       <!-- main page 프로필 화면 클릭시 회원정보수정 페이지 이동-->
+       <div class="wrap__above__profile">
+         <div class="profile__wrapper">
+
+           <div class="profile__header">
+
+             <img src="/img/default.png" alt="기본이미지">
+
+             <div class="profile__header__below">
+               <span>홍길동님</span>
+               <span id="profile__role">일반사용자</span>
+             </div>
+
+           </div>
+           <div class="profile__body">
+
+             <div class="profile__body__item">
+               <span id="item">아이디</span>
+               <span id="userID" th:text="${user.user_id}"></span>
+             </div>
+
+             <div class="profile__body__item">
+               <span id="item">소속그룹</span>
+               <span id="userGroup">userGroup</span>
+             </div>
+
+             <div class="profile__body__item">
+               <span id="item">E-mail</span>
+               <span id="userEmail">[[${user.user_email}]]</span>
+             </div>
+
+             <div class="profile__body__item">
+               <span id="item">연락처</span>
+               <span id="userPhone">[[${user.user_phone}]]</span>
+             </div>
+
+           </div>
+
+         </div>
+       </div>
+
+
+
+
+       <!--  통계 -->
+       <div class="wrap__left__history">
+         <div class="history__wrapper">
+           <span>사용자 통계</span>
+           <canvas id="myChart" width="110px" height="60px"></canvas>
+         </div>
+       </div>
+
+
+
+       <!--  달력 -->
+       <div class="wrap__left__calendar">
+         <div class="calendar__wrapper">
+           <div class='rap'>
+             <div class="header">
+               <div class="btn prevDay"></div>
+               <h2 class='dateTitle'></h2>
+               <div class="btn nextDay"></div>
+             </div>
+
+             <div class="grid dateHead">
+               <div>일</div>
+               <div>월</div>
+               <div>화</div>
+               <div>수</div>
+               <div>목</div>
+               <div>금</div>
+               <div>토</div>
+             </div>
+
+             <div class="grid dateBoard">
+             <div class="calender2"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+     </div>
+
+
+     <!-- 메인 하단 화면 -->
+     <div class="wrap__below">
+
+       <div class="wrap__below__notice">
+         <!-- 메인 공지사항 -->
+         <div class="below__notice__content">
+
+           <h3>공지사항</h3>
+           <div class="tbl-header">
+             <table cellpadding="0" cellspacing="0" border="0">
+
+                 <div class="add_two">
+                   <div class="th-all-1">번호</div>
+                   <div class="th-all-2">공지사항</div>
+                   <div class="th-all-3">일자</div>
+                 </div>
+
+             </table>
+           </div>
+
+           <div class="tbl-content">
+
+                 <div class="add" th:each="vo :${getQna_two}">
+                   <div class="th-all-1">[[${vo.qna_no}]]</div>
+                   <div class="th-all-2">[[${vo.qna_content}]]</div>
+                   <div class="th-all-3">2024-03-31</div>
+                 </div>
+
+           </div>
+
+         </div>
+       </div>
+
+       <!-- 메인 game -->
+       <div class="wrap__below__game">
+         <div class="below__game__content">
+
+           <div class="below__game__header">
+             <div class="game__header__title"><span>수강중인 컨텐츠</span></div>
+             <a href="" class="game__header__more">더 보기</a>
+           </div>
+           <div class="below__game__body">
+
+             <div class="swiper">
+               <div class="swiper-wrapper">
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+                 <div class="swiper-slide">구독한 컨텐츠</div>
+               </div>
+               <div class="swiper-button-next"></div>
+               <div class="swiper-button-prev"></div>
+             </div>
+
+           </div>
+
+         </div>
+       </div>
+
+     </div>
+
+   </div>
+ </div>
+
+</th:block>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/student/homeworkTable.css">
+    <link rel="stylesheet" href="/css/frame/groupRegistLook.css">
+</head>
+<body>
+    <th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+    <div class="wrap">
+        <div class="container">
+        	<h2>나의 학습 그룹</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-color">
+                        <tr>
+                            <th>학습 그룹명</th>
+                            <th>내용</th>
+                            <th>진도율</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="sgList : ${sgList}" th:if="${sgList.sgj_auth == '1'}">
+                        <tr>
+                            <tr th:data-url="@{/student/myGroupDetail(sg_no=${sgList.sg_no})}">
+	                            <td th:text=${sgList.sg_name}></td>
+	                            <td th:text=${sgList.sg_plus}></td>
+	                            <td class="progress-box">
+	                                   <progress th:value=${sgList.class_progress} max="100"></progress>
+	                            </td>
+	                            <td>
+									<div class="progress-text" th:text="${#strings.concat(sgList.class_progress, '%')}"></div>
+	                            </td>
+                        	</tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </th:block>
+</body>
+</html>
+
+</div>
+<script>
+const rows = document.querySelectorAll("tbody tr");
+
+rows.forEach(row => {
+    row.addEventListener('click', function() {
+        const url = this.getAttribute('data-url'); 
+        window.location.href = url;
+    });
+    row.style.cursor = "pointer";
+});
+
+</script>
+</th:block>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setContent(content)">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SWIPER -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<!-- 이모티콘 -->
+<script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+<!-- J QUERY -->
+<script src="/js/jquery-3.7.1.min.js" defer></script>
+<!-- daum address api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
+<!-- kakao api -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d81e41a0ba02cff47464ac9ab970bd11"></script>
+
+
+<!-- BASE LAYOUT CSS -->
+<link rel="stylesheet" href="/css/baseLayout/main.css">
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="/css/main/main.css">
+<link rel="stylesheet" href="/css/main/join.css">
+<link rel="stylesheet" href="/css/main/login.css">
+<link rel="stylesheet" href="/css/main/service.css">
+<link rel="stylesheet" href="/css/main/game.css">
+<link rel="stylesheet" href="/css/main/eduVideo.css">
+<link rel="stylesheet" href="/css/main/center.css">
+<link rel="stylesheet" href="/css/main/sitemap.css">
+
+<!-- MAIN JS -->
+<script src="/js/main/join.js" defer></script>
+<script src="/js/main/main.js" defer></script>
+<script src="/js/main/service.js" defer></script>
+<script src="/js/main/eduVideo.js" defer></script>
+<script src="/js/main/center.js" defer></script>
+<script src="/js/main/sitemap.js" defer></script>
+</head>
+
+<body>
+	<!-- HEADER 영역 -->
+	<header> 
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal__msg">
+          <img src="/img/warning.png" alt="경고"><span>권한이 필요합니다. 로그인을 해주세요.</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="wrapper">
+
+      <div class="wrapper__header">
+      
+        <!-- header 속성 -->
+        <div class="wrapper__header__content">
+
+          <!-- 회원가입 / 로그인 -->
+          <div class="wrapper__header__above">
+
+            <!-- a 태그 주소 수정 !!! -->
+            <a href="/member/join">회원가입</a>
+            <a href="/member/login">로그인</a>
+
+          </div>
+
+          <div class="wrapper__header__below">
+
+            <div class="wrapper__header__left">
+              <!-- a 태그 수정 !!!-->
+              <a href="/main"><img src="/img/KBA_MainLogo.png" alt="로고"></a>
+            </div>
+
+            <div class="wrapper__header__right">
+
+              <a href="/menu/service"><div class="header__right__item">서비스 소개 <img src="/img/KBA_mascot_black.png" alt="마스코드"></div></a>
+              <a href="/menu/game"><div class="header__right__item">GAME <img src="/img/KBA_mascot _white.png" alt="마스코드"></div></a>
+              <a href="/menu/eduVideo"><div class="header__right__item">교육영상 <img src="/img/KBA_mascot_black.png" alt="마스코드"></div></a>
+              <div class="header__right__item" id="myBtn">구독 서비스 <img src="/img/KBA_mascot _white.png" alt="마스코드"></div>
+              <div class="header__right__item" id="myBtn">학습 서비스 <img src="/img/KBA_mascot_black2.png" alt="마스코드"></div>
+              <div class="header__right__item" id="myBtn">바둑 스터디 <img src="/img/KBA_mascot_white2.png" alt="마스코드"></div>
+              <a href="/menu/center"><div class="header__right__item item_sub">고객 센터 <img src="/img/KBA_mascot_blackandwhite.png" alt="마스코드"></div></a>
+              <a href="/menu/sitemap"><div class="header__right__item item_sub2">사이트맵 <img src="/img/KBA_emblem_use.png" alt="마스코드"></div></a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+    
+  </header>
+	
+	<!-- content 삽입 -->
+	<th:block th:replace="${content}"></th:block>
+
+	<!-- FOOTER 영역 -->
+	<footer>
+
+    <div class="footer__wrapper">
+
+      <div class="footer__content">
+
+        <div class="footer__content__header">
+
+          <div class="footer__header__item"><a href="https://baduk.or.kr/">한국기원소개</a></div>
+          <div class="footer__header__item"><a href="https://baduk.or.kr/about/contact.asp">찾아오시는 길</a></div>
+          <div class="footer__header__item"><a href="https://baduk.or.kr/member/provision.asp">이용약관</a></div>
+          <div class="footer__header__item"><a href="https://baduk.or.kr/member/privacy.asp">개익정보처리방침</a></div>
+
+        </div>
+
+        <div class="footer__content__body">
+          <div class="footer__body__item"><span>주소 : 서울시 성동구 마장로 210 전화 : 02-3407-3800 팩스 : 02-3407-3875 이메일 : webmaster@baduk.or.kr 사업자등록번호 : 206-82-03412 출판 : 1967년 7월 7일 등록(라-906호)</span></div>
+          <div class="footer__body__item"><span>(재) J EDU 팀장: 최재홍</span></div>
+          <div class="footer__body__item"><span>ⓒ 2024~ KOREA J EDU ASSOCIATION. All rights reserved.</span></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</th:block>
+</html>

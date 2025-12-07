@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.example.project_wizian2.resume.service.ResumeMapper">
+  	<insert id="registResume">
+  		insert into test_resume (title,
+  								 stu_name,
+  								 stu_address,
+  								 stu_address_detail,
+  								 stu_phone,
+  								 stu_email,
+  								 stu_age,
+  								 stu_certi_name,
+  								 stu_yn,
+  								 stu_jobstartdate,
+  								 stu_jobenddate,
+  								 stu_jobcompname,
+  								 stu_joblevel,
+  								 stu_jobjob,
+  								 stu_jobwork,
+  								 stu_awardname,
+  								 stu_awardaward,
+  								 stu_awardcompname,
+  								 stu_emp_type,
+  								 stu_interest,
+  								 stu_wage,
+  								 stu_id,
+  								 user_id)
+  		values ( #{title},
+  				 #{stu_name},
+  				 #{stu_address},
+  				 #{stu_address_detail},
+  				 #{stu_phone},
+  				 #{stu_email},
+  				 #{stu_age},
+  				 #{stu_certi_name},
+  				 #{stu_yn},
+  				 #{stu_jobstartdate},
+  				 #{stu_jobenddate},
+  				 #{stu_jobcompname},
+  				 #{stu_joblevel},
+  				 #{stu_jobjob},
+  				 #{stu_jobwork},
+  				 #{stu_awardname},
+  				 #{stu_awardaward},
+  				 #{stu_awardcompname},
+  				 #{stu_emp_type},
+  				 #{stu_interest},
+  				 #{stu_wage},
+  				 #{stu_id},
+  				 #{user_id}
+  		)
+  		
+  	</insert>
+  	
+  </mapper>

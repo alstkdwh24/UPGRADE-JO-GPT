@@ -1,0 +1,20 @@
+.game__title{width: 100%; height: 130px; display: flex; align-items: center; justify-content: center; background-image: url("/img/background.png");}
+.game__title span{font-size: 30px; font-weight: 600;}
+
+.game__play__title{display: flex; align-items: center; margin-bottom: 20px;}
+.game__play__title span{font-size: 25px; font-weight: 600;}
+.game__play__title img{width: 100px;}
+
+.game__paly{margin: 50px 0px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.game__paly span{font-size: 20px; font-weight: 600; color: rgb(0, 0, 0); margin: 20px 0px;}
+.game__paly iframe{width: 1240px; height: 800px; border: 5px solid rgb(238, 124, 30);}
+
+.game__ex{width: 100%; display: flex; flex-direction: column; align-items: center;}
+.game__ex__title{display: flex; width: 100%; align-items: center; justify-content: center;}
+.game__ex__title span{font-size: 20px; font-weight: 600; padding: 10px 0px; border-bottom: 3px solid rgb(238, 124, 30);}
+
+.game__ex__method{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+
+.method__one{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 30px 0px;}
+.method__one img{width: 1000px; }
+.method__one p{font-size: 20px; font-weight: bold;}

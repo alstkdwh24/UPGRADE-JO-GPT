@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_m :: setContent( ~{ :: section} ) }">
+
+  <section>
+
+    <div class="game__title"><span>GAME</span></div>
+    
+    <div class="game__paly">
+      <div class="game__play__title">
+        <img src="/img/KBA_mascot_white2.png" alt="마스코트화이트">
+        <span>Let's go 창의적인 바둑스쿨 체험하기</span>
+        <img src="/img/KBA_mascot_black.png" alt="마스코트블랙">
+      </div>
+      <iframe src="https://textbookmedia.gimmyoung.com/baduk/" frameborder="0"></iframe>
+    </div>
+
+    <div class="game__ex">
+      <div class="game__ex__title"><span>게임 사용 방법</span></div>
+
+      <div class="game__ex__method">
+
+        <div class="method__one">
+          <p>STAGE 1</p>
+          <span>게임 접속 화면</span>
+          <span>총 24개의 stage로 구성되어 있습니다.</span>
+          <img src="/img/01_game_main.png" alt="게임첫화면">
+        </div>
+
+        <div class="method__one">
+          <p>STAGE 2</p>
+          <span>게임 선택 화면</span>
+          <span>총 24개의 stage는 24개의 단계로 이루어져 있습니다.</span>
+          <img src="/img/02_game_main.png" alt="게임두번쨰화면">
+        </div>
+
+        <div class="method__one">
+          <p>STAGE 3</p>
+          <span>공부 화면</span>
+          <span>나오는 문제에 맞춰, 마우스 혹은 터치로 바둑 돌을 올려놓습니다.</span>
+          <img src="/img/04_game_main.png" alt="게임두번쨰화면">
+        </div>
+
+        <div class="method__one">
+          <p>STAGE 4</p>
+          <span>강의 화면</span>
+          <span>문제가 이해가 잘 안된다면, 오른쪽 하단의 강의 영상을 클릭하여 문제에 대한 설명을 듣습니다.</span>
+          <img src="/img/05_game_main.png" alt="게임두번쨰화면">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  </th:block>
+</html>

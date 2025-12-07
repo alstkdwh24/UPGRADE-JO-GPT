@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="/css/user_stu/home.css">
+  <script src="/js/home_mn.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <div class="header__wrapper">
+      <div class="header__wrapper__container">
+        <img src="/img/logo.png" alt="로고">
+        <div class="header__wrapper__my">
+          <i class="fa-regular fa-bell"></i>
+          <a href="" th:text="${session.user_id}"></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section__wrapper">
+      <div class="section__wrapper__container">
+
+        <div class="section__container__left">
+          <div class="section__left__menu" id="my__home" onclick="my__home()"><span>관리자 화면</span></div>
+          <div class="section__left__menu" id="my__notice" onclick="my__agree()"><span>공고 등록 승인</span></div>
+          <div class="section__left__menu" id="my__resume" onclick="my__resume()"><span>이력서 등록 내역</span></div>
+          <div class="section__left__menu" id="my__apply" onclick="my__hire()"><span>채용기업리스트</span></div>
+          <div class="section__left__menu" id="my_confirm" onclick="my_confirm()"><span>합격자 통계</span></div>
+          <div class="section__left__menu"><span>회원 정보 수정</span></div>
+          <a href="../user/logout" class="section__left__menu logout"><span>로그 아웃</span></a>
+        </div>
+        <div class="section__container__right">
+
+          <iframe id="iframe" src="/user_mn/mn_myhome" width="100%" height="100%" allowfullscreen></iframe>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<div th:include="/include_main/footer_main"></div>
+
+</body>
+</html>

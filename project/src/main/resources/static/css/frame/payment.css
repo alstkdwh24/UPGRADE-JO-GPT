@@ -1,0 +1,17 @@
+.total_payment{width: 60%; text-decoration: none; margin: 0 auto;}
+.button {transition: background-color 0.3s;
+border-radius: 5px; 
+background-color: #4CAF50; 
+color: white; padding: 12px 0; 
+text-align: center; 
+display: block; 
+width: 100%; 
+cursor: pointer; 
+text-decoration: none; 
+margin-top:30px; border:none; font-weight: 600;}
+.button:hover {background-color: #43A047;}
+
+
+
+
+

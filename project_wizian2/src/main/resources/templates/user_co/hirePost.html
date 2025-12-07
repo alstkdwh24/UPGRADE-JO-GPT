@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_co/notice_co.css">
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="notice__header"><span>공고 등록 현황</span></div>
+
+  <table class="apply_table">
+    <colgroup>
+      <col width="80">
+      <col width="700">
+      <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>요청한 공고 이름</th>
+        <th>승인여부</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="tr-yn" th:each="uploadPost : ${uploadPost}" th:data-uploadPost="${uploadPost}">
+        <td th:text="${uploadPost.title}">1</td>
+        <td><a th:href="@{/job/resume_jobpost2(prodd_id=${uploadPost.prodd_id})}"><span th:text="${uploadPost.title_name}"></span></a></td>
+        <td class="td-yn" th:class="${uploadPost.yn == 'Y' ? 'yn-y' : (uploadPost.yn == 'N' ? 'yn-n' : 'yn-t')}" th:text="${uploadPost.yn}">Y/N</td>
+    </tr>
+    </tbody>
+  </table>
+  <script defer src="/js/home_co.js"></script>
+</body>
+</html>

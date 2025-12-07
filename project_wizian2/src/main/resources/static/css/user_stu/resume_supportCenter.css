@@ -1,0 +1,222 @@
+li, ul, p {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.header1 {
+  padding-top: 50px;
+  margin: 0 auto;
+  width: 40%;
+}
+
+
+/* 추가된 스타일 */
+.header_title > li {
+  line-height: 1.5; /* 조절 가능한 값 */
+}
+
+.header_resumeheader {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.header_resumeheader > ul {
+  overflow: hidden;
+}
+
+/* 이력서 글자 */
+.header_resumeheader .header_resume_title {
+  font-size: 30px;
+  color: rgba(128, 128, 128, 0.7);
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* 이름 */
+.header_resume_name {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+
+/* 이력서 사진 */
+.header_resumeheader > ul > img{
+  display: inline-block;
+  width: 100px;
+  float: right;
+}
+
+/* 인적사항 등, 제일 큰 섹션 */
+#middle {
+  width: 40%;
+  margin: 0 auto;
+}
+
+/* 제일 큰 박스 */
+.bigbox {
+  /* border-top: 3px solid black; */
+  overflow: hidden;
+  margin-bottom: 3px;
+}
+
+
+
+.leftleftmiddlebox {
+  border-top: 3px solid black;
+}
+
+
+
+.rightrightmiddlebox {
+  border-top: 3px solid black;
+}
+
+
+
+
+/* 인적사항 적혀있는 박스 */
+.leftmiddlebox {
+  float: left;
+  width: 30%;
+  font-weight: bold;
+}
+
+.rightmiddlebox {
+  float: right;
+  width: 65%;
+}
+
+
+.rightrightmiddlebox > ul > li{
+  width: 100px;
+  display: inline-block;
+  float: left;
+}
+
+.rightrightmiddlebox > ul {
+  border-bottom: 2px solid #777;
+  margin: 0px 0px 5px 0px;
+  line-height: 38px;
+  overflow: hidden;
+}
+
+/* ul 마지막에서만 border랑 margin 없앰 */
+.rightrightmiddlebox > ul:last-child {
+  border-bottom: none;
+  margin: 0;
+}
+
+
+.rightrightmiddlebox input {
+  width: 100%;
+  height: 20px;
+  float: right;
+
+}
+
+/* 경력사항 기간 */
+#datepicker {
+  width: 44%;
+  margin-left: -14px;
+}
+
+/* 희망임금 설정 */
+#inputWage {
+  width: 50px;
+}
+
+.submitBtn {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 30px;
+}
+
+button {
+  display: inline-block;
+  padding: 0.3em 0.7em;
+  border: 1px solid #ccc;
+  border-color: #dbdbdb #d2d2d2 #b2b2b2 #d2d2d3;
+    cursor: pointer;
+    color: #464646;
+    border-radius: 0.2em;
+    vertical-align: middle;
+    font-size: 1em;
+    line-height: 1.25em;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f2f2f2));    
+}
+
+input {
+  margin: 0.2em 0;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-color: #dbdbdb #d2d2d2 #d0d0d0 #d2d2d3;
+    box-shadow: inset 0.1em 0.1em 0.15em rgba(0,0,0,.1);
+    vertical-align: middle;
+    line-height: 1.25em;
+    outline: 0;
+}
+
+
+/* 지피티 도움 */
+.rightrightmiddlebox ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.rightrightmiddlebox ul li {
+  display: inline-block;
+  vertical-align: top; /* 아이템들을 위로 정렬합니다. */
+  /* margin-right: 10px; */
+}
+
+.rightrightmiddlebox ul li:last-child {
+  margin-right: 0; /* 마지막 아이템의 오른쪽 여백 제거 */
+}
+
+.rightrightmiddlebox ul li input.inputName {
+  margin: 0;
+  vertical-align: top;
+  width: calc(100% - 100px); /* "성명" 라벨의 너비를 제외한 나머지 너비를 입력 필드에 할당합니다. */
+}
+
+.rightrightmiddlebox ul p {
+  display: inline-block;
+  box-sizing: border-box;
+  float: right;
+  width: 65%;
+}
+
+.upload_main_pic {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  /* border: 1px solid #777; */
+  cursor: pointer;
+  float: right;
+}
+
+.upload_pic {
+  display: block;
+  overflow: hidden;
+  height: 100%;
+  
+  cursor: pointer;
+  background: url(/img/bg_imgItem.png);
+}
+
+.upload_pic img {
+  top: 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+  height: auto;
+}
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+    <link rel="stylesheet" href="/css/frame/learnGroupLook.css">
+    <script src="/js/frame/learnGroupLook.js" defer></script>
+      <div class="wrap__content">
+
+        <div class="look__wrap">
+
+          <div class="looks__wrap__header">
+
+            <div class="looks__header__title">
+              <span>학습 그룹 조회</span>
+              <div class="looks__header__search">
+                <input type="text" placeholder="학습그룹명을 입력하세요.">
+                <button>검색</button>
+              </div>
+            </div>
+
+            <div class="looks__header__submit">
+
+              <select name="" id="">
+                <option value="none">정렬</option>
+                <option value="가나다순">가나다순</option>
+                <option value="등록일순">등록일순</option>
+                <option value="인원순">인원순</option>
+              </select>
+            </div>
+
+
+          </div>
+
+          <div class="looks__wrap__body">
+
+            <div id="looks__thead">
+              <button id="looks__thead__first"><input type="checkbox"></button>
+              <button id="looks__thead__second">학습그룹명</button>
+              <button id="looks__thead__third">게임컨텐츠명</button>
+              <button id="looks__thead__fourth">그룹T/O</button>
+              <button id="looks__thead__fifth">구독기간</button>
+              <button id="looks__thead__sixth">달성레벨</button>
+              <button id="looks__thead__seventh">가입학생수</button>
+            </div>
+
+
+
+            <div class="looks__tbody">
+              <div class="looks__tbody__content" th:each="list : ${list}">
+                <div id="looks__tbody__first"><input type="checkbox" value="dd"></div>
+                <a th:href="@{groupRegistLook(sg_no=${list.sg_no})}" id="looks__tbody__second">[[${list.sg_name}]]</a>
+                <div id="looks__tbody__third">[[${list.game_title}]]</div>
+                <div id="looks__tbody__fourth">[[${list.sg_capa}]]명 / [[${list.sg_grouplimit} + '명']]</div>
+                <div id="looks__tbody__fifth">[[${list.sg_regdate} + ' ~ ' + ${list.sg_enddate}]]</div>
+                <div id="looks__tbody__sixth">[[${list.sg_level} + '레벨']]</div>
+                <div id="looks__tbody__seventh">[[${list.sg_capa} + '명']]</div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="looks__wrap__footer">
+            <button id="looks__page">1</button>
+            <button id="looks__page">2</button>
+            <button id="looks__page">3</button>
+            <button id="looks__page">4</button>
+            <button id="looks__page">5</button>
+            <button id="looks__page">6</button>
+            <button id="looks__page">7</button>
+            <button id="looks__page">8</button>
+            <button id="looks__page">9</button>
+            <button id="looks__page">10</button>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+</th:block>
+</html>

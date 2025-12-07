@@ -1,0 +1,26 @@
+CREATE TABLE JOBS(
+prodd_id INT PRIMARY KEY AUTO_INCREMENT,
+header_main_title varchar(500),
+company_title varchar(500) ,
+	middle_content varchar(500)
+	,middle_content_category varchar(500)
+	,middle_middle_people varchar(500)
+	,middle_middle_writer varchar(500)
+	,middle_two_checkbox_two varchar(500)
+	 ,middle_two_select varchar(500)
+	,middle_two_content_content varchar(500)
+	,middle_two_checkbox_one varchar(500)
+	,middle_two_checkbox_two_twoone varchar(500)
+	,middle_two_checkbox_three  varchar(500)
+	,middle_two_content_box varchar(500)
+	,middle_two_content_box_boxone varchar(500)
+	,middle_three_writer varchar(500)
+	,middle_three_content varchar(500)
+	,middle_three_content_email varchar(500)
+	,middle_three_content_select varchar(500)
+	,phone int(14)
+	,document varchar(500)
+    ,checkone varchar(500)
+
+
+);

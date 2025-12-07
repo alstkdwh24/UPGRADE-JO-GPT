@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_m :: setContent( ~{ :: section} ) }">
+
+  <section>
+  	<div class="login__main__title"><span>로그인</span></div>
+  
+    <div class="login__wrapper">
+      <div class="login__wrapper__content">
+
+        <div class="login__logo"><img src="/img/KBA_MainLogo.png" alt="메인로고"></div>
+
+        <div class="login__title"><span>바둑스쿨 회원</span></div>
+        <!-- 로그인 Form 방식 / post 방식 {Controller 주소 입력}-->        
+        <form action="loginForm" method="post" class="loginForm">
+
+          <div class="login__item">
+            <span>아이디</span>
+            <input type="text" name="user_id">
+          </div>
+
+          <div class="login__item">
+            <span>비밀번호</span>
+            <input type="password" name="user_pw">
+          </div>
+
+          <button type="submit">로그인</button>
+
+        </form>
+
+        <!-- 한둑기원 회원 로그인 -->
+        <form action="" method="post" class="login__ba">
+          <button type="submit">한국기원 회원 로그인</button>
+        </form>
+
+        <!-- 로그인 버튼 아래 메뉴 -->
+        <div class="login__menu">
+
+          <div class="login__menu__item" id="save__id"><input type="checkbox" value=""><span>아이디 저장</span></div>
+          <div class="login__menu__item" id="find__id"><a href="">아이디 찾기</a></div>
+          <div class="login__menu__item" id="find__pw"><a href="">비밀번호 찾기</a></div>
+          <div class="login__menu__item" id="join__user"><a href="">회원가입</a></div>
+
+        </div>
+
+        <!-- 로그인 버튼 아래 메뉴 -->
+        <div class="social__login">
+          <div class="kakao__login"><a href=""><img src="/img/kakao_login_medium_narrow.png" alt=""> </a></div>
+          <div class="goggle__login"><a href=""><img src="/img/web_light_sq_SU@1x.png" alt=""> </a></div>
+          <div class="naver__login"><a href=""><img src="/img/naver.png" alt=""> </a></div>
+          <div class="apple__login"><a href=""><img src="/img/apple.png" alt=""> </a></div>
+        </div>
+
+      </div>
+      
+    </div>
+  </section>
+
+</th:block>
+</html>

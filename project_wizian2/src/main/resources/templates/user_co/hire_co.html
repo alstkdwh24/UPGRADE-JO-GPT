@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_co/notice_co.css">
+  <script type="text/javascript" src="/js/home_co.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="notice__header"><span>지원자 내역</span></div>
+  
+  <form id="myForm" action="" method="get">
+  	서류전형 <input type="checkbox" name="checkbox1" value="value1">
+  	면접전형 <input type="checkbox" name="checkbox2" value="value2">
+  	최종합격 <input type="checkbox" name="checkbox3" value="value3">
+  	<button type="button" onclick="submitForm()">확인</button>
+  </form>
+
+  <table class="apply_table">
+    <colgroup>
+      <col width="80">
+      <col width="700">
+      <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>이력서 제목</th>
+        <th>이름</th>
+        <th class="notice__below__apply">합격 유무</th>
+    </tr>
+    </thead>
+    <tbody>
+	    <tr th:each="umList : ${umList}">
+	        <td th:text="${umList.resume_num}">1</td>
+	        <td th:text="${umList.title}"><a href="/student/comp_popup">이력서 제목</a></td>
+	        <td th:text="${umList.stu_name}">지원자 이름</td>
+			<td style="display:flex;">
+               <form th:action="@{/user_co/approve_second/{stu_name}(stu_name=${umList.stu_name})}" method="get">
+	                <input type="hidden" name="stu_name" th:value="${umList.stu_name}"/>
+	                <input type="hidden" name="stu_yn" th:value="${umList.stu_yn}"/>
+	                <button type="submit" style="margin-right: 10px;">승인</button>
+           		</form>
+               
+               <form th:action="@{/user_co/reject_second/{stu_name}(stu_name=${umList.stu_name})}" method="get">
+	                <input type="hidden" name="stu_name" th:value="${umList.stu_name}"/>
+	                <input type="hidden" name="stu_yn" th:value="${umList.stu_yn}"/>
+	                <button type="submit">거절</button>
+           	   </form>
+	       </td>
+	    </tr>
+    </tbody>
+  </table>
+</body>
+</html>

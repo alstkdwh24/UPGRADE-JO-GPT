@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_co/notice_co.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/home_co.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+  	<div class="notice__header"><span>서류 합격자 리스트</span></div>
+  
+
+	<form id="myForm" action="" method="get">
+		서류전형 <input type="checkbox" id="checkbox1" name="checkbox1">
+		면접전형 <input type="checkbox" id="checkbox2" name="checkbox2">
+		최종합격 <input type="checkbox" id="checkbox3" name="checkbox3">
+		<button type="button" onclick="submitForm()">확인</button>
+	</form>
+
+
+	  <table class="apply_table">
+	    <colgroup>
+	      <col width="80">
+	      <col width="700">
+	      <col width="100">
+	    </colgroup>
+	    <thead>
+	    <tr>
+	        <th>번호</th>
+	        <th>이력서 제목</th>
+	        <th>이름</th>
+	        <th class="notice__below__apply">합격 유무</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+		    <tr th:each="vo : ${vo}">
+		        <td th:text="${vo.resume_num}">1</td>
+		        <td th:text="${vo.title}"><a href="/student/comp_popup">이력서 제목</a></td>
+		        <td th:text="${vo.stu_name}">지원자 이름</td>
+				<td style="display:flex;">
+	               <form th:action="@{/user_co/approve_third/{stu_name}(stu_name=${vo.stu_name})}" method="get">
+		                <input type="hidden" name="stu_name" th:value="${vo.stu_name}"/>
+		                <input type="hidden" name="stu_yn" th:value="${vo.stu_yn}"/>
+		                <button type="submit" style="margin-right: 10px;">승인</button>
+	           		</form>
+	               
+	               <form th:action="@{/user_co/reject_third/{stu_name}(stu_name=${vo.stu_name})}" method="get">
+		                <input type="hidden" name="stu_name" th:value="${vo.stu_name}"/>
+		                <input type="hidden" name="stu_yn" th:value="${vo.stu_yn}"/>
+		                <button type="submit">거절</button>
+	           	   </form>
+		       </td>
+		    </tr>
+	    </tbody>
+	  </table>
+</body>
+</html>

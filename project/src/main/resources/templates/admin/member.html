@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/member.css">
+<script src="/js/frame/member.js" defer></script>
+   <div class="m_wrap">
+  
+   
+     <form name="member" action="member" method="get" class="m_wrap__above">
+	   <input type="hidden" name="page" value="1">
+   	   <input type="hidden" name="amount" th:value="${pageVO.amount}">
+       <div class="m_a__title"><span>회원 관리</span></div>
+       <div class="m_a_select">
+       
+         <select name="memberRole" id="memberRole">
+           <option value="100" th:selected="${pageVO.criteria.memberRole == none}">회원 유형을 선택해주세요.</option>
+           <option value="1" th:selected="${pageVO.criteria.memberRole == 1}">사용자 - 선생</option>
+           <option value="2" th:selected="${pageVO.criteria.memberRole == 2}">사용자 - 학생</option>
+           <option value="3" th:selected="${pageVO.criteria.memberRole == 3}">사용자 - 일반</option>
+         </select>
+         <button type="submit">검색</button>
+       </div>
+
+     </form>
+
+     <!-- 아래 -->
+     <div class="m_wrap__below">
+		
+       <div class="m_b__left">
+         <div class="mb__thead">
+           <div class="mb__thead__one">회원 번호</div>
+           <div class="mb__thead__two">회원 이름</div>
+           <div class="mb__thead__three">회원 유형</div>
+           <div class="mb__thead__four">회원 연락처</div>
+           <div class="mb__thead__five">비고</div>
+         </div>
+         <div class="mb__tbody">
+
+           <div class="mb__tbody__content" th:each="UserList:${UserList}">
+           	 <input type="hidden" name="user_no" th:value="${UserList.user_no}">
+             <div class="mb__tbody__one" th:text="${UserList.user_no}">회원 번호</div>
+             <div class="mb__tbody__two" th:text="${UserList.user_name}">회원 이름</div>
+             <div class="mb__tbody__three">
+			 	<span th:if="${UserList.user_role == '1' OR UserList.user_role == 'ROLE_TEA'}">사용자 - 선생</span>
+			 	<span th:if="${UserList.user_role == '2' OR UserList.user_role == 'ROLE_STU'}">사용자 - 학생</span>
+			 	<span th:if="${UserList.user_role == '3' OR UserList.user_role == 'ROLE_GEN'}">사용자 - 일반</span>
+			 </div>
+             <div class="mb__tbody__four" th:text="${UserList.user_phone}">회원 연락처</div>
+             <div class="mb__tbody__five">
+               <button class="memberLookUp" th:value="${UserList.user_no}">상세보기</button>
+             </div>
+           </div>
+
+         </div>
+	<th:block th:replace="~{./baseLayout/page_member :: pageNation(${pageVOmember})}"></th:block>
+       </div>
+
+
+
+       <div class="m_b__right">
+         
+         <div class="mb__head"><span>회원정보 상세</span></div>
+         <div class="mb__body">
+
+           <div class="mbb_above">
+
+             <div class="mbb__ab__left">
+               
+               <div class="item__first">
+                 <span>회원명</span>
+                 <input type="text" name="" value="" readonly="readonly" id="item__first__name"></input>
+                 <input type="text" readonly="readonly" id="item__first__role"></input>
+                 <input type="text" readonly="readonly" id="item__first__gender"></input>
+               </div>
+
+               <div class="item__second">
+                 <span>연락처</span>
+                 <input type="text" name="" value="" id="item__second__phone" readonly>
+               </div>
+
+               <div class="item__second">
+                 <span>이메일</span>
+                 <input type="text" name="" value="" id="item__second__email" readonly>
+               </div>
+
+               <div class="item__third">
+                <span>생일</span>
+                <input type="text" name="" value="" id="item__third__birth" readonly>
+              </div>
+
+               <div class="item__third">
+                 <span>주소</span>
+                 <input type="text" name="" value="" id="item__third__address" readonly>
+               </div>
+
+               <div class="item__second">
+                 <span>가입일자</span>
+                 <input type="text" name="" value="" id="item__second__regDate" readonly>
+               </div>
+
+             </div>
+
+             <div class="mbb__ab__right">
+               <img src="/img/KBA_mascot _white.png" alt="">
+             </div>
+           </div>
+
+
+           <div class="mbb__below">
+
+             <div class="mbb__below__head">
+               <div class="mbb__bh__a">활동 이력</div>
+               <div class="mbb__bh__b">
+                <div class="mbb_bh__b__title">최근 활동한 일자 및 시간</div>
+
+                <div class="mbb__bh__item">
+                  <div class="bh__item__title">가입일자</div>
+                  <input type="text" name="" value="" id="item__second__regDate2" readonly>
+                </div>
+
+               </div>
+             </div>
+             <div class="mbb__below__body">
+               <input type="hidden" id="userSleepNo" name="userSleepNo">
+               <a onclick="redirectToUserSleep()" id="userSleep">휴먼계정 전환</a>
+               <a href="">계정 삭제</a>
+             </div>
+
+           </div>
+
+         </div>
+
+       </div>
+
+     </div>
+
+   </div>
+ </div>
+
+</th:block>
+</html>

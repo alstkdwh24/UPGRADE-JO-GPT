@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/homeWorkRegist.css">
+<script src="/js/frame/homeWorkRegist.js" defer></script>
+
+  <div class="wrap__content">
+    <form action="homeWorkRegistForm" method="post" class="regist__wrap">
+
+
+      <!-- 컨텐츠 등록 -->
+      <div class="homework__regist__left">
+
+        <div class="homework__regist__left__above">
+          <span>숙제 정보 입력</span>
+          <div class="homework__left__above__button">
+            <button>저장</button>
+            <button>취소</button>
+          </div>
+        </div>
+        <div class="homework__regist__left__below">
+
+        <input type="hidden" th:value="${session.vo.user_no}" id="user_no" name="user_no">
+
+          <!-- 제목 입력 -->
+          <div class="homework__regist__below__item">
+            <span>숙제명</span>
+            <input type="text" id="homework__learn__title" name="homework_name" placeholder="제목을 입력하세요.">
+          </div>
+
+          <!-- 제목 입력 -->
+          <div class="homework__regist__below__item">
+            <span>내용</span>
+            <input type="text" id="homework__learn__content" name="homework_content" placeholder="내용을 입력하세요.">
+          </div>
+          
+
+          <!-- 구분 선택 -->
+          <div class="homework__regist__below__item">
+            <span>숙제 레벨 선택</span>
+            <select name="homework_level" id="homework__type__select">
+              <option value="none">레벨을 선택해주세요.</option>
+              <th:block th:each="level : ${#numbers.sequence(1, 30)}">
+                <option th:value="${level}" th:text="${level} + '레벨'"></option>
+              </th:block>
+          </select>
+          </div>
+
+          <!-- 구분 선택 -->
+          <div class="homework__regist__below__item">
+            <span>학습 그룹 선택</span>
+            <select name="sg_no" id="homework__group__select">
+              <option value="none">학습 그룹을 선택해주세요.</option>
+            </select>
+            <button type="button" id="myGroup">내 학습그룹 불러오기</button>
+          </div>
+          
+
+          <!-- 자료 파일 주소 -->
+          <div class="regist__item__date">
+            <span>숙제 마감일</span>
+            <input type="date" id="homework__startDate" name="homework_regdate"> - 
+            <input type="date" id="homework__endDate" name="homework_duedate">
+            <div id="homework__Day"></div>
+          </div>  
+
+          <div class="homework__board">
+            <div class="homework__board__check">
+              <span>숙제 목록</span>
+            </div>
+            <div class="homework__board__list">
+              <div class="homework__thead">
+                <div class="homework__thead__one"><span>번호</span></div>
+                <div class="homework__thead__two"><span>숙제명</span></div>
+                <div class="homework__thead__three"><span>숙제내용</span></div>
+                <div class="homework__thead__four"><span>레벨</span></div>
+                <div class="homework__thead__five"><span>제출기한</span></div>
+                <div class="homework__thead__six"><span>생성일자</span></div>
+              </div>
+
+              <div class="homework__body">
+
+                <div class="homework__tbody" th:each="list, index : ${list}">
+                  <div class="homework__tbody__one"><span>[[${index.count}]]</span></div>
+                  <div class="homework__tbody__two"><span>[[${list.homework_name}]]</span></div>
+                  <div class="homework__tbody__three"><span>[[${list.homework_content}]]</span></div>
+                  <div class="homework__tbody__four"><span>[[${list.homework_level}]]레벨</span></div>
+                  <div class="homework__tbody__five"><span>[[${list.leftDays()} + '일 전']]</span></div>
+                  <div class="homework__tbody__six"><span>2024-04-05</span></div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 컨텐츠 등록 현황 -->
+      <div class="homework__regist__right">
+
+        <div class="homework__regist__right__wrapper">
+
+          <div class="homework__regist__content__post">
+
+            <img id="homework__previewImage" src="/img/background.png" alt="">
+            <div id="homework__post__type"></div>
+            <div id="homework__post__title"></div>
+            <div id="homework__post__info"></div>
+            <div id="homework__post__level"></div>
+            <div id="homework__post__count"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+</th:block>
+</html>

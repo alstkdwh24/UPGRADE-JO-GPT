@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="/css/user_co/myhome_co.css">
+   <script src="/js/home_co.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="home__wrapper">
+    <div class="section__right__header">
+    <div class="right__header__img"><img src="/img/default.png" alt="기본이미지"></div>
+    <div class="right__header__info">
+      <p th:text="${session.com_name}  + ' 님'"> <span id="info1">session.기업명</span></p>
+      <span id="info2" th:text="${session.com_type}"></span>
+      <span id="info3" th:text="${session.com_vo.com_id}"></span>
+    </div>
+    </div>
+  </div>
+  <div class="section__right__body">
+
+    <div class="section__right__alarm">
+      <a href="" class="right__alarm__list list1">전체 알람 <span>[[${uploadPost.size() + updatePost.size()}]]</span><i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list2">전체 공고 등록 <span>[[${uploadPost.size()}]]</span><i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list3">지원자 관리 <span>[[${umList.size()}]]</span><i class="fa-regular fa-lightbulb"></i></a>
+      <a href="" class="right__alarm__list list4">진행중인 공고 <span>[[${updatePost.size()}]]</span><i class="fa-regular fa-lightbulb"></i></a>
+    </div>
+
+    <div class="section__right__notice">
+
+      <div class="section__notice__above">
+        <div class="notice__above__apply">
+          <div class="section__right__container">
+
+            <h3>공고 등록 현황</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="container__th__one">공고제목</th>
+                        <th class="container__th__two">공고명</th>
+                        <th class="container__th__three">승인여부</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="updatePost : ${updatePost}">
+                        <td th:text="${updatePost.title}">1</td>
+                        <td th:text="${updatePost.title_name}">웹 개발자 채용</td>
+                        <td class="td-yn" th:class="${updatePost.yn == 'Y' ? 'yn-y' : (updatePost.yn == 'N' ? 'yn-n' : 'yn-t')}" th:text="${updatePost.yn}">ABC 주식회사</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="notice__above__hire">
+          <div class="section__right__container">
+
+            <h3>지원자 관리</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>이력서 제목</th>
+                        <th>지원자명</th>
+                        <th id="td_btn">합격유무</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="umList : ${umList}">
+                        <td th:text="${umList.resume_num}">1</td>
+                        <td th:text="${umList.title}">이력서 제목</td>
+                        <td th:text="${umList.stu_name}">지원자 이름</td>
+                        <td style="display:flex;">
+	                        <form th:action="@{/user_co/approve/{stu_name}(stu_name=${umList.stu_name})}" method="get">
+		                        <input type="hidden" name="stu_name" th:value="${umList.stu_name}"/>
+		                        <input type="hidden" name="stu_yn" th:value="${umList.stu_yn}"/>
+		                        <button type="submit" style="margin-right: 10px;">승인</button>
+	                    	</form>
+	                        
+	                        <form th:action="@{/user_co/reject/{stu_name}(stu_name=${umList.stu_name})}" method="get">
+		                        <input type="hidden" name="stu_name" th:value="${umList.stu_name}"/>
+		                        <input type="hidden" name="stu_yn" th:value="${umList.stu_yn}"/>
+		                        <button type="submit">거절</button>
+	                    	</form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="section__notice__below">
+        <div class="notice__below__container">
+
+          <h3>공고 등록 이력</h3>
+          <table>
+              <thead>
+                  <tr>
+                      <th>공고제목</th>
+                      <th>공고명</th>
+                      <th>승인여부</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr th:each="uploadPost : ${uploadPost}">
+                      <td th:text="${uploadPost.title}">1</td>
+                      <td th:text="${uploadPost.title_name}">>웹 개발자 채용</td>
+                      <td id="td-yn" th:class="${uploadPost.yn == 'Y' ? 'yn-y' : (uploadPost.yn == 'N' ? 'yn-n' : 'yn-t')}" th:text="${uploadPost.yn}" >ABC 주식회사</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</body>
+</html>

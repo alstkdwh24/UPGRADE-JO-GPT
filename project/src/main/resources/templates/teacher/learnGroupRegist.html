@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/learnGroupRegist.css">
+<script src="/js/frame/learnGroupRegist.js" defer></script>
+  <div class="wrap__content">
+    <form action="learnGroupRegistForm" method="post" class="regist__wrap">
+      <!-- hidden으로 user_no 값 보내줄 예정 -->
+      <input type="hidden" name="user_no" th:value="${session.vo.user_no}">
+      <input type="hidden" name="game_no" id="selected_gameNo" value="">
+
+      <div class="learnGroup__left">
+
+        <div class="lG-left-header">
+          <span>학습 그룹 등록</span>
+          <div class="lG-left-btn">
+            <button>등록</button>
+            <button type="button">취소</button>
+          </div>
+        </div>
+
+
+        <div class="lG-left-body">
+
+          <div class="lg_above">
+            <div class="lg__thead">
+              <div class="lg__thead__one">변경</div>
+              <div class="lg__thead__two">컨텐츠</div>
+              <div class="lg__thead__three">제목</div>
+              <div class="lg__thead__four">구독기간</div>
+              <div class="lg__thead__five">제한인원</div>
+              <div class="lg__thead__six">재생시간</div>
+            </div>
+            <div class="lg__tbody">
+              <div class="lg__tbody__one"><button type="button">가져오기</button></div>
+              <div class="lg__tbody__two"><img src="/img/02_game_main.png" alt=""></div>
+              <div class="lg__tbody__three">컨텐츠를 가져와주세요</div>
+              <div class="lg__tbody__four"></div>
+              <div class="lg__tbody__five"></div>
+              <div class="lg__tbody__six">240 m / m</div>
+            </div>
+          </div>
+          
+          <div class="lg__below">
+            <div class="lg__below__wrap">
+
+              <div class="lg__below__item">
+                <span>교육자명</span>
+                <input type="text" th:value="${session.vo.user_name}" disabled>
+              </div>
+
+              <div class="lg__below__item">
+                <span>학습그룹명</span>
+                <input type="text" id="learn__group__title" name="sg_name">
+              </div>
+              
+               <div class="lg__below__item">
+                <span>강의수</span>
+                <input type="text" id="learn__group__title" name="sg_class">
+              </div>
+              
+
+              <div class="lg__below__item">
+                <span>제한 인원</span>
+                <input type="text" id="learn__group__limit" name="sg_grouplimit">
+              </div>
+
+              <div class="lg__below__item">
+                <span>학습 레벨</span>
+                <input type="text" id="learn__group__level" name="sg_level">
+              </div>
+
+              <div class="lg__below__item">
+                <span>목표 레벨</span>
+                <input type="text">
+              </div>
+
+              <div class="lg__below__date">
+                <span>학습 기간</span>
+                <input type="date" id="lg-startDate" name="sg_regdate"> ~
+                <input type="date" id="lg-endDate" name="sg_enddate">
+                <div id="lg__month"></div>
+              </div>
+
+              <div class="lg__below__text">
+                <span>비고</span>
+                <textarea name="sg_plus" id="" cols="30" rows="6"></textarea>
+              </div> 
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+      
+      
+
+			
+       
+        
+        
+        
+        <!-- 모달(상품 가져오기 했을 때 보여지는거) -->
+		<div id="myModal" class="modal">
+		  <div class="modal-content">
+		    <span class="close">&times;</span>
+			<th:block>
+			
+			<div class="wrap">
+			  <div class="wrap__content">
+			
+			    <div class="lookup__header">
+			      <!-- 조회 타이틀 -->
+			      <div class="lookup__header__title"><span>내 구독상품 조회</span></div>
+			
+			      <!-- 우측 정렬 -->
+			      <div class="myProduct__header__detail">
+			
+			      </div>
+			
+			    </div>
+			
+			
+			    <div class="lookup__body" >
+			    
+			      <div class="lookup__table">
+			
+			        <div class="table__thead">
+			          <div class="thead__check">번호</div>
+			          <div class="thead__image">컨텐츠</div>
+			          <div class="thead__title">컨텐츠제목</div>
+			          <div class="thead__subscribe">가격/구독</div>
+			          <div class="thead__introduce">구매일자</div>
+			          <div class="thead__pay">학습그룹 등록내역</div>
+			        </div>
+			        <div class="table__tbody">
+			            
+			            
+			          <input type="hidden" th:class="listImg" th:value="${listWithImg}">
+			            
+			          <!-- 반복하는 곳 -->
+			          <div class="tbody__item" th:each="list : ${listWithImg}" >
+				        <!-- 선택 -->
+					    <div class="tbody__check">
+					        <input type="radio" th:name="radioGroup" th:value="${list.game_no}"><!-- 값으로 list를 사용 -->
+					    </div>
+			
+			            <!-- 컨텐츠 사진 -->
+			            <div class="tbody__image">
+							<img th:src="@{/display/{filepath}/{uuid}/{filename}(filepath=${list.filepath},uuid=${list.uuid},filename=${list.filename})}"  >
+			            </div>
+			
+			            <!-- 컨텐츠 제목 -->
+			            <div class="tbody__title" th:text="${list.game_title}"></div>
+			
+			            <!-- 컨텐츠 가격 -->
+			            <div class="tbody__subscribe">
+			              <div class="tbody__subscribe__above">
+			                <div class="subscribe__above__price"><div class="price__title">기본가 : </div> <span th:text="${list.game_price} + '원'"></span></div>
+			              </div>
+			              <div class="tbody__subscribe__below">
+			                <div class="item__date">기간 </div>
+			                <span>2024년 10월 12일 ~ 2024년 12월 15일</span>
+			              </div>
+			            </div>
+			
+			            <!-- 컨텐츠 구매일자 -->
+			            <div class="tbody__introduce" th:text="${list.game_content}"></div>
+			
+			            <!-- 컨텐츠 학습 그룹 등록 내역 -->
+			            <div class="tbody__pay">
+			              <span>강남학원 초급반</span>
+			            </div>
+			
+			          </div>
+			
+			        </div>
+			
+			        
+			      </div>
+			
+			    </div>
+			
+			  </div>
+			</div>
+			
+			</th:block>
+			
+			
+			
+
+			
+		  </div>
+		</div>
+		
+        
+
+      <div class="learnGroup__right">
+
+        <div class="lg__right__pre">
+          <div id="pre__title"></div>
+          <div id="pre__body">
+            <div id="pre__body__head">
+              <div id="pre__head__limit"></div>
+              <div id="pre__head__level"></div>
+              <div id="pre__head__date"></div>
+            </div>
+            <div id="pre__body__body">
+              <img src="/img/KBA_mascot_black2.png" alt="">
+            </div>
+          </div>
+          <div class="prefooter"></div>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+  
+</th:block>
+</html>

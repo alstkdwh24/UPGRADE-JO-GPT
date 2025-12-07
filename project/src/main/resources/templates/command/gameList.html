@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+<!--<link rel="stylesheet" href="/css/user/gameLists.css">-->
+<link rel="stylesheet" href="/css/user/modals.css">
+
+<body>
+<th:block
+        th:replace="~{/baseLayout/base_f.html :: setContent( ~{ :: .wrap} ) }">
+    <div class="wrap">
+        <script src="/js/frame/gameList.js" defer></script>
+        <script src="/js/user/modal.js" defer></script>
+        <!--			<script src="/js/user/gameLists.js" defer></script>-->
+        <script src="/js/user/addCart.js" defer></script>
+        <script src="/js/user/modal2.js" defer></script>
+
+
+        <script
+                src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal__msg">
+                    <div class="gameContentInfo">
+
+                        <div class="gameContentInfo__wrap">
+
+                            <div class="gameContentInfo__wrap__mainTitle">게임 컨텐츠 제목</div>
+
+                            <div class="gameContentInfo__img">
+                                <img src="/img/04_game_main.png" alt="">
+                            </div>
+                            <div id="gameContentInfo__form">
+                                <div id="gameContentInfo__form__sub">
+
+                                    <div class="default__info">
+                                        <span>난이도 :</span>
+                                    </div>
+                                    <div class="default__info">
+                                        <span>학습대상 :  일반인</span>
+                                    </div>
+                                    <div class="default__info">
+                                        <span>구매 혜택 : 할인</span>
+                                    </div>
+
+                                    <div class="default__info" id="default__price">
+                                        <span></span>
+
+                                    </div>
+                                    <div class="default__info" id="default__price12">
+                                        <span>할인 가격 :</span>
+                                    </div>
+                                    <div class="default__info" id="default__price2">
+                                        <span>학습기간 : </span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="game_title">
+                                <input type="hidden" id="game_content">
+                                <input type="hidden" id="game_no">
+                                    <input type="hidden" id="user_no" th:value="${user_no}">
+                                <div id="gameContentInfo__form__sub__two">
+
+                                    <button id="button" type="submit">장바구니로 이동</button>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="wrap__content">
+
+
+            <div class="game__content__header">
+                <div class="game__content__header__wrapper">
+
+                    <div class="game__content__title">
+                        <span>게임 컨텐츠 조회</span>
+                    </div>
+                    <div class="game__content__search">
+
+                        <form action="" method="get" class="game__search__input">
+                            <input type="hidden" name="JPage" value="1"> <input
+                                type="hidden" name="Jamount" th:value="${JPageVO.JAmount}">
+                            <!-- 폼있는 부분에다가 페이지가 이동되는지 실험을 해봤습니다 -->
+                            <input type="text" name="gameContentSearch"
+                                   placeholder="찾을 강의를 입력하세요.">
+                            <button>검색</button>
+                        </form>
+
+                        <div id="game__divide">
+
+                            <button class="game__divide__btn active">
+                                <img src="/img/pc.png" alt=""> <span>전체</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/pc.png" alt=""> <span>튜토리얼</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/pc.png" alt=""> <span>초급</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/pc.png" alt=""> <span>중급</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/pc.png" alt=""> <span>고급</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/pc.png" alt=""> <span>프로</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/freeMoney.png" alt=""> <span>무료</span>
+                            </button>
+
+                            <button class="game__divide__btn">
+                                <img src="/img/money2.png" alt=""> <span>유료</span>
+                            </button>
+
+                        </div>
+
+                        <div class="game__sort">
+
+                            <div class="game__sort__div">
+                                <img src="/img/sort.png" alt=""> <select name="sort"
+                                                                         id="sort">
+                                <option value="none">정렬상태</option>
+                                <option value="글자">글자</option>
+                                <option value="등록일">등록일</option>
+                                <option value="구독수">구독수</option>
+                            </select>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="game__body">
+
+                <div class="game__body__content">
+
+                    <div class="game__content__above" style="flex-wrap: wrap;">
+
+
+                        <div class="game__item__wrap myBtnOpenModal"
+                             th:each="vo, status : ${pagesubList}">
+
+                            <div class="game__content__item">
+                                <div class="game__thumbnail">
+                                    <img src="/img/05_game_main.png" alt="">
+                                </div>
+                                <div class="game__thumbnail__title">
+                                    <span class="game_title">[[${vo.game_title}]]</span>
+                                </div>
+                                <div class="game__thumbnail__type">
+                                    <span class="game_target_level">[[${vo.game_target_level}]]</span>
+                                </div>
+                                <div class="game__thumbnail__price">
+                                    <span class="game_price">[[${vo.game_price}]]</span>
+                                </div>
+                                <input type="hidden" th:value="${vo.game_sub_regDate_two}" class="game_sub_regDate">
+                                <input type="hidden" th:value="${vo.game_sub_endDate}" class="game_sub_endDate">
+                                <input type="hidden" th:value="${vo.game_discount_price}" class="game_discount_price">
+                                <input type="hidden" th:value="${vo.game_content}" class="game_content">
+                                <input type="hidden" th:value="${vo.game_no}" class="game_no">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--
+
+
+-->
+
+
+                    <div
+                            th:replace="/re_base_pagevo/base_Page.html ::  game__content__page"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

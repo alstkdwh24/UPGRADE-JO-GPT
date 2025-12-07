@@ -1,0 +1,60 @@
+.q__wrap{width: 100%; height: 100%; display: flex; flex-direction: column;}
+
+.q__wrap__head{width: 100%; height: 8%; border-bottom: 1px solid rgb(209, 208, 208); display: flex; align-items: center;}
+
+.q__wrap__title{width: 10%; height: 100%; display: flex; align-items: center;}
+.q__wrap__title span{font-size: 16px; font-weight: bold;}
+
+.q__wrap__select{width: 30%; height: 100%; display: flex; align-items: center;}
+.q__wrap__select button{width:50px; height: 30px; margin: 0px 5px; border: 1px solid rgb(184, 182, 182); border-radius: 5px; font-size: 12px; }
+.q__wrap__select button:hover{background-color: rgb(209, 208, 208); border: 1px solid rgb(185, 184, 184);}
+
+/*********************************************************************************************/
+.q__wrap__body{width: 99%; height: 86.2%; display: flex; align-items: center; margin-top: 10px; border: 1px solid rgb(209, 208, 208);}
+
+.qw__left{width: 60%; height: 100%; display: flex; flex-direction: column;}
+.qwl__up{width: 100%; height: 90%; display: flex; flex-direction: column;}
+
+.qwl__thead{width: 100%; height: 8%; display: flex; align-items: center; background-color: royalblue;}
+.qwl__thead__one{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(50, 94, 224);}
+.qwl__thead__two{width: 75%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(50, 94, 224);}
+.qwl__thead__three{width: 18%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; border-right: 1px solid rgb(50, 94, 224);}
+
+.qwl__tbody{width: 99.9%; height: 92%; display: flex; flex-direction: column; border-right: 1px solid rgb(209, 208, 208); border-bottom: 1px solid rgb(209, 208, 208);}
+.qwl__tbody__one{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(209, 208, 208);}
+.qwl__tbody__two{width: 75%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(209, 208, 208);}
+.qwl__tbody__three{width: 18%; height: 100%; display: flex; align-items: center; justify-content: center;  font-size: 13px; border-right: 1px solid rgb(209, 208, 208);}
+
+
+.qwl__tbody__box{width: 100%; height: 60px; display: flex; align-items: center; border-bottom: 1px solid rgb(209, 208, 208);}
+.qwl__tbody__three a{width: 50px; height: 25px; border: 1px solid rgb(209, 208, 208); margin: 0px 5px; display: flex; align-items: center; justify-content: center; }
+#a1{background-color: green; color: white;}
+#a2{background-color: red; color: white;}
+#searchType{width: 200px; height: 35px; border: none; border-bottom: 1px solid rgb(209, 208, 208); &:focus{outline: none;}}
+
+.qwl__down{width: 100%; height: 10%; display: flex; align-items: center;}
+
+.qw__right{width: 40%; height: 100%; display: flex; flex-direction: column; }
+
+.qwr__head{width: 100%; height: 7%; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgb(209, 208, 208);} 
+.qwr__head span{font-size: 18px; font-weight: bold;}
+
+.qwr__body{width: 100%; height: 83%;  display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgb(209, 208, 208);}
+.qwr__b_wrap{width: 95%; height: 95%; display: flex; flex-direction: column;}
+
+.qwr__item{width: 100%; height: 70px; display: flex; align-items: center;} 
+.qwr__item__title{width: 100px; height: 100%; display: flex; align-items: center;  } 
+.qwr__item__title span{font-size: 13px; font-weight: bold;}
+.qwr__item select{width: 200px; height: 35px; border: none; border-bottom: 1px solid rgb(209, 208, 208); font-size: 13px; &:focus{outline: none;}}
+.qwr__item input{width: 400px; height: 35px; border: none; border-bottom: 1px solid rgb(209, 208, 208);  &:focus{outline: none;}}
+
+.qwr__item__radio{display: flex; align-items: center; width: 100px; }
+.qwr__item__radio input{width: 15px; height: 15px; margin-right: 10px;}
+.qwr__item__radio span{font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-top: 3px;}
+
+.qwr__img{width: 100%; height: 300px; display: flex; align-items: center; justify-content: center;}
+.qwr__b_wrap img{width: 90%; height: 100%;}
+
+.qwr__foot{width: 100%; height: 10%; display: flex; align-items: center; justify-content: center;}
+#registForm {width: 100px; height: 35px; background-color: green; display: flex; align-items: center; border-radius: 5px; justify-content: center; font-size: 13px; margin: 0px 5px; color: white;}
+.qwr__foot button{width: 100px; height: 35px; border-radius: 5px; background-color: red; border: none; color: white;}

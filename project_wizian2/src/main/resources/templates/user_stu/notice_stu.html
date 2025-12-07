@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="UTF-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_stu/notice_stu.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="notice__header"><span>채용공고</span></div>
+
+  <table class="apply_table">
+    <colgroup>
+      <col width="80">
+      <col width="700">
+      <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>등록일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list : ${list}">
+        <td th:text="${list.title}">1</td>
+        <td><a th:href="@{/job/resume_jobpost2(prodd_id=${list.prodd_id})}"><span th:text="${list.title_name}">[삼성엔지니어링] 2024년 상반기 삼성엔지니어링 3급 신입사원 채용 · 대학생 인턴 모집</span></a></td>
+        <td>2024-03-15</td>
+    </tr>
+
+    </tbody>
+  </table>
+</body>
+</html>

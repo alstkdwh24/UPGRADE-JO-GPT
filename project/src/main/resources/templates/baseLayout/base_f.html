@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<th:block th:fragment="setContent(content)">
+
+    <head>
+        <meta charset="UTF-8">
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!--  SWIPER -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <!-- CHART JS -->
+
+        <!--  이모티콘 -->
+        <script src="https://kit.fontawesome.com/580a20ac80.js" crossorigin="anonymous"></script>
+
+        <!-- FONT -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+        <!-- JQUERY -->
+        <script src="/js/jquery-3.7.1.min.js" defer></script>
+
+        <!-- DAUM API -->
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script>
+
+        <!-- FRAME CSS -->
+        <link rel="stylesheet" href="/css/baseLayout/frame.css">
+        <link rel="stylesheet" href="/css/frame/info.css">
+        <link rel="stylesheet" href="/css/frame/lookup.css">
+        <link rel="stylesheet" href="/css/frame/gameList.css">
+        <link rel="stylesheet" href="/css/frame/modify.css">
+        <link rel="stylesheet" href="/css/frame/gameRegist.css">
+        <link rel="stylesheet" href="/css/frame/board.css">
+        <link rel="stylesheet" href="/css/user/main.css">
+
+        <!-- MAIN JS -->
+        <script th:src="@{/js/frame/baseLayout.js}" defer></script>
+
+    </head>
+
+    <body>
+
+    <div class="background">
+        <div class="frame__wrapper">
+            <div class="frame__content">
+
+                <!-- user_no -->
+                <!--				<input type="hidden" th:value="${session.vo.user_no}" name="user_no" id="user_no">-->
+
+                <!-- nav bar -->
+                <!-- 이곳이 권한 마다 변경 -->
+                <div class="frame__left">
+
+                    <div class="frame__left__header">
+                        <img src="/img/KBA_MainLogo.png" alt="로고" title="한국기원">
+                    </div>
+
+                    <div class="frame__left__body">
+
+                        <!-- 일반 사용자 권한 불러올 메뉴 -->
+                        <div th:if="${#authentication.principal.user_role == 'ROLE_GEN'}"
+                             sec:authorized="isAuthenticated()">
+                            <div class="section__left__menu__default__user">
+                                <button type="button" class="section__sub__menu" value="일반수강생"><img src="/img/icon1.png"
+                                                                                                    alt="마이페이지 아이콘"> MY
+                                    PAGE
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/user/main" class="small__menu" data-title="MY PAGE">MY PAGE</a>
+                                    <a href="/command/modify" class="small__menu" data-title="회원정보수정">회원정보수정</a>
+                                    <a href="/command/question" class="small__menu" data-title="문의하기">문의하기</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="GAME"><img
+                                        src="/img/mouse_icon.png" alt="마우스아이콘"> GAME
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/command/gameList" class="small__menu" data-title="게임 컨텐츠 조회">게임 컨텐츠 조회</a>
+                                    <a href="/user/study_fun" class="small__menu" data-title="학습하기">GAME</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="구독"><img src="/img/vegas.png"
+                                                                                                 alt="화살표"> SUBSCRIBE
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/user/User_myproduct" class="small__menu" data-title="내 구독 상품 조회">내 구독 상품
+                                        조회</a>
+                                    <a href="" class="small__menu" data-title="학습상태">학습상태</a>
+                                    <a href="/command/cart" class="small__menu" data-title="장바구니 조회">장바구니 조회</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 학생 권한 불러올 메뉴 -->
+                        <div th:if="${#authentication.principal.user_role == 'ROLE_STU'}"
+                             sec:authorized="isAuthenticated()">
+                            <div class="section__left__menu__student">
+
+                                <button type="button" class="section__sub__menu" value="학생수강생"><img src="/img/icon1.png"
+                                                                                                    alt="마이페이지 아이콘"> MY
+                                    PAGE
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/student/main" class="small__menu" data-title="MY PAGE">MY PAGE</a>
+                                    <a href="/command/modify" class="small__menu" data-title="회원정보수정">회원정보수정</a>
+                                    <a href="/command/question" class="small__menu" data-title="문의하기">문의하기</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="학습그룹"><img src="/img/pen.png"
+                                                                                                   alt="화살표"> 학습그룹
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/student/groupStudyList" class="small__menu" data-title="학습 그룹 조회">학습 그룹
+                                        조회</a>
+                                    <a href="/student/groupApproval" class="small__menu" data-title="학습 그룹 신청">학습 그룹 승인
+                                        여부</a>
+                                    <a href="/student/myGroupList" class="small__menu" data-title="학습 그룹 신청">나의 학습
+                                        그룹</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="HOMEWORK"><img
+                                        src="/img/vegas.png" alt="화살표">HOMEWORK
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/student/homeworkList" class="small__menu" data-title="숙제조회">숙제조회</a>
+                                    <a href="/student/homeworkTable" class="small__menu" data-title="숙제제출내역">숙제제출내역</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="GAME"><img
+                                        src="/img/mouse_icon.png" alt="마우스아이콘"> GAME
+                                </button>
+                                <div class="sub__menu__list">
+                                    <!-- 내부 페이지는 전체 페이지 게임할 수 있도록 -->
+                                    <a href="/student/game" class="small__menu" data-title="렛츠고바둑스쿨">렛츠고바둑스쿨</a>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- 선생님 권한 불러올 메뉴 -->
+
+                        <div th:if="${#authentication.principal.user_role == 'ROLE_TEA'}"
+                             sec:authorized="isAuthenticated()">
+                            <div class="section__left__menu__teacher">
+
+                                <button type="button" class="section__sub__menu" value="선생님"><img src="/img/icon1.png"
+                                                                                                  alt="마이페이지 아이콘"> MY
+                                    PAGE
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/teacher/main" class="small__menu" data-title="MY PAGE">MY PAGE</a>
+                                    <a href="/command/modify" class="small__menu" data-title="회원정보수정">회원정보수정</a>
+                                    <a href="/command/question" class="small__menu" data-title="문의하기">문의하기</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="GAME"><img
+                                        src="/img/mouse_icon.png" alt="마우스아이콘"> GAME
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/command/lookup" class="small__menu" data-title="게임컨텐츠조회">게임컨텐츠조회</a>
+                                    <a href="/command/myproduct" class="small__menu" data-title="구매이력">구매이력</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="학습그룹"><img src="/img/pen.png"
+                                                                                                   alt="화살표">학습그룹
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/teacher/learnGroupLook" class="small__menu" data-title="학습 그룹 조회">학습 그룹
+                                        조회</a>
+                                    <a href="/teacher/learnGroupRegist" class="small__menu" data-title="학습 그룹 등록">학습 그룹
+                                        등록</a>
+                                    <a href="/teacher/groupRegistApprove" class="small__menu" data-title="그룹 가입 승인">그룹
+                                        가입 승인</a>
+                                    <a href="/teacher/detailStudentLook" class="small__menu" data-title="수강생 현황">수강생
+                                        현황</a>
+                                </div>
+
+
+                                <button type="button" class="section__sub__menu" value="HOMEWORK"><img
+                                        src="/img/vegas.png" alt="화살표">HOMEWORK
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/teacher/homeWorkRegist" class="small__menu" data-title="숙제등록">숙제등록</a>
+                                    <a href="/teacher/homeWorkTransfer" class="small__menu" data-title="숙제전송">숙제전송</a>
+                                    <a href="/teacher/homeWorkScore" class="small__menu" data-title="숙제제출조회">숙제제출조회</a>
+                                </div>
+
+                                <button class="section__sub__menu" value="장바구니">장바구니</button>
+                                <div class="sub__menu__list">
+                                    <a href="/command/cart" class="small__menu" data-title="장바구니 조회">장바구니 조회</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- 관리자 권한 불러올 메뉴 -->
+                        <div th:if="${#authentication.principal.user_role == 'ROLE_ADMIN'}"
+                             sec:authorized="isAuthenticated()">
+                            <div class="section__left__menu__admin">
+
+                                <button type="button" class="section__sub__menu" value="관리자"><img src="/img/icon1.png"
+                                                                                                  alt="마이페이지 아이콘">MY
+                                    PAGE
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/admin/main" class="small__menu" data-title="MY PAGE">MY PAGE</a>
+                                    <a href="/command/modify" class="small__menu" data-title="회원정보수정">회원정보수정</a>
+                                    <a href="/command/question" class="small__menu" data-title="문의하기">문의하기</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="회원관리"><img src="/img/people.png"
+                                                                                                   alt="화살표">회원관리
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/admin/member" class="small__menu" data-title="회원조회">회원조회</a>
+                                    <a href="/admin/memberSleep" class="small__menu" data-title="휴면계정">휴면계정</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="학습/GAME 관리"><img
+                                        src="/img/mouse_icon.png" alt="마우스아이콘">학습/GAME 관리
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/admin/gameLook" class="small__menu" data-title="게임컨텐츠조회">게임 컨텐츠 조회</a>
+                                    <a href="/admin/gameRegist" class="small__menu" data-title="게임컨텐츠등록">게임 컨텐츠등록</a>
+                                    <a href="/admin/learnLook" class="small__menu" data-title="학습컨텐츠조회">학습 컨텐츠 조회</a>
+                                    <a href="/admin/learnRegist" class="small__menu" data-title="학습컨텐츠등록">학습 컨텐츠등록</a>
+                                    <a href="/admin/gameDeleteHistory" class="small__menu" data-title="게임 컨텐츠 삭제이력">게임
+                                        컨텐츠 삭제이력</a>
+                                    <a href="/admin/learnDeleteHistory" class="small__menu" data-title="학습자료 삭제이력">학습자료
+                                        삭제이력</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="게시판관리"><img src="/img/pen.png"
+                                                                                                    alt="화살표">게시판관리
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/admin/boardLook" class="small__menu" data-title="등록게시물 확인">등록게시물 확인</a>
+                                    <a href="/admin/noticeRegist" class="small__menu" data-title="공지사항 등록">공지사항 등록</a>
+                                    <a href="/admin/faqRegist" class="small__menu" data-title="FAQ 등록">FAQ 등록</a>
+                                    <a href="/admin/qnaRegist" class="small__menu" data-title="Q&A 등록">Q&A 등록</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="문의사항"><img
+                                        src="/img/question.png" alt="화살표">문의사항
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/admin/inqury" class="small__menu" data-title="숙제조회">문의사항</a>
+                                </div>
+
+                                <button type="button" class="section__sub__menu" value="매출조회"><img src="/img/money.png"
+                                                                                                   alt="화살표">매출조회
+                                </button>
+                                <div class="sub__menu__list">
+                                    <a href="/admin/priceLook" class="small__menu" data-title="숙제조회">매출조회</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="frame__left__footer">
+
+                        <div class="frame__footer__above"><img src="/img/link.png" alt="링크사진"><span>Site Menu</span>
+                        </div>
+
+                        <div class="frame__footer__below">
+                            <a href="/main">HOME</a>
+                            <a href="/menu/center">공지사항</a>
+                            <a href="/menu/center">FAQ</a>
+                            <a href="/menu/center">Q&A</a>
+                            <a href="/menu/game">사용자 가이드</a>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- 내용 -->
+                <div class="frame__right">
+
+                    <!-- 우측 사용자 페이지 헤더 -->
+                    <div class="frame__right__header">
+
+                        <div class="frame__header__left">
+
+                            <!-- 상세 메뉴 확인 -->
+                            <div class="frame__left__above">
+
+                                <div id="displayMenu"></div>
+                                <div id="displayMenu2"></div>
+                            </div>
+                            <!-- 타이틀 -->
+                            <div class="frame__left__below">
+                                <div id="title"></div>
+                            </div>
+
+                        </div>
+
+                        <!-- 검색 -->
+                        <form action="" method="get" class="frame__header__search">
+
+                            <input type="text" value="" name="search" placeholder="Search for...">
+                            <button>검색</button>
+
+                        </form>
+
+                        <!-- 로그 아웃 등 -->
+                        <div class="frame__header__right">
+
+                            <div class="frame__right__msg">
+                                <img src="/img/message.png" alt="메세지">
+                            </div>
+
+                            <div class="frame__header__name">
+                                <img src="/img/profile.png" alt="프로필 사진">
+                                <span>[[${session.vo.user_name + '님'}]]</span>
+                            </div>
+                            <a href="/logout">로그아웃</a>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- 우측 사용자 페이지 바디 -->
+                    <!-- 이곳이 권한 마다 변경 -->
+                    <div class="frame__right__body">
+
+                        <!-- 마이페이지 -->
+
+                        <!-- content 삽입 -->
+                        <th:block th:replace="${content}"></th:block>
+                        <!-- ----------------------------- -->
+                    </div>
+                </div>
+
+
+                <!-- 내용 여기까지 -->
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+</th:block>
+</html>

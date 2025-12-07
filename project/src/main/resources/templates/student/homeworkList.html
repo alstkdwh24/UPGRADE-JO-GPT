@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" defer></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
+<script src="/js/student/homeworkTable.js" defer></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/student/homeworkTable.css">
+<script src="/js/student/groupRegistList.js" defer></script>
+
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+
+  		<div class="container">
+		  <h2>나의 숙제 리스트</h2>
+		  <table class="table">
+		    <thead class="thead-color">
+		      <tr>
+		        <th>번호</th>
+		        <th>homework_no</th>
+		        <th>학습 그룹명</th>
+		        <th>내용</th>
+		        <th>레벨</th>
+		      </tr>
+		    </thead>
+		    <tbody th:each="hw : ${hwList}">
+					<tr th:data-url="@{/student/homeworkDetail(user_no=${hw.user_no}, homework_no=${hw.homework_no})}">
+						<td th:text="${hwStat.count}"></td>
+						<td th:text="${hw.homework_no}"></td>
+						<td th:text="${hw.homework_name}"></td>
+						<td th:text="${hw.homework_content}"></td>
+						<td th:text="${hw.homework_duedate}"></td>
+					</tr>
+		    </tbody>
+		  </table>
+		</div>
+		
+<script>
+const rows = document.querySelectorAll("tbody tr");
+
+rows.forEach(row => {
+    row.addEventListener('click', function() {
+        const url = this.getAttribute('data-url'); 
+        window.location.href = url;
+    });
+    row.style.cursor = "pointer";
+});
+
+</script>
+</div>
+
+</th:block>
+</html>

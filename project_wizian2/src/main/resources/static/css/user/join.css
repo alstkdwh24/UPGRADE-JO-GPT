@@ -1,0 +1,76 @@
+html, body{margin: 0;padding: 0;font-family: "Gothic A1", sans-serif;}
+ul, ol, li{list-style: none;}
+button, a{cursor: pointer;}
+button, a, li{color: black;}
+a:link, a:hover, a:focus, a:visited{text-decoration: none;}
+span, a, p, button{font-family: "Gothic A1", sans-serif; font-weight: 400; font-style: normal;}
+
+/* title */
+.join__header{width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; filter: brightness(70%); background-image: url("/img/background.png"); background-position: center center; background-size : cover; background-repeat : no-repeat;}
+.join__header{color: white; font-size: 45px; font-weight: 600;}
+
+/* logo */
+.join__logo{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 40px;}
+.join__logo img{width: 250px;}
+
+.join__select{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 40px;}
+.join__select div{cursor: pointer; border-top-left-radius: 10px; border-top-right-radius: 10px; width: 143px; height: 50px; background-color: rgb(49, 100, 241); display: flex; align-items: center; justify-content: center; border: 1px solid rgb(238, 238, 241);}
+.join__select > div > span{color: white; font-size: 15px;}
+.join__select div:hover span{font-weight: 600;}
+
+/* join form */
+.join__body{width: 100%; display: flex; align-items: center; justify-content: center;}
+.join__people{width: 500px; padding-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+
+.join__student{width: 100%; display: flex; flex-direction: column;}
+.join__company{width: 100%; display: flex; flex-direction: column;}
+.join__manager{width: 100%; display: flex; flex-direction: column;}
+
+
+.join__student__detail{width: 100%; display: flex; flex-direction: column; align-items: center;}
+.join__student__detail span{font-weight: 600; width: 100%; padding-left: 73px;}
+.join__student__detail input{width: 420px; height: 40px; margin-top: 5px; border: 1px solid rgb(209, 207, 207);}
+.join__student__detail input:hover{border: 1px solid rgb(49, 100, 241);}
+.join__student__detail div{width: 100%; padding-left: 70px;}
+.join__student div{margin: 5px 0px;}
+
+.join__company__detail{width: 100%; display: flex; flex-direction: column; align-items: center;}
+.join__company__detail span{font-weight: 600; width: 100%; padding-left: 73px;}
+.join__company__detail input{width: 420px; height: 40px; margin-top: 5px; border: 1px solid rgb(209, 207, 207);}
+.join__company__detail input:hover{border: 1px solid rgb(49, 100, 241);}
+.join__company__detail div{width: 100%; padding-left: 70px;}
+.join__company div{margin: 5px 0px;}
+
+.join__manager__detail{width: 100%; display: flex; flex-direction: column; align-items: center;}
+.join__manager__detail span{font-weight: 600; width: 100%; padding-left: 73px;}
+.join__manager__detail input{width: 420px; height: 40px; margin-top: 5px; border: 1px solid rgb(209, 207, 207);}
+.join__manager__detail input:hover{border: 1px solid rgb(49, 100, 241);}
+.join__manager__detail div{width: 100%; padding-left: 70px;}
+.join__manager div{margin: 5px 0px;}
+
+.message__student__id{color: red; font-size: 12px; margin-top: 2px;}
+.message__student__pw{color: red; font-size: 12px; margin-top: 2px;}
+.message__student__name{color: red; font-size: 12px; margin-top: 2px;}
+.message__student__birth{color: red; font-size: 12px; margin-top: 2px;}
+.message__student__phone{color: red; font-size: 12px; margin-top: 2px;}
+.message__student__email{color: rgb(168, 166, 166); font-size: 12px; margin-top: 2px;}
+
+.message__company__id{color: red; font-size: 12px; margin-top: 2px;}
+.message__company__pw{color: red; font-size: 12px; margin-top: 2px;}
+.message__company__name{color: red; font-size: 12px; margin-top: 2px;}
+.message__company__birth{color: red; font-size: 12px; margin-top: 2px;}
+.message__company__phone{color: red; font-size: 12px; margin-top: 2px;}
+.message__company__email{color: rgb(168, 166, 166); font-size: 12px; margin-top: 2px;}
+
+.message__manager__id{color: red; font-size: 12px; margin-top: 2px;}
+.message__manager__pw{color: red; font-size: 12px; margin-top: 2px;}
+.message__manager__name{color: red; font-size: 12px; margin-top: 2px;}
+.message__manager__birth{color: red; font-size: 12px; margin-top: 2px;}
+.message__manager__phone{color: red; font-size: 12px; margin-top: 2px;}
+.message__manager__email{color: rgb(168, 166, 166); font-size: 12px; margin-top: 2px;}
+
+
+/* join btn */
+.join__btn{width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 15px; margin-bottom: 30px;}
+.join__btn button{width: 250px; height: 50px; border: 1px solid rgb(202, 198, 198); border-radius: 10px; background-color: rgb(49, 100, 241); color: white; font-size: 18px;}
+

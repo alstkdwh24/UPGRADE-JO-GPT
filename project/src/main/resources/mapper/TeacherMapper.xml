@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.geomin.project.teacher.service.TeacherMapper">
+  	<!-- 학습 그룹 등록 -->
+  	<insert id="RegistGroup">
+		INSERT INTO STUDY_GROUP (
+			USER_NO,
+		    GAME_NO,
+		    SG_NAME,
+		    SG_REGDATE,
+		    SG_ENDDATE,
+		    SG_CAPA,
+		    SG_LEVEL,
+		    SG_PLUS,
+		    SG_GROUPLIMIT,
+		    SG_CLASS
+		) VALUES (
+			#{user_no},
+			#{game_no},
+			#{sg_name},
+			#{sg_regdate},
+			#{sg_enddate},
+			0,
+			#{sg_level},
+			#{sg_plus},
+			#{sg_grouplimit},
+			#{sg_class}
+		)
+  	</insert>
+
+	<!-- 학습 그룹 조회 -->
+  	<select id="learnGroupLook" resultType="learnGroupVO">
+		SELECT DATE_FORMAT(SG_REGDATE, '%Y-%m-%d') AS SG_REGDATE,
+			   SG.SG_NO,
+			   SG.USER_NO,
+			   SG.GAME_NO,
+			   GC.GAME_TITLE,
+			   SG.SG_NAME,
+			   SG.SG_ENDDATE,
+			   SG.SG_CAPA,
+			   SG.SG_LEVEL,
+			   SG.SG_PLUS,
+			   SG.SG_GROUPLIMIT
+		FROM STUDY_GROUP SG JOIN GAME_CONTENT GC ON SG.GAME_NO = GC.GAME_NO;
+  	</select>
+  	
+  	<!-- 내가 만든 그룹 목록 -->
+  	<select id="myGroupList" resultType="learnGroupVO">
+  		SELECT * FROM STUDY_GROUP WHERE USER_NO = #{user_no}
+  	</select>
+  	
+  	<!-- 숙제 등록 -->
+  	<insert id="RegistHomework">
+  		INSERT INTO HOMEWORK (
+  			USER_NO, 
+  			HOMEWORK_NAME, 
+  			HOMEWORK_CONTENT,
+  			HOMEWORK_LEVEL, 
+  			HOMEWORK_DUEDATE, 
+  			HOMEWORK_REGDATE, 
+  			HOMEWORK_MODIDATE, 
+  			SG_NO)
+  			
+			VALUES (
+			    #{user_no},
+			    #{homework_name},
+			    #{homework_content},
+			    #{homework_level},
+			    #{homework_duedate}, 
+			    #{homework_regdate},
+			    #{homework_modidate},
+			    #{sg_no}
+			);
+  	</insert>
+  	
+  	
+  	<!-- 그룹 상세정보 -->
+   	<select id="groupDetail" resultType="learnGroupVO">
+		SELECT * FROM GAME_CONTENT GC
+		LEFT JOIN STUDY_GROUP SG ON SG.GAME_NO = GC.GAME_NO LEFT JOIN UPLOAD U ON SG.GAME_NO = U.GAME_NO WHERE SG.SG_NO = #{sg_no};
+  	</select>
+  	
+  	<!-- 그룹 상세정보(승인 요청 포함) -->
+   	<select id="groupDetail2" resultType="learnGroupVO">
+		SELECT * FROM USER U LEFT JOIN STUDY_GROUP_JOIN S ON U.USER_NO = S.USER_NO WHERE SG_NO = ${sg_no} AND S.SGJ_AUTH = 0
+  	</select>
+  	
+  	
+  	<!-- 숙제 전체 가져오기 -->
+  	<select id="getHomework" resultType="HomeWorkVO">
+  		select * from HOMEWORK;
+  	</select>
+  	
+  	<!-- 그룹 승인 -->
+  	<update id="approve">
+  		UPDATE STUDY_GROUP_JOIN SET SGJ_AUTH = 1 WHERE USER_NO = #{user_no} AND SG_NO = #{sg_no}
+  	</update>
+  	
+  	<!-- 그룹 승인 됐을 때 capacity 1 증가  -->
+  	<update id="capacity">
+  		UPDATE STUDY_GROUP SET SG_CAPA = SG_CAPA + 1 WHERE SG_NO = #{sg_no}
+  	</update>
+  	
+  	<!-- 그룹 가입 거절 -->
+  	<update id="reject">
+		UPDATE STUDY_GROUP_JOIN SET SGJ_AUTH = 2 WHERE USER_NO = #{user_no} AND SG_NO = #{sg_no};
+  	</update>
+  	
+  	  	
+<!--   	<update id="capaMinus">
+		UPDATE STUDY_GROUP SET SG_CAPA = CASE WHEN SG_CAPA > 0 THEN SG_CAPA -1 ELSE SG_CAPA END WHERE USER_NO = #{user_no}
+  	</update> -->
+  	
+  	
+  	<!-- 숙제 전체 가져오기 -->
+  	<select id="getMyHomework" resultType="HomeWorkVO">
+  		SELECT * FROM HOMEWORK H LEFT JOIN STUDY_GROUP SG ON H.SG_NO = SG.SG_NO WHERE H.USER_NO = #{user_no}
+  	</select>
+  	
+  	<!-- 그룹 가입 된 사람들 -->
+  	<select id="mygroupguys" resultType="learnGroupVO">
+  		SELECT * FROM USER U LEFT JOIN STUDY_GROUP_JOIN S ON U.USER_NO = S.USER_NO WHERE SG_NO = #{sg_no} AND S.SGJ_AUTH = 1
+  	</select>
+  	
+  	<!-- 숙제 전송 -->
+  	<insert id="homeworkSend" parameterType="map">
+		INSERT INTO HOMEWORK_HISTORY (HOMEWORK_NO, USER_NO, SG_NO, TEACH_ASSIGNDATE)
+		VALUES (#{homework_no}, #{user_no}, #{sg_no}, NOW() )
+  	</insert>
+  	
+  	<!-- 숙제 제출 내역 -->
+  	<select id="homeworkReceive" resultType="HomeworkHistoryVO">
+  		SELECT HH.*, U.USER_NAME
+		FROM HOMEWORK_HISTORY HH
+		LEFT JOIN USER U ON HH.USER_NO = U.USER_NO WHERE HH.HOMEWORK_NO = #{homework_no} AND HH.STU_CONTENT IS NOT NULL AND HH.TEACH_GRADE IS NULL
+  	</select>
+  	
+  	<update id="homeworkGrade" parameterType="map">
+  		UPDATE HOMEWORK_HISTORY SET TEACH_GRADE = #{selectedGrade} where homework_no = #{homework_no} and user_no = #{user_no}
+  	</update>
+  	
+  	
+  	
+  	
+  	
+  
+  
+  </mapper>
+    

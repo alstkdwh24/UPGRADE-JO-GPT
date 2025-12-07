@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/frame/cart.css">
+<link rel="stylesheet" href="/css/order/orderSuccess.css">
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<style>
+	.wrap{display: flex;flex-direction: column; justify-content: center; align-items: center; height: 500vh;}
+    .text-center{text-align: center;}
+</style>
+
+</head>
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+  
+  
+  <body>
+			
+			<div class="wrap" th:each="cartList : ${cartList}">
+				<div class="text-center">
+	           			<h1 class="">결재 완료!</h1>
+	            		<p class="text-gray-600 my-2">JEDU에 컨탠츠를 결재해 주셔서 감사합니다!</p>
+	            		<p> 앞으로 더 많은 이용 부탁 드립니다. </p>
+	            		<div class="">
+	            		</div>
+       			 </div>
+				<div class="container">
+				  <div class="circle-border">
+				    <div class="circle success"></div>
+				  </div>
+				</div>
+					
+	            <button class="goback_btn"> 홈으로 돌아가기 </button>
+			
+			</div>
+			
+			
+			<script>
+			const purchase = $('.goback_btn');
+
+			$('.goback_btn').click(function() {
+			    $.get("/game/purchase", {user_no: user_no, game_no: game_no})
+			     .done(function(result) {
+			            console.log("success");
+			            window.location.href = "lookup/main";
+			        })
+			     .fail(function(error) {
+			            console.log("fail");
+			        });
+			}); 
+			</script>
+			
+			
+</th:block>
+</html>

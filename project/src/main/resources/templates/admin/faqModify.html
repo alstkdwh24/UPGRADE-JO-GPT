@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<script src="/js/frame/faqRegist.js" defer></script>
+  <div class="wrap__content">
+    <form action="/admin/faqModifyForm" method="post" class="regist__wrap">
+	  <input type="hidden" name="faq_no" th:value="${vo.faq_no}">
+      <!-- 컨텐츠 등록 -->
+      <div class="regist__left">
+
+        <div class="regist__left__above">
+          <span>게시판 - FAQ 수정</span>
+          <div class="left__above__button">
+            <button>등록</button>
+            <button>취소</button>
+          </div>
+        </div>
+        <div class="regist__left__below">
+
+          <!-- 구분 선택 -->
+          <div class="regist__below__item">
+            <span>FAQ 유형</span>
+            <select name="faq_type" id="item__select">
+              <option th:if="${vo.faq_type == 1}" value="1" th:selected>상품결제</option>
+   			  <option th:if="${vo.faq_type == 2}" value="2" th:selected>상품관리</option>
+   			  <option th:if="${vo.faq_type == 3}" value="3" th:selected>학습그룹</option>
+   			  <option th:if="${vo.faq_type == 4}" value="4" th:selected>기타</option>
+              <option th:unless="${vo.faq_type == 1}" value="1">상품결제</option>
+              <option th:unless="${vo.faq_type == 2}" value="2">상품관리</option>
+              <option th:unless="${vo.faq_type == 3}" value="3">학습그룹</option>
+              <option th:unless="${vo.faq_type == 4}" value="4">기타</option>
+            </select>
+          </div>
+
+
+          <!-- 제목 입력 -->
+          <div class="regist__below__item">
+            <span>질의</span>
+            <input type="text" id="faq__question" name="faq_question"  th:placeholder="${vo.faq_question}">
+          </div>
+
+          <!-- 제목 입력 -->
+          <div class="regist__below__item">
+            <span>답변</span>
+            <input type="text" id="faq__answer" name="faq_answer"  th:placeholder="${vo.faq_answer}">
+          </div>
+          
+          
+          <!-- 구독 가능 인원 -->
+          <div class="regist__item__faq__file">
+            <span>썸네일</span>
+
+            <input type="file" id="fileInput">
+            <div class="dropBox faq__dropBox">
+              <h5>이곳에 파일을 드롭해주세요. </h5>
+            </div>
+
+          </div>
+          
+          <input type="hidden" value="Y" name="faq_delCheck" >
+          
+
+        </div>
+
+      </div>
+
+      <!-- 컨텐츠 등록 현황 -->
+      <div class="regist__right">
+
+        <div class="regist__right__wrap">
+
+          <div class="regi__right__header">
+            <img id="img1" src="/img/KBA_MainLogo.png" alt="">
+            <img id="img2" src="/img/KBA_mascot_black.png">
+          </div>
+
+          <div class="regi__right__body">
+
+            <div class="board__title"><span id="board__title"></span></div>
+
+            <div class="board__second">
+              <div class="board__category"><span id="board__category"></span></div>
+              <div class="board__date"><span id="board__date"></span></div>
+            </div>
+
+            <div class="board__qusetion">
+              <div class="board__qusetion__content">
+                <span id="qTitle">질의</span>
+                <span id="board__QtextArea"></span>
+              </div>
+            </div>
+
+            <div class="board__answer">
+              <div class="board__answer__content">
+                <span id="aTitle">답변</span>
+                <span id="board__AtextArea"></span>
+              </div>
+            </div>
+
+            <div class="board__fourth">
+              첨부파일 : <span id="board__file"></span>
+            </div>
+
+          </div>
+
+          <div class="regi__right__footer"></div>
+          
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+</th:block>
+</html>

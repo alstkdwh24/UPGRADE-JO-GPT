@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+
+<script src="/js/frame/gameRegist.js" defer></script>
+<script src="/js/frame/learnRegist.js" defer></script>
+
+   <div class="wrap__content">
+     <form action="/admin/learnModifyForm" method="post" class="regist__wrap" enctype="multipart/form-data">
+	 <input type="hidden" name="docu_no" th:value="${vo.docu_no}">
+       <!-- 컨텐츠 등록 -->
+       <div class="regist__left">
+
+         <div class="regist__left__above">
+           <span>학습 컨텐츠 수정</span>
+           <div class="left__above__button">
+             <button type="submit">등록</button>
+             <button type="reset">취소</button>
+           </div>
+         </div>
+         <div class="regist__left__below">
+
+           
+
+           <!-- 제목 입력 -->
+           <div class="regist__below__item">
+             <span>학습자료명</span>
+             <input type="text" id="learn__title" name="docu_title" th:placeholder="${vo.docu_title}">
+           </div>
+
+           <!-- 구분 선택 -->
+           <div class="regist__below__item">
+             <span>자료구분</span>
+             <select name="docu_type" id="type__select">
+               <option value="100">자료를 구분해주세요.</option>
+               <option th:selected="${vo.docu_type == 0}" value="0">튜토리얼</option>
+               <option th:selected="${vo.docu_type == 1}" value="1">교육영상</option>
+             </select>
+           </div>
+
+           <!-- 유형 선택 -->
+           <div class="regist__item__select">
+             <span>자료유형</span>
+             <div class="item__subMenu">
+               <input type="checkbox" value="0" id="document__video" name="docu_category" th:checked="${vo.docu_category == 0}"> 
+               <span>동영상</span>
+             </div>
+             <div class="item__subMenu">
+               <input type="checkbox" value="1" id="document__book" name="docu_category" th:checked="${vo.docu_category == 1}"> 
+               <span>교재</span>
+             </div>
+             <div class="item__subMenu">
+               <input type="checkbox" value="2" id="document__web" name="docu_category" th:checked="${vo.docu_category == 2}"> 
+               <span>웹사이트</span>
+             </div>
+           </div>
+
+           <!-- 자료 파일 주소 -->
+           <div class="regist__below__item">
+             <span>자료파일주소</span>
+             <input type="text" name="game_no" th:if="${game_no}" th:value="${game_no}" th:placeholder="${vo.game_no}" readonly="readonly">
+             <input type="text" name="game_no" th:unless="${game_no}" th:placeholder="${vo.game_no}">
+           </div>  
+
+           <!-- 서비스 구분 -->
+           <div class="regist__below__item">
+             <span>서비스구분</span>
+             <select name="docu_service" id="select__price__type">
+               <option value="100">옵션을 선택해주세요.</option>
+               <option th:selected="${vo.docu_service == 1}" value="1">full(유료)</option>
+               <option th:selected="${vo.docu_service == 0}" value="0">shorts(무료)</option>
+             </select>
+           </div>
+
+           
+           <!-- 컨텐츠 설명 -->
+           <div class="regist__item__textArea">
+             <span>패키지 내용</span>
+             <textarea id="Learning__textArea" name="docu_content" th:placeholder="${vo.docu_content}" ></textarea>
+           </div>
+           
+           <!-- 구독 가능 인원 -->
+           <div class="regist__item__learning__file">
+             <span>썸네일</span>
+
+             <input type="file" id="fileInput" name="inputFiles">
+             <div class="dropBox">
+               <h5>이곳에 파일을 드롭해주세요. </h5>
+             </div>
+
+           </div>
+           
+           <input type="hidden" value="Y" name="del_check">
+
+         </div>
+
+       </div>
+
+       <!-- 컨텐츠 등록 현황 -->
+       <div class="regist__right">
+
+         <div class="regist__right__wrapper">
+
+           <div class="regist__content__post">
+
+             <img id="previewImage" src="/img/background.png" alt="">
+             <div id="post__type"></div>
+             <div id="post__title"></div>
+             <div id="post__level"></div>
+             <div id="post__count"></div>
+
+           </div>
+
+         </div>
+
+       </div>
+
+
+     </form>
+   </div>
+ </div>
+
+</th:block>
+</html>

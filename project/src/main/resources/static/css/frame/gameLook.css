@@ -1,0 +1,50 @@
+.regist__wrap{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;}
+
+
+.gl__header{width: 100%; height: 10%; display: flex; align-items: center; border-bottom: 1px solid rgb(196, 196, 196);} 
+.gl__body{width: 100%; height: 90%;}
+
+
+.gl__header__title{width: 10%; height: 100%; display: flex; align-items: center;}
+.gl__header__title span{font-weight: bold;}
+
+.gl__header__select{width: 15%; height: 100%; display: flex; align-items: center; }
+.gl__header__select select{border: none; width: 200px; height: 30px; border-bottom: 1px solid rgb(196, 196, 196); margin-right: 5px; &:focus{outline: none;}}
+.sendSelectSearch{width:55%; height:100%; display:flex; align-items: center;}
+.sendSelectSearch a{width:50px; height:30px;  color:white; background-color: rgb(61, 106, 231); color:whtie; display:flex; align-items: center; justify-content:center; } 
+.learn__button{margin-right: 30px; width: 20%; height: 30px;  display: flex; align-items: center; justify-content: flex-end; border-radius: 5px; }
+.learn__button button{width: 50%; height: 100%; background-color: rgb(61, 106, 231); border: none; border-radius: 5px; &:focus{outline: none;}}
+.learn__button button{font-size: 13px; color: white;}
+.learn__button button:hover{background-color: rgb(38, 85, 214);}
+
+.gl__body__table{width: 100%; height: 85%; margin-top: 15px; display: flex; flex-direction: column;}
+.page{width:100%; height:8%; display:flex; align-items: center;} 
+.gl__body__thead{width: 100%; height: 8%; display: flex; align-items: center; background-color: rgb(61, 106, 231);}
+
+.gl__thead_one{width: 4%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px;  color: white;}
+.gl__thead_two{width: 25%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px;  color: white;}
+.gl__thead_three{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px; color: white;}
+.gl__thead_four{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px;  color: white;}
+.gl__thead_five{width: 10%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px;  color: white;}
+.gl__thead_six{width: 15%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px; color: white;}
+.gl__thead_seven{width: 8%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(16, 48, 228); font-size: 13px;  color: white;}
+.gl__thead_eight{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px;  color: white;}
+
+
+.gl__body__tbody{width: 100%; height: 92%; display: flex; flex-direction: column; border-left: 1px solid rgb(196, 196, 196); border-right: 1px solid rgb(196, 196, 196); border-bottom: 1px solid rgb(196, 196, 196);}
+.gl__tbody__content{width: 100%; height: 25%; display: flex; align-items: center; border-bottom: 1px solid rgb(196, 196, 196); }
+
+.gl__tbody_one{width: 4%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px;  }
+.gl__tbody_two{width: 25%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px;  }
+.gl__tbody_two img{width: 80%; height: 80%; border-radius: 5px;}
+.gl__tbody_three{width: 20%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px; }
+.gl__tbody_four{width: 7%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px; }
+.gl__tbody_five{width: 10%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px; }
+.gl__tbody_six{width: 15%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px; }
+.gl__tbody_seven{width: 8%; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgb(196, 196, 196); font-size: 13px;  }
+.gl__tbody_eight{width: 11%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px;  }
+
+#gl__modify{width: 60px; height: 25px; margin: 0px 5px; border: none; display:flex; align-items:center; justify-content:center; background-color: rgb(17, 177, 65); color: white;}
+#gl__modify:hover{background-color: rgb(11, 141, 50);}
+.gl__delete{width: 60px; height: 25px; margin: 0px 5px; border: none; background-color: rgb(236, 42, 42); color: white;}
+.gl__delete:hover{background-color: rgb(201, 33, 33);}

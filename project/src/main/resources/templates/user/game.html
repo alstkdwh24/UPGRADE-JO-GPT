@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+<div class="wrap">
+<link rel="stylesheet" href="/css/frame/game.css">
+    <div class="wrap__content">
+      <div th:if="${#authentication.principal.user_role == 'ROLE_STU'}"></div>
+      
+      <div class="game__frame__wrap">
+
+        <div class="game__frame__title"><span>렛츠고 바둑 스쿨! - 게임으로 바둑배우기!</span></div>
+        <div class="game__frame__content">
+          <iframe src="https://textbookmedia.gimmyoung.com/baduk/" frameborder="3" width="95%" height="100%" seamless></iframe>
+        </div>
+
+      </div>
+
+      
+
+    </div>
+</div>
+
+</th:block>
+</html>

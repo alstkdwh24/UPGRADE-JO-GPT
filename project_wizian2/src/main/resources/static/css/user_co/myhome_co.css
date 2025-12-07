@@ -1,0 +1,78 @@
+html, body{margin: 0;padding: 0;font-family: "Gothic A1", sans-serif;}
+ul, ol, li{list-style: none;}
+button, a{cursor: pointer;}
+button, a, li{color: black;}
+a:link, a:hover, a:focus, a:visited{text-decoration: none;}
+span, a, p, button{font-family: "Gowun Dodum", sans-serif; font-weight: 400; font-style: normal;}
+
+
+.home__wrapper{width: 100%; display: flex; align-items: center; justify-content: center;}
+.section__right__header{width: 30%; display: flex; align-items: center; justify-content: space-between; margin-top: 15px;}
+.right__header__img{width: 100px; border: 3px solid rgb(96, 118, 241); display: flex; align-items: center; justify-content: center; border-radius: 60px;}
+.right__header__img img{width: 100px; height: 100px; border-radius: 50px;}
+.right__header__info{width: 70%; display: flex; flex-direction: column;}
+.right__header__info p{font-size: 20px; font-weight: 600;}
+.right__header__info span{font-size: 15px;}
+#info2{font-weight: 600; color: rgb(61, 61, 235);}
+
+
+.yn-y {
+    color: blue;
+    font-weight:blod;
+    
+}
+.yn-n {
+    color: red;
+    font-weight:blod;
+}
+
+.yn-t {
+    color: black;
+    font-weight:blod;
+}
+
+.section__right__body{width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 20px;}
+
+.section__right__alarm{width: 60%; display: flex; margin-top: 20px; justify-content: space-between;}
+.right__alarm__list{width: 180px; height: 40px; display: flex; align-items: center; justify-content: center;}
+.right__alarm__list{font-weight: 600; border-radius: 15px;}
+.right__alarm__list > i{margin-left: 10px; color: rgb(199, 199, 32); font-weight: 600; font-size: 20px;}
+.right__alarm__list:hover i{color: yellow;}
+.list1{background-color: rgb(241, 183, 128);}
+.list2{background-color: rgb(236, 201, 206);}
+.list3{background-color: rgb(166, 166, 243);}
+.list4{background-color: rgb(170, 236, 214);}
+.list1 > span, .list2 > span, .list3 > span, .list4 > span{display:flex; align-items:center; justify-content:center; border-radius:50px; width:25px; height:25px; margin-left:10px; font-size:15px; font-weight:bold; background-color:white;}
+
+
+.section__right__notice{width: 95%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 20px;}
+.section__notice__above{width: 100%; height:400px; display: flex; justify-content: space-evenly; margin-top: 20px;}
+
+.notice__above__apply{width: 46%; display: flex; flex-direction: column;}
+
+.notice__above__hire{width: 46%; display: flex; flex-direction: column;}
+
+.section__right__container {overflow: scroll; width: 100%; margin: 0 auto;padding: 20px;position: relative;}
+.section__right__container h3{width: 100%; display: flex; align-items: center; justify-content: center;}
+table {width: 100%;border-collapse: collapse;}
+th, td {border: 1px solid #dddddd;text-align: left;padding: 8px;height: 30px; font-size: 15px;}
+th {background-color: #e2e2e4;color: rgb(39, 38, 38); height: 30px; font-size: 15px;}
+.container__th__one{width:15%; text-align:center;}
+.container__th__two{width:70%; text-align:center;}
+.container__th__three{width:15%; text-align:center;}
+
+.section__right__container > table > tbody > tr > td { font-size:12px; text-align:center;}
+.section__right__container > table > tbody > tr > td > form > button {font-size : 10px; height:30px; }
+.section__right__container > table > tbody > tr > td > form > button:hover{font-weight:bold;}
+.section__right__container > table > thead > tr > th { text-align:center;}
+#td_btn{width: 80px;}
+
+.section__notice__below{width: 95%;}
+.notice__below__container {overflow: scroll; height:500px; width: 100%; margin: 0 auto;padding: 20px;position: relative;}
+.notice__below__container h3{width: 100%; display: flex; align-items: center; justify-content: center;}
+.notice__below__container > table {width: 100%;border-collapse: collapse;}
+.notice__below__container> table > th, .notice__below__container> table > td {border: 1px solid #dddddd;text-align: left;padding: 8px;height: 30px; font-size: 15px;}
+.notice__below__container> table > td > th {background-color: #e2e2e4;color: rgb(39, 38, 38); height: 30px; font-size: 15px;}
+
+.notice__below__container > table > thead > tr > th { text-align:center;}
+.notice__below__container > table > tbody > tr > td { text-align:center;}

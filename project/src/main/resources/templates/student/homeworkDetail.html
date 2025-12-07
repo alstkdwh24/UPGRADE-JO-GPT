@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/student/homeworkList.css">
+<th:block th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+<link rel="stylesheet" href="/css/frame/learnGroupLook.css">
+<script src="/js/frame/learnGroupLook.js" defer></script>
+   	<div class="wrap">
+   	
+   	 <div class="hw-container">
+	    <div class="user_name">
+	     <h2 th:if="${hwList.get(0).teach_grade >= 2}">[[${user_name + '님의 숙제 페이지'}]]</h2>
+	     <h2 th:if="${hwList.get(0).teach_grade == null}">[[${user_name + '님의 숙제 페이지'}]]</h2>
+	     <h2 th:if="${hwList.get(0).teach_grade < 2 && hwList.get(0).teach_grade != null}">FAIL!!!$</h2>
+	    </div>
+	    <button onclick="location.href='/student/playGo';" class="action-button shadow animate blue playGo">사활 풀러가기</button>
+   		<form action="/student/submission" method="get">
+		  <div class="container">
+		    <div class="flex-form-container">
+		      <div class="d-flex">
+		        
+		        <div class="left-section">
+		          <h5 class="sec-title">숙제 내용</h5>
+		          <div class="form-group">
+		            <label class="Homework-info">게임 콘텐츠:</label> <br>
+		            <p>[[${hwList.get(0).homework_content}]]</p>
+		          </div>
+		          <div class="form-group">
+		            <label class="Homework-info">교육자: </label>
+		            <p>[[${hwList.get(0).user_name}]]</p>
+		          </div>
+		          <div class="form-group">
+		            <label class="Homework-info">숙제명:</label>
+		            <p>[[${hwList.get(0).homework_name}]]</p>
+		          </div>
+		          <div class="form-group">
+		            <label class="Homework-info">숙제내용:</label>
+		            <p>[[${hwList.get(0).homework_content}]]</p>
+		          </div>
+		          <div class="form-group">
+		            <label class="Homework-info">학습레벨:</label>
+		            <p>[[${hwList.get(0).homework_level}]]</p>
+		          </div>
+		          <div class="form-group">
+		            <label class="Homework-info">제출기한:</label>
+		            <p>[[${hwList.get(0).homework_duedate}]]</p>
+		          </div>
+		        </div>
+		        
+		        <div class="right-section">
+		          <h5 class="sec-title">제출 내용</h5>
+		          <div class="form-group">
+		            <label for="inputField3">금일 학습 내용:</label>
+		            <textarea type="text" class="form-control" th:value=${hwList.get(0).stu_content} th:text=${hwList.get(0).stu_content} id="inputField3" placeholder="답변을 입력해주세요" name="stu_content"></textarea>
+		          </div>
+		          <div class="form-group">
+		            <label for="textareaField">질문:</label>
+		            <textarea class="form-control" id="textareaField" th:value=${hwList.get(0).stu_q} th:text=${hwList.get(0).stu_q} placeholder="자세한 내용을 입력해주세요" name="stu_q"></textarea>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <input type="hidden" th:value=${hwList.get(0).user_no} name="user_no">
+		    <input type="hidden" th:value=${hwList.get(0).homework_no} name="homework_no">
+		    <!-- 제줄 버튼 -->
+		    <div class="button-place">
+		      <div class="d-flex submit-buttons">
+		        <button type="submit" class="btn-submit btn-primary" th:if="${hwList.get(0).homework_duedate > date}">숙제 제출</button>
+		        <button type="submit" class="btn-submit btn-primary" th:if="${hwList.get(0).teach_grade >= 2}">뒤로가기</button>
+		        <span type="submit" class="btn-submit btn-primary gameover" th:if="${hwList.get(0).homework_duedate < date && hwList.get(0).stu_content == null}">숙제 제출</span>
+		        <button th:if="${hwList.get(0).teach_grade < 2 && hwList.get(0).teach_grade != null}" type="submit" class="btn-submit btn-primary">다시 제출</button>
+		      </div>
+		    </div>
+		  	
+		  	<script>
+		        $(document).ready(function() {
+		            $(".gameover").click(function() {
+		                $(this).text("엄...마 감했어");
+		            });
+		        });
+		  	</script>
+		  	
+		  	
+		  </div>
+		  
+		</form>
+		
+		</div>
+    </div>
+
+</th:block>
+</html>

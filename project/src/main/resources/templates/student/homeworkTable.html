@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+	defer></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+	defer></script>
+<script src="/js/student/homeworkTable.js" defer></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+	rel="stylesheet">
+
+<th:block
+	th:replace="~{./baseLayout/base_f :: setContent( ~{ :: .wrap} ) }">
+
+	<div class="wrap">
+		<link rel="stylesheet" href="/css/student/homeworkTable.css">
+		<div class="container">
+			<h2>숙제 이력</h2>
+			<table class="table">
+				<thead class="thead-color">
+					<tr>
+						<th>번호</th>
+						<th>homework_no</th>
+						<th>제목</th>
+						<th>내용</th>
+						<th>제출 날짜</th>
+						<th>숙제 제출</th>
+						<th>제출 현황</th>
+						<th>점수 확인</th>
+					</tr>
+				</thead>
+				<tbody th:each="hw : ${hwList}">
+
+					<tr th:if="${hw.teach_grade >= 2}">
+						<td th:text="${hwStat.count}"></td>
+						<td th:text="${hw.homework_no}"></td>
+						<td th:text="${hw.homework_name}"></td>
+						<td th:text="${hw.homework_content}"></td>
+						<td th:text="${hw.homework_duedate}"></td>
+						<td th:if="${hw.stu_content != null}">
+							<h6>
+								<span class="badge badge-primary">제출 완료</span>
+							</h6>
+						</td>
+						<td th:if="${hw.stu_content == null && hw.homework_leftdate < 0}">
+							<h6>
+								<span class="badge badge-pill badge-danger"
+									th:text=" '제출 D+' + ${hw.homework_leftdate * -1}"></span>
+							</h6>
+						</td>
+						<td th:if="${hw.stu_content == null && hw.homework_leftdate >= 0}">
+							<h6>
+								<span class="badge badge-pill badge-info"
+									th:text=" '제출 D-' + ${hw.homework_leftdate}"></span>
+							</h6>
+						</td>
+
+						<td>
+							<h6>
+								<span class="badge badge-success">평가 완료</span>
+							</h6>
+						</td>
+						<td>
+							<button class="modal-button"
+								th:data-target="'modalSuccess' + ${hwStat.count}">점수 확인</button>
+						</td>
+						
+						<div th:id="'modalSuccess' + ${hwStat.count}" class="modal">
+							<div class="modal-content">
+								<h1>축하합니다!!</h1>
+								<h4 th:text="${hw.teach_grade == 2} ? '당신은 보통을 받으셨습니다' : '당신은 우수를 받으셨습니다!!'"></h4>
+								<h5>다음 레벨을 향해 계속 도전하세요!</h5>
+								<span class="close">&times;</span>
+								<canvas id="confeti" width="300" height="300" class="active">
+								</canvas>
+							</div>
+						</div>
+
+					</tr>
+
+					<tr th:if="${hw.teach_grade < 2 && hw.teach_grade != null}"
+						th:data-url="@{/student/homeworkList(user_no=${hw.user_no})}">
+						<td th:text="${hwStat.count}"></td>
+						<td th:text="${hw.homework_no}"></td>
+						<td th:text="${hw.homework_name}"></td>
+						<td th:text="${hw.homework_content}"></td>
+						<td th:text="${hw.homework_duedate}"></td>
+						<td th:if="${hw.stu_content != null}">
+							<h6>
+								<span class="badge badge-primary">제출 완료</span>
+							</h6>
+						</td>
+							<td th:if="${hw.stu_content == null && hw.homework_leftdate < 0}">
+							<h6>
+								<span class="badge badge-pill badge-danger"
+									th:text=" '제출 D+' + ${hw.homework_leftdate * -1}"></span>
+							</h6>
+						</td>
+						<td th:if="${hw.stu_content == null && hw.homework_leftdate >= 0}">
+							<h6>
+								<span class="badge badge-pill badge-info"
+									th:text=" '제출 D-' + ${hw.homework_leftdate}"></span>
+							</h6>
+						</td>
+						<td>
+							<h6>
+								<span class="badge badge-success">평가 완료</span>
+							</h6>
+						</td>
+
+						<td>
+							<button class="modal-button-fail"
+								th:data-target="'modalFail' + ${hwStat.count}"
+								onclick="document.getElementById('testAudio').play()">점수
+								확인</button>
+						</td>
+
+						<div th:id="'modalFail' + ${hwStat.count}" class="modal">
+							<div class="modal-content">
+								<span class="close"
+									onclick="document.getElementById('testAudio').pause(); document.getElementById('testAudio').currentTime=0;">&times;</span>
+								<h1>통과하지 못하셨습니다.</h1>
+								<h4>
+									당신은 <span style="color: red;">미흡</span>을 받으셨습니다.
+								</h4>
+								<h5>계속해서 도전해 보세요!</h5>
+							</div>
+						</div>
+					</tr>
+
+					<tr th:if="${hw.teach_grade == null}"
+						th:data-url="@{/student/homeworkList(user_no=${hw.user_no})}">
+						<td th:text="${hwStat.count}"></td>
+						<td th:text="${hw.homework_no}"></td>
+						<td th:text="${hw.homework_name}"></td>
+						<td th:text="${hw.homework_content}"></td>
+						<td th:text="${hw.homework_duedate}"></td>
+						<td th:if="${hw.stu_content != null}">
+							<h6>
+								<span class="badge badge-primary">제출 완료</span>
+							</h6>
+						</td>
+							<td th:if="${hw.stu_content == null && hw.homework_leftdate < 0}">
+							<h6>
+								<span class="badge badge-pill badge-danger"
+									th:text=" '제출 D+' + ${hw.homework_leftdate * -1}"></span>
+							</h6>
+						</td>
+						<td th:if="${hw.stu_content == null && hw.homework_leftdate >= 0}">
+							<h6>
+								<span class="badge badge-pill badge-info"
+									th:text=" '제출 D-' + ${hw.homework_leftdate}"></span>
+							</h6>
+						</td>
+						<td>
+							<h6>
+								<span class="badge badge-warning">평가 중</span>
+							</h6>
+						</td>
+
+					</tr>
+				</tbody>
+				
+				
+				<tbody th:if="${#lists.isEmpty(hwList)}">
+					<tr>
+                    	<td colspan="8">아직 제출한 숙제가 없습니다.</td>
+                	</tr>
+				</tbody>
+			</table>
+		</div>
+		<audio id="testAudio" src="/audio/bgm.mp3" controls
+			style="display: none;"></audio>
+
+	</div>
+</th:block>
+</html>

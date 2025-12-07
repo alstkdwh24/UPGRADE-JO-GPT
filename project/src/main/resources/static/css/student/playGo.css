@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Light neutral background */
+}
+
+.playGo{display:flex; flex-direction: column;}
+
+table {
+    border-collapse: collapse;
+    background-color: #dda; /* Board color */
+}
+
+td {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+/* Creating a central point for stone placement */
+td::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;  /* Moves the stone to the intersection center */
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+td.stone-black::before {
+    background-color: black;
+}
+
+td.stone-white::before {
+    background-color: white;
+}
+
+/* Add borders to the leftmost and topmost cells to complete the grid */
+table tr:first-child td {
+    border-top: 1px solid #333;
+}
+
+table td:first-child {
+    border-left: 1px solid #333;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="UTF-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/user_co/notice_co.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="notice__header"><span>채용 공고</span></div>
+
+  <table class="apply_table">
+    <colgroup>
+      <col width="80">
+      <col width="700">
+      <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>담당자명</th>
+        <th>채용 공고 명</th>
+        <th>등록일</th>
+        <th style="width: 100px;">승인 여부</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list : ${list}">
+        <td th:text="${list.title}">1</td>
+        <td><a th:href="@{/job/resume_jobpost2(prodd_id=${list.prodd_id})}"><span th:text="${list.title_name}"></span></a></td>
+        <td>2024-03-15</td>
+        <td style="display:flex; width: 100px">
+        <form th:action="@{/user_mn/approve/{title}(title=${list.title})}" method="post">
+            <input type="hidden" name="title" th:value="${list.title}"/>
+            <input type="hidden" name="title_name" th:value="${list.title_name}"/>
+            <input type="hidden" name="title_name" th:value="${list.yn}"/>
+            <button type="submit" style="margin-right: 10px;">승인</button>
+       	</form>
+           
+           <form th:action="@{/user_mn/reject/{title}(title=${list.title})}" method="post">
+            <input type="hidden" id="reject" name="title" th:value="${list.title}"/>
+            <button type="submit">거절</button>
+       	</form>
+    </tr>
+   
+    </tbody>
+  </table>
+</body>
+</html>
