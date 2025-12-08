@@ -108,59 +108,121 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           children: [
             SizedBox(height: 150.h, width: 0.02.sw),
-            Container(
-              height: 150.h,
-              width: 0.138.sw,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(50),
-              ),
-
-              child: IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-            ),
-            SizedBox(height: 150.h, width: 0.02.sw),
-            Align(
-              alignment: Alignment.center,
+            GestureDetector(
+              onTap: () {
+                showDialog(context: context, builder: (_) => _googleAppMenu());
+              },
               child: Container(
-                width: 0.79.sw,
                 height: 150.h,
+                width: 0.138.sw,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.black),
                   color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Icon(Icons.add, size: 36, color: Colors.black),
+              ),
+            ),
+            SizedBox(width: 0.02.sw),
+            Expanded(
+              child: Container(
+                height: 150.h,
+
+                decoration: BoxDecoration(
+                  color: orange,
+                  borderRadius: BorderRadius.circular(14),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsGeometry.only(left: 30.w, right: 30.w),
-                  child: Expanded(child:Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  padding: EdgeInsets.all(14), // EdgeInsets를 사용해야 해요
+                  child: Column(
                     children: [
-                        // 이걸 추가!
-                        // 핵심 수정!
-                    TextField(
-                          maxLines: null,
-                          expands: true,
-                          textAlignVertical: TextAlignVertical.top,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: '내용을 입력하세요',
+                      Expanded(
+                        child: Container(
+                          // height: 150.h,  // Expanded 쓸 거면 이건 빼세요!
+                          decoration: BoxDecoration(
+                            color: orange,
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          child: TextField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              expands: true,
+
+
+                            textAlignVertical: TextAlignVertical.center,  // ✅ 세로 가운데
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.zero,  // ✅ zero로 변경!
+
+                                border: InputBorder.none,
+                                hintText: '내용을 입력하세요',
+
+                            ),
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.search_rounded),
-                          color: Colors.black,
-                        ),
+                      ),
                     ],
-                  ),)
+                  ),
                 ),
               ),
             ),
-            SizedBox(width: 0.02.sw, height: 150.h),
+            SizedBox(width: 0.02.sw),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _googleAppMenu() {
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: EdgeInsets.all(20),
+      alignment: Alignment.bottomCenter, // ⬅️ 하단 정렬!
+
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 70), // ⬅️ 여기 높이면 올라감!
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 15,
+                spreadRadius: 5,
+              ),
+            ],
+          ),
+          padding: EdgeInsets.all(20),
+          child: SizedBox(
+            height: 280.w,
+            width: 350,
+            child: GridView.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              children: [
+                _appIcon(Icons.camera_alt, "계정"),
+                _appIcon(Icons.image, "사진"),
+                _appIcon(Icons.attach_file, "파일"),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _appIcon(IconData icon, String label) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CircleAvatar(
+          radius: 26,
+          backgroundColor: Colors.grey.shade100,
+          child: Icon(icon, size: 30, color: Colors.black87),
+        ),
+        SizedBox(height: 8),
+        Text(label, style: TextStyle(fontSize: 14)),
+      ],
     );
   }
 }
