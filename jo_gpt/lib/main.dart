@@ -132,30 +132,53 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(14), // EdgeInsets를 사용해야 해요
+                  padding: EdgeInsetsGeometry.only(left: 14),
                   child: Column(
                     children: [
                       Expanded(
                         child: Container(
-                          // height: 150.h,  // Expanded 쓸 거면 이건 빼세요!
+                          height: 150.h,
                           decoration: BoxDecoration(
                             color: orange,
                             borderRadius: BorderRadius.circular(14),
                           ),
-                          child: TextField(
-                              keyboardType: TextInputType.multiline,
-                              maxLines: null,
-                              expands: true,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
 
+                              SizedBox(
+                                width: 0.64.sw,
+                                height: 150.h,
+                                child: TextField(
+                                  keyboardType: TextInputType.multiline,
+                                  maxLines: null,
+                                  expands: true,
 
-                            textAlignVertical: TextAlignVertical.center,  // ✅ 세로 가운데
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.zero,  // ✅ zero로 변경!
+                                  textAlignVertical: TextAlignVertical.center,
+                                  // ✅ 세로 가운데
+                                  decoration: InputDecoration(
+                                    contentPadding:
+                                        EdgeInsets.zero, // ✅ zero로 변경!
 
-                                border: InputBorder.none,
-                                hintText: '내용을 입력하세요',
+                                    border: InputBorder.none,
+                                    hintText: '내용을 입력하세요',
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 150.h,
+                                alignment: Alignment.center,
 
-                            ),
+                                child:Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,  // 세로 중앙
+                                  crossAxisAlignment: CrossAxisAlignment.center, // 가로 중앙
+                                  children: [ IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.search_rounded, size: 34),
+                                ),
+                              ]),
+                      )],
                           ),
                         ),
                       ),
@@ -178,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
       alignment: Alignment.bottomCenter, // ⬅️ 하단 정렬!
 
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 70), // ⬅️ 여기 높이면 올라감!
+        padding: const EdgeInsets.only(bottom: 70),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -200,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
               children: [
-                _appIcon(Icons.camera_alt, "계정"),
+                _appIcon(Icons.camera_alt, "카메라"),
                 _appIcon(Icons.image, "사진"),
                 _appIcon(Icons.attach_file, "파일"),
               ],
