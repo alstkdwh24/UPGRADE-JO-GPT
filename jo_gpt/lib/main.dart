@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
+import 'DrawMenuOne.dart';
+import 'DrawMenuTwo.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -52,28 +55,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   final orangeColor = Color.fromRGBO(255, 165, 0, 1.0);
   final orange = Color.fromRGBO(246, 234, 216, 1);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      resizeToAvoidBottomInset: true, // 기본값이지만 명시적으로 설정
       backgroundColor: orangeColor,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
           icon: Icon(Icons.menu, size: 36, color: Colors.black),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              _scaffoldKey.currentState?.openEndDrawer();
+
+            },
             icon: Icon(Icons.account_circle, size: 36, color: Colors.black),
           ),
         ],
@@ -81,6 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         title: Column(children: [Text(widget.title)]),
       ),
+      drawer:const DrawMenuOne(),
+      endDrawer:const DrawMenuTwo(),
+
       body: Container(
         color: orange,
         child: Column(
